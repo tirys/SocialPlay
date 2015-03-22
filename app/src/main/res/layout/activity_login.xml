@@ -7,15 +7,15 @@
 
     <TextView android:text="@string/hello_world" android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/" />
+        android:id="@+id/txthello" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="New Button"
         android:id="@+id/button"
-        android:layout_below="@+id/"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="150dp" />
+        android:layout_marginTop="153dp"
+        android:layout_below="@+id/btnlegal"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
