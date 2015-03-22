@@ -14,8 +14,9 @@
         android:layout_height="wrap_content"
         android:text="New Button"
         android:id="@+id/button"
-        android:layout_marginTop="139dp"
+        android:layout_marginTop="140dp"
         android:layout_below="@+id/txthello"
-        android:layout_toEndOf="@+id/txthello" />
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="48dp" />
 
 </RelativeLayout>
