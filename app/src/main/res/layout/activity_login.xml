@@ -9,9 +9,29 @@
        android:orientation="vertical"
        android:layout_width="10000dp"
        android:layout_height="180dp"
+       android:paddingTop="15dp"
        android:background="#ff00cccc"
        android:id="@+id/bartop">
 
 
-       </LinearLayout>
+       <ImageView
+           android:layout_width="wrap_content"
+           android:layout_height="150dp"
+           android:id="@+id/imageView"
+           android:layout_gravity="center_horizontal"
+           android:src="@drawable/logo3" />
+   </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/login"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="30dp"
+        android:id="@+id/txtLogin"
+        android:textColor="#ff27cbcb"
+        android:layout_below="@+id/bartop"
+        android:layout_alignParentStart="true" />
+
 </RelativeLayout>
