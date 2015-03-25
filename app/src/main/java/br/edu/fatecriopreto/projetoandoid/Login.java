@@ -4,16 +4,32 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 
 
 public class Login extends ActionBarActivity {
 
+    ImageView ImgLogo;
+
+    Animation animBounce;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_login);
+
+        ImageView ImgLogo = (ImageView) findViewById(R.id.ImgLogo); //pegando o objeto no layout
+
+        // load the animation
+        animBounce = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.bounce);
+
+        // set animation listener
+        //animBounce.setAnimationListener(this);
+
+
+        ImgLogo.startAnimation(animBounce);
+
     }
 
 
