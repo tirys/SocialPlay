@@ -1,17 +1,23 @@
 package br.edu.fatecriopreto.projetoandoid;
 
+
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.ImageView;
+
+
 
 
 public class Login extends ActionBarActivity {
 
     ImageView ImgLogo;
+    Button btnEntrar;
 
     Animation animBounce;
     @Override
@@ -19,7 +25,9 @@ public class Login extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        ImageView ImgLogo = (ImageView) findViewById(R.id.ImgLogo); //pegando o objeto no layout
+        //pegando os objetos no layout
+        ImageView ImgLogo = (ImageView) findViewById(R.id.ImgLogo);
+        Button btnEntrar = (Button) findViewById(R.id.btnEntrar);
 
         // load the animation
         animBounce = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.bounce);
@@ -30,10 +38,18 @@ public class Login extends ActionBarActivity {
 
         ImgLogo.startAnimation(animBounce);
 
+        btnEntrar.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                //startActivity();
+            }
+        });
     }
 
 
-    @Override
+
+
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_login, menu);
