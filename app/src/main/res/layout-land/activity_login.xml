@@ -1,0 +1,91 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Login"
+    android:id="@+id/seila"
+    android:background="#ffffffff">
+
+   <LinearLayout
+       android:orientation="vertical"
+       android:layout_width="10000dp"
+       android:layout_height="80dp"
+       android:paddingTop="15dp"
+       android:background="#ff00cccc"
+       android:id="@+id/bartop">
+
+
+       <ImageView
+           android:layout_width="wrap_content"
+           android:layout_height="50dp"
+           android:id="@+id/ImgLogo"
+           android:layout_gravity="center_horizontal"
+           android:src="@drawable/logo3" />
+   </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/login"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="30dp"
+        android:id="@+id/txtLogin"
+        android:textColor="#ff27cbcb"
+        android:layout_below="@+id/bartop"
+        android:layout_alignParentStart="true" />
+
+
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/edtLogin"
+        android:textColor="#c0000000"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:singleLine="true"
+        android:padding="0dp"
+        android:gravity="center_horizontal"
+        android:layout_below="@+id/txtLogin"
+        android:layout_alignParentStart="true"
+         />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/senha"
+        android:id="@+id/textView"
+        android:textColor="#ff27cbcb"
+        android:layout_marginLeft="30dp"
+        android:layout_below="@+id/edtLogin"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="10dp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:id="@+id/edtSenha"
+        android:textColor="#c0000000"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:singleLine="true"
+        android:padding="0dp"
+        android:gravity="center_horizontal"
+        android:layout_below="@+id/textView"
+        android:layout_alignParentStart="true"
+         />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/entrar"
+        android:id="@+id/btnEntrar"
+        android:layout_below="@+id/edtSenha"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="42dp"
+        android:background="#ff00cccc"/>
+
+</RelativeLayout>
