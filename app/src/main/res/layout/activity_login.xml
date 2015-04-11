@@ -60,7 +60,7 @@
         android:layout_marginLeft="30dp"
         android:layout_below="@+id/edtLogin"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="42dp" />
+        android:layout_marginTop="10dp" />
 
     <EditText
         android:layout_width="match_parent"
@@ -86,6 +86,6 @@
         android:layout_alignParentStart="true"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
-        android:layout_marginTop="42dp"
+        android:layout_marginTop="40dp"
         android:background="#ff00cccc" />
 </RelativeLayout>
