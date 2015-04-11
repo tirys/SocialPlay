@@ -1,6 +1,7 @@
 package br.edu.fatecriopreto.projetoandoid;
 
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -42,6 +43,8 @@ public class Login extends ActionBarActivity {
 
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(Login.this, Main.class);
+                startActivityForResult(intent,1);
                 //startActivity();
             }
         });
