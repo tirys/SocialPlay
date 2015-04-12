@@ -28,7 +28,8 @@
             android:background="#ffffff"
             android:maxLines="1"
             android:textColor="#000000"
-            android:id="@+id/edtBuscar2" />
+            android:id="@+id/edtBuscar2"
+            android:focusable="false"/>
     </RelativeLayout>
 
     <ListView
