@@ -8,11 +8,17 @@
     tools:context="br.edu.fatecriopreto.projetoandoid.Main"
     android:padding="0dp"
     >
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:background="#ff00cccc"
         android:id="@+id/linearLayout">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginRight="300dp"
+            android:src="@android:drawable/ic_menu_sort_by_size"
+            android:id="@+id/imgMenu" />
         <EditText
             android:layout_width="match_parent"
             android:layout_height="26dp"
@@ -23,8 +29,8 @@
             android:maxLines="1"
             android:textColor="#000000"
             android:id="@+id/edtBuscar2" />
-        </LinearLayout>
-
+        </RelativeLayout>
+    
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
