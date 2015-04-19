@@ -10,26 +10,37 @@
     >
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="50dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
         android:background="#ff00cccc"
         android:id="@+id/linearLayout">
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginRight="300dp"
-            android:src="@android:drawable/ic_menu_sort_by_size"
+            android:padding="11dp"
+            android:src="@drawable/menu"
             android:id="@+id/imgMenu" />
         <EditText
             android:layout_width="match_parent"
-            android:layout_height="26dp"
-            android:layout_marginTop="7dp"
-            android:layout_marginLeft="100dp"
-            android:layout_marginRight="100dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="90dp"
+            android:layout_marginRight="90dp"
             android:background="#ffffff"
             android:maxLines="1"
             android:textColor="#000000"
             android:focusable="false"
             android:id="@+id/edtBuscar2" />
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="300dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="8dp"
+            android:id="@+id/imgNewPost"
+            android:src="@drawable/novopost" />
         </RelativeLayout>
     
     <ListView
