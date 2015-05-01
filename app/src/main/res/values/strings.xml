@@ -18,5 +18,8 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_example">Example action</string>
+    <string name="ultimosposts">Últimos posts</string>
+    <string name="seguindo">Seguindo</string>
+    <string name="relevantes">Mais relevantes</string>
 
 </resources>
