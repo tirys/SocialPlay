@@ -7,6 +7,7 @@
     <string name="login">Login</string>
     <string name="senha">Senha</string>
     <string name="entrar">Entrar</string>
+    <string name="title_activity_main"></string>
     <string name="title_activity_menu">Menu</string>
 
     <string name="title_section1">Section 1</string>
