@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">projetoAndoid</string>
+    <string name="app_name">SocialPlay</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="login">Login</string>
@@ -36,5 +36,9 @@
         <item>Item 8</item>
         <item>Item 9</item>
     </string-array>
+
+    <string name="nome1">Primeira Sessão</string>
+    <string name="nome2">Segunda Sessão</string>
+    <string name="nome3">Terceira Sessão</string>
 
 </resources>
