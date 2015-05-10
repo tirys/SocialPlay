@@ -1,6 +1,9 @@
 package br.edu.fatecriopreto.projetoandoid;
 
+import android.content.Context;
+import android.content.res.ColorStateList;
 import android.content.res.Configuration;
+import android.graphics.Color;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -11,6 +14,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -21,6 +25,9 @@ import java.util.Locale;
 
 public class Main extends ActionBarActivity {
 
+    TextView txtUltimos;
+    TextView txtSeguindo;
+    TextView txtRelevantes;
     DrawerLayout mDrawerLayout;
     ListView mDrawerList;
     ActionBarDrawerToggle mDrawerToggle;
@@ -117,12 +124,25 @@ public class Main extends ActionBarActivity {
 
         @Override
         public Fragment getItem(int position) {
+            txtRelevantes = (TextView)findViewById(R.id.txtRelevantes);
+            txtUltimos = (TextView)findViewById(R.id.txtUltimos);
+            txtSeguindo = (TextView)findViewById(R.id.txtSeguindo);
+
             switch (position) {
                 case 0:
+                    //txtRelevantes.setTextColor(Color.parseColor("A9A9A9"));
+                    //txtSeguindo.setTextColor(Color.parseColor("#A9A9A9"));
+                    txtUltimos.setTextColor(Color.parseColor("#008080"));
                     return new Ultimos();
                 case 1:
+                    txtUltimos.setTextColor(Color.parseColor("#A9A9A9"));
+                    //txtRelevantes.setTextColor(Color.parseColor("#A9A9A9"));
+                    //txtSeguindo.setTextColor(Color.parseColor("#008080"));
                     return new Seguindo();
                 case 2:
+                    txtUltimos.setTextColor(Color.parseColor("#A9A9A9"));
+                    //txtRelevantes.setTextColor(Color.parseColor("#008080"));
+                    //txtSeguindo.setTextColor(Color.parseColor("#A9A9A9"));
                     return new Relevantes();
             }
             return null;
