@@ -66,7 +66,7 @@ public class AdapterListView extends BaseAdapter{
         item.txtTituloPost.setText(post.getTitulo());
         item.txtDescricaoPost.setText(post.getDescricao());
 
-      //  item.txtDescricaoPost.setText("conteudo conteudo conteudo");
+       //item.txtDescricaoPost.setText("conteudo conteudo conteudo");
        item.imgUser.setImageResource(R.drawable.user);
 
 
