@@ -58,8 +58,8 @@ public class Ultimos extends Fragment{
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Posts post=  (Posts) parent.getItemAtPosition(position); //codigo para cast
 
-                ((Main)getActivity()).Troca(post.getId());
-
+                //((Main)getActivity()).Troca(post.getId());
+                ((Main)getActivity()).Troca(post);
             }
         });
 

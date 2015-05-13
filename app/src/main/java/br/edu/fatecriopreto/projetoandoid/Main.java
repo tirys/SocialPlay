@@ -1,5 +1,6 @@
 package br.edu.fatecriopreto.projetoandoid;
 
+import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.ColorStateList;
@@ -24,6 +25,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+
+import org.w3c.dom.Text;
 
 import java.util.List;
 import java.util.Locale;
@@ -103,16 +106,18 @@ public class Main extends ActionBarActivity {
 
     }
 
-    public void Troca(long id){
-       Intent intent = new Intent(Main.this, Perfil.class);
-      // startActivityForResult(intent, 2);
+    public void Troca(Posts post){
+       Intent intent = new Intent(Main.this, DetalhesForum.class);
+        startActivityForResult(intent, 1);
+        overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
+
+       /* TextView Idpost;
 
         Perfil fragment2 = new Perfil();
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.fragment, fragment2);
-        fragmentTransaction.commit();
-
+        fragmentTransaction.replace(R.id.drawer, fragment2);
+        fragmentTransaction.commit();*/
 
 
         //return new Perfil();
