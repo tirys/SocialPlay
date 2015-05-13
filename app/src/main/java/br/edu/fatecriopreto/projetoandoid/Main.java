@@ -25,14 +25,28 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-
+import java.util.Locale;
+import java.util.Arrays;
+import java.util.List;
+import android.app.Activity;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.AutoCompleteTextView;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.Spinner;
+import br.edu.fatecriopreto.projetoandoid.adapter.AutoCompleteAdapter;
+import br.edu.fatecriopreto.projetoandoid.domain.State;
 import org.w3c.dom.Text;
 
 import java.util.List;
 import java.util.Locale;
 
 
-public class Main extends ActionBarActivity {
+public class Main extends ActionBarActivity implements OnItemSelectedListener {
 
     TextView txtUltimos;
     TextView txtSeguindo;
@@ -48,7 +62,23 @@ public class Main extends ActionBarActivity {
     ViewPager mViewPager;
     ListView lstUltimos;
 
+    //private Spinner spCountry;
+    private AutoCompleteTextView actvState;
+    public static int id = 0;
 
+    // STATES
+
+    private List<State> listStatesCanada = Arrays.asList(new State[]{new State("Ontario (ON)", R.drawable.ontario),
+            new State("Quebec (QC)", R.drawable.quebec),
+            new State("Nova Scotia (NS)", R.drawable.nova_scotia),
+            new State("New Brunswick (NB)", R.drawable.new_brunswick),
+            new State("Manitoba (MB)", R.drawable.manitoba),
+            new State("British Columbia (BC)", R.drawable.british_columbia),
+            new State("Prince Edward Island (PE)", R.drawable.prince_edward_island),
+            new State("Saskatchewan (SK)", R.drawable.saskatchewan),
+            new State("Alberta (AB)", R.drawable.alberta),
+            new State("Newfoundland and Labrador (NL)", R.drawable.newfoundland_and_labrador)
+    });
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,8 +133,54 @@ public class Main extends ActionBarActivity {
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
+        LinearLayout llAddress = (LinearLayout) findViewById(R.id.llAddress);
 
+        // AUTO COMPLETE TEXT VIEW
+        int position = 0;
+        actvState = new AutoCompleteTextView(Main.this);
+        actvState.setThreshold(1);
+        actvState.setBackgroundColor(0);
+        actvState.setLayoutParams(new LinearLayout.LayoutParams(0, LayoutParams.MATCH_PARENT, 1));
+        float scale = getResources().getDisplayMetrics().density;
+        actvState.setPadding((int)(5 * scale * 0.5f),(int)(4 * scale * 0.5f),(int)(5 * scale * 0.5f),(int)(0 * scale * 0.5f));
+        //actvState.setHint("Estado / Provincia");
+        //actvState = (AutoCompleteTextView) findViewById(R.id.actvState);
+        actvState.addTextChangedListener(new TextWatcher(){
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                Integer cor = actvState.getCurrentTextColor();
+                Log.i("Script", "beforeTextChanged("+s+")"+cor+"");
+                Main.id = 0;
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                Log.i("Script", "onTextChanged("+s+")");
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                Log.i("Script", "afterTextChanged("+s+")");
+            }
+        });
+
+        llAddress.addView(actvState);
+        actvState.setTextColor(Color.parseColor("#96141414"));
+        List<State> aux = position == 0 ? listStatesCanada : listStatesCanada;
+        actvState.setAdapter(new AutoCompleteAdapter(Main.this, position, aux));
     }
+
+    // LISTENERS
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+			/*String[] aux = getResources().getStringArray(position == 0 ? R.array.statesBrazil : R.array.statesCanada);
+			ArrayAdapter<String> adapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_dropdown_item_1line, aux);
+			actvState.setAdapter(adapter);*/
+
+        List<State> aux = position == 0 ? listStatesCanada : listStatesCanada;
+        //actvState.setAdapter(new AutoCompleteAdapter2(MainActivity.this, R.layout.auto_complete_item, R.id.tvState, aux));
+        actvState.setAdapter(new AutoCompleteAdapter(Main.this, position, aux));
+    }
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {}
 
     public void Troca(Posts post){
        Intent intent = new Intent(Main.this, DetalhesForum.class);

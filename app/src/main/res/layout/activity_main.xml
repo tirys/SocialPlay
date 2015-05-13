@@ -17,7 +17,20 @@
         android:background="#ff00cccc"
         android:id="@+id/toolbar"/>
 
-        <EditText
+    <LinearLayout
+        android:id="@+id/llAddress"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="90dp"
+        android:layout_marginRight="90dp"
+        android:paddingRight="1dp"
+        android:paddingLeft="2dp"
+        android:background="@drawable/retangulo_corners"
+        >
+
+        <!--EditText
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:layout_marginTop="10dp"
@@ -31,9 +44,22 @@
             android:drawableRight="@drawable/imgbuscar"
             android:drawablePadding="5dp"
             android:singleLine="true"
+            /-->
+        <!--Spinner
+            android:id="@+id/spCountry"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginRight="5dp" /-->
 
-
-            />
+        <!-- AutoCompleteTextView
+            android:id="@+id/actvState"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Estado / Provincia"
+            android:completionThreshold="1" / -->
+    </LinearLayout>
 
         <ImageView
             android:layout_width="wrap_content"
