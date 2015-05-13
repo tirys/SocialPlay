@@ -1,9 +1,12 @@
 package br.edu.fatecriopreto.projetoandoid;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.content.res.Configuration;
 import android.graphics.Color;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -11,6 +14,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.WebViewFragment;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -20,6 +24,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+
+import java.util.List;
 import java.util.Locale;
 
 
@@ -34,23 +40,32 @@ public class Main extends ActionBarActivity {
     String[] mDrawerListItems;
     //INICIA O ADAPTER
     SectionsPagerAdapter mSectionsPagerAdapter;
-
+    Fragment fragmentozinho;
     //INICIA O PAGEVIEW
     ViewPager mViewPager;
+    ListView lstUltimos;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
+
+        lstUltimos = (ListView)findViewById(R.id.lstUltimos);
         mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer);
         mDrawerList = (ListView)findViewById(android.R.id.list);
         mDrawerListItems = getResources().getStringArray(R.array.drawer_list);
+
         mDrawerList.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, mDrawerListItems));
+
         mDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 int editedPosition = position+1;
+
                 Toast.makeText(Main.this, "You selected item " + editedPosition, Toast.LENGTH_SHORT).show();
                 mDrawerLayout.closeDrawer(mDrawerList);
             }
@@ -84,9 +99,25 @@ public class Main extends ActionBarActivity {
         //Configura o PageView com as sessoes do adapter
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(mSectionsPagerAdapter);
+
+
     }
 
+    public void Troca(long id){
+       Intent intent = new Intent(Main.this, Perfil.class);
+      // startActivityForResult(intent, 2);
 
+        Perfil fragment2 = new Perfil();
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fragment, fragment2);
+        fragmentTransaction.commit();
+
+
+
+        //return new Perfil();
+       // Toast.makeText(Main.this, "You selected item " + id, Toast.LENGTH_SHORT).show();
+    }
 
     @Override
     protected void onPostCreate(Bundle savedInstanceState){
@@ -172,6 +203,7 @@ public class Main extends ActionBarActivity {
             return null;
         }
     }
+
 
 
     //PLACEHOLDER CONTENDO UM FRAGMENTO

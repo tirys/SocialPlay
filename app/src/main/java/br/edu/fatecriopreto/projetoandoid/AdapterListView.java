@@ -30,8 +30,10 @@ public class AdapterListView extends BaseAdapter{
         return posts.get(position); //retorna o item na posicao indicada
     }
 
+
+
     @Override
-    public long getItemId(int position){
+    public  long getItemId(int position){
         return position;
     }
 
