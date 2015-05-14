@@ -29,15 +29,15 @@ public class Ultimos extends Fragment{
 
        final ListView lstUltimos = (ListView) rootView.findViewById(R.id.lstUltimos);
 
-        Posts post = new Posts(5,"Tutorial","descricao, descricao, descricao");
-        Posts post2 = new Posts(2,"Tutorial2","descricao2, descricao2, descricao2");
-        Posts post3 = new Posts(3,"Tutorial3","descricao3, descricao3, descricao3");
-        Posts post4 = new Posts(4,"Tutorial","descricao, descricao, descricao");
-        Posts post5 = new Posts(5,"Tutorial2","descricao2, descricao2, descricao2");
-        Posts post6 = new Posts(6,"Tutorial3","descricao3, descricao3, descricao3");
-        Posts post7 = new Posts(7,"Tutorial","descricao, descricao, descricao");
-        Posts post8 = new Posts(8,"Tutorial2","descricao2, descricao2, descricao2");
-        Posts post9 = new Posts(9,"Tutorial3","descricao3, descricao3, descricao3");
+        Posts post = new Posts(5,"Tutorial","descricao, descricao, descricao",1);
+        Posts post2 = new Posts(2,"Tutorial2","descricao2, descricao2, descricao2",1);
+        Posts post3 = new Posts(3,"Tutorial3","descricao3, descricao3, descricao3",1);
+        Posts post4 = new Posts(4,"Tutorial","descricao, descricao, descricao",1);
+        Posts post5 = new Posts(5,"Tutorial2","descricao2, descricao2, descricao2",1);
+        Posts post6 = new Posts(6,"Tutorial3","descricao3, descricao3, descricao3",1);
+        Posts post7 = new Posts(7,"Tutorial","descricao, descricao, descricao",1);
+        Posts post8 = new Posts(8,"Tutorial2","descricao2, descricao2, descricao2",1);
+        Posts post9 = new Posts(9,"Tutorial3","descricao3, descricao3, descricao3",1);
         List<Posts> posts = new ArrayList<>();
         posts.add(post);
         posts.add(post2);
