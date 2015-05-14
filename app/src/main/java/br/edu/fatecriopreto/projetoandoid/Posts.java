@@ -8,14 +8,15 @@ public class Posts {
     private long id;
     private String titulo;
     private String descricao;
-
+    private long diamantes;
 
     public Posts(){}
-    public Posts(long id, String titulo, String descricao)
+    public Posts(long id, String titulo, String descricao,long diamantes)
     {
         this.setTitulo(titulo);
         this.setId(id);
         this.setDescricao(descricao);
+        this.setDiamantes(diamantes);
     }
 
     public long getId() {
@@ -43,4 +44,7 @@ public class Posts {
     }
 
 
+    public void setDiamantes(long diamantes) {
+        this.diamantes = diamantes;
+    }
 }
