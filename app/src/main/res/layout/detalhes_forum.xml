@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent"
-    android:background="#ffffff"
+    android:background="#e2e0e0"
     >
 
     <android.support.v7.widget.Toolbar
@@ -43,19 +43,128 @@
         android:layout_above="@+id/txtTitDet"
         />
 
+
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Título do Forum"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="100dp"
+        android:id="@+id/txtTitDet"
+        android:textColor="#333333"
+        android:layout_below="@+id/toolbarDet"
+        android:layout_alignParentEnd="true" />
+
+    <ImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginLeft="10dp"
+        android:id="@+id/imageView"
+        android:layout_alignTop="@+id/txtTitDet"
+        android:layout_alignParentStart="true"
+        android:src="@drawable/user"
+         />
+
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textAlignment="center"
+        android:text="Usuário"
+        android:maxLength="10"
+        android:textSize="15dp"
+        android:gravity="center"
+        android:id="@+id/txtForumAutor"
+        android:textColor="#333333"
+        android:layout_below="@+id/imageView"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="13/05 22:00"
+        android:layout_marginTop="3dp"
+        android:layout_marginRight="5dp"
+        android:id="@+id/textView2"
+        android:layout_alignTop="@+id/txtTitDet"
+        android:layout_alignParentEnd="true" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Medium Text"
-        android:id="@+id/txtTitDet"
-        android:layout_below="@+id/toolbarDet"
-        android:layout_alignParentStart="true" />
-
-    <FrameLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:text="PC > FPS > Combat Arms"
+        android:textSize="15dp"
+        android:id="@+id/textView5"
+        android:textColor="#008B8B"
         android:layout_below="@+id/txtTitDet"
-        android:layout_alignParentEnd="true"
-        android:id="@+id/sl"></FrameLayout>
+        android:layout_alignStart="@+id/txtTitDet" />
+
+    <ImageView
+        android:layout_width="15dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView2"
+        android:layout_above="@+id/txtForumAutor"
+        android:layout_toEndOf="@+id/txtForumAutor"
+        android:src="@drawable/diamante" />
+
+    <ImageView
+        android:layout_width="15dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView3"
+        android:src="@drawable/diamante"
+        android:layout_marginLeft="3dp"
+        android:layout_alignBottom="@+id/imageView2"
+        android:layout_toEndOf="@+id/imageView2" />
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView4"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:alpha="0.5"
+        android:layout_below="@+id/txtForumAutor"
+        android:layout_alignParentStart="true"
+        android:src="@drawable/bar" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="conteudo aqui conteudo aqui conteudo aqui conteudo aqui conteudo aqui conteudo aqui conteudo aqui conteudo aqui conteudo aqui conteudo aqui conteudo aqui conteudo aqui ."
+        android:id="@+id/txtDesc"
+        android:textSize="17dp"
+        android:textColor="#696969"
+        android:layout_marginRight="10dp"
+        android:layout_below="@+id/imageView4"
+        android:layout_alignStart="@+id/imageView4" />
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent" android:layout_height="match_parent"
+        android:background="#ffffff"
+        android:layout_below="@+id/txtDesc"
+        android:layout_marginTop="10dp"
+        android:id="@+id/layComents">
+
+        <ListView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/listView2"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:layout_above="@+id/edtComment"/>
+
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/edtComment"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            />
+    </RelativeLayout>
+
 </RelativeLayout>

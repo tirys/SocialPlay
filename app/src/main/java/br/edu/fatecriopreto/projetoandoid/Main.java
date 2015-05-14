@@ -184,6 +184,13 @@ public class Main extends ActionBarActivity implements OnItemSelectedListener {
 
     public void Troca(Posts post){
        Intent intent = new Intent(Main.this, DetalhesForum.class);
+
+        Bundle param = new Bundle();
+        param.putLong("idPost", post.getId());
+        param.putString("titPost", post.getTitulo());
+        param.putString("txtDesc",post.getDescricao());
+        intent.putExtras(param);
+
         startActivityForResult(intent, 1);
         overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
 
