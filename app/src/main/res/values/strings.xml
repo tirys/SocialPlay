@@ -40,5 +40,8 @@
     <string name="nome1">Primeira Sessão</string>
     <string name="nome2">Segunda Sessão</string>
     <string name="nome3">Terceira Sessão</string>
+    <string name="cadastrar">Cadastrar</string>
+    <string name="textoregistro">Ainda não é registrado?</string>
+    <string name="cadastrese">Cadastre-se</string>
 
 </resources>
