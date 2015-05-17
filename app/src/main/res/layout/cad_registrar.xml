@@ -67,7 +67,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/cadastrar"
-        android:id="@+id/button"
+        android:id="@+id/btnCadastrar"
         android:textColor="#ffffff"
         android:textStyle="bold"
         android:background="#006666"

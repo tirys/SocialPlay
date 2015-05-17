@@ -92,7 +92,7 @@
         android:background="#00b7b7" />
 
     <TextView
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
         android:textAppearance="?android:attr/textAppearanceMedium"
@@ -107,10 +107,13 @@
         android:layout_height="20dp"
         android:textColor="#009090"
         android:layout_marginRight="30dp"
+        android:layout_marginLeft="10dp"
         android:text="@string/cadastrese"
         android:id="@+id/btnCadastrarse"
         android:background="#ffffff"
         android:layout_alignBottom="@+id/textView8"
-        android:layout_alignEnd="@+id/btnEntrar" />
+        android:layout_toEndOf="@+id/textView8" />
+
+
 
 </RelativeLayout>

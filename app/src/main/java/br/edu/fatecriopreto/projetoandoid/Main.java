@@ -56,6 +56,7 @@ public class Main extends ActionBarActivity implements OnItemSelectedListener {
     ListView mDrawerList;
     ActionBarDrawerToggle mDrawerToggle;
     String[] mDrawerListItems;
+
     //INICIA O ADAPTER
     SectionsPagerAdapter mSectionsPagerAdapter;
     Fragment fragmentozinho;
