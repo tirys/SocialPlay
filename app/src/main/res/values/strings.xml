@@ -43,5 +43,6 @@
     <string name="cadastrar">Cadastrar</string>
     <string name="textoregistro">Ainda não é registrado?</string>
     <string name="cadastrese">Cadastre-se</string>
+    <string name="nome">Nome</string>
 
 </resources>

@@ -11,14 +11,14 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
-
-
+import android.widget.TextView;
 
 
 public class Login extends ActionBarActivity {
 
     ImageView ImgLogo;
     Button btnEntrar;
+    Button btnCadastrar;
 
     Animation animBounce;
     @Override
@@ -29,6 +29,7 @@ public class Login extends ActionBarActivity {
         //pegando os objetos no layout
         ImageView ImgLogo = (ImageView) findViewById(R.id.ImgLogo);
         Button btnEntrar = (Button) findViewById(R.id.btnEntrar);
+        Button btnCadastrar = (Button) findViewById(R.id.btnCadastrarse);
 
         // load the animation
         animBounce = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.bounce);
@@ -46,6 +47,14 @@ public class Login extends ActionBarActivity {
                 Intent intent = new Intent(Login.this, Main.class);
                 startActivityForResult(intent,1);
                 //startActivity();
+            }
+        });
+
+        btnCadastrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent2 = new Intent(Login.this, Registrar.class);
+                startActivityForResult(intent2,1);
             }
         });
     }

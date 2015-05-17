@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent"
-
     android:background="#00b7b7">
 
     <EditText
@@ -13,7 +12,10 @@
         android:layout_marginTop="81dp"
         android:layout_marginLeft="70dp"
         android:background="#ffffff"
-        android:hint="Nome"
+        android:hint="@string/nome"
+        android:textColor="#00b7b7"
+        android:textColorHint="#7fdbdb"
+        android:padding="10dp"
         />
 
     <EditText
@@ -23,9 +25,12 @@
         android:layout_marginTop="28dp"
         android:layout_below="@+id/edcadLogin"
         android:background="#ffffff"
+        android:textColor="#00b7b7"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="70dp"
         android:hint="Usuário"
+        android:textColorHint="#7fdbdb"
+        android:padding="10dp"
         />
 
     <EditText
@@ -34,11 +39,14 @@
         android:id="@+id/edcadSenha"
         android:inputType="textPassword"
         android:layout_marginTop="28dp"
+        android:textColor="#00b7b7"
         android:layout_below="@+id/edcadUsuario"
         android:layout_marginLeft="70dp"
         android:background="#ffffff"
         android:layout_centerHorizontal="true"
-        android:hint="Senha"/>
+        android:textColorHint="#7fdbdb"
+        android:hint="Senha"
+        android:padding="10dp"/>
 
     <EditText
         android:layout_width="fill_parent"
@@ -47,10 +55,13 @@
         android:inputType="textEmailAddress"
         android:layout_marginTop="28dp"
         android:layout_marginLeft="70dp"
+        android:textColor="#00b7b7"
         android:background="#ffffff"
         android:layout_below="@+id/edcadSenha"
+        android:textColorHint="#7fdbdb"
         android:layout_centerHorizontal="true"
-        android:hint="Email"/>
+        android:hint="Email"
+        android:padding="10dp"/>
 
     <Button
         android:layout_width="fill_parent"
@@ -63,5 +74,6 @@
         android:layout_marginLeft="70dp"
         android:layout_below="@+id/edcadEmail"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="55dp" />
+        android:layout_marginTop="55dp"
+        />
 </RelativeLayout>
