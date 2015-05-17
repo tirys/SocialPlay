@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+
+    android:background="#00b7b7">
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:id="@+id/edcadLogin"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="81dp"
+        android:layout_marginLeft="70dp"
+        android:background="#ffffff"
+        android:hint="Nome"
+        />
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:id="@+id/edcadUsuario"
+        android:layout_marginTop="28dp"
+        android:layout_below="@+id/edcadLogin"
+        android:background="#ffffff"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="70dp"
+        android:hint="Usuário"
+        />
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:id="@+id/edcadSenha"
+        android:inputType="textPassword"
+        android:layout_marginTop="28dp"
+        android:layout_below="@+id/edcadUsuario"
+        android:layout_marginLeft="70dp"
+        android:background="#ffffff"
+        android:layout_centerHorizontal="true"
+        android:hint="Senha"/>
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:id="@+id/edcadEmail"
+        android:inputType="textEmailAddress"
+        android:layout_marginTop="28dp"
+        android:layout_marginLeft="70dp"
+        android:background="#ffffff"
+        android:layout_below="@+id/edcadSenha"
+        android:layout_centerHorizontal="true"
+        android:hint="Email"/>
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/cadastrar"
+        android:id="@+id/button"
+        android:textColor="#ffffff"
+        android:textStyle="bold"
+        android:background="#006666"
+        android:layout_marginLeft="70dp"
+        android:layout_below="@+id/edcadEmail"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="55dp" />
+</RelativeLayout>
