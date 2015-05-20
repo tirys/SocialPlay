@@ -13,12 +13,14 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.webkit.WebViewFragment;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CompoundButton;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -39,6 +41,20 @@ import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
+
+import com.mikepenz.materialdrawer.Drawer;
+import com.mikepenz.materialdrawer.accountswitcher.AccountHeader;
+import com.mikepenz.materialdrawer.model.DividerDrawerItem;
+import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
+import com.mikepenz.materialdrawer.model.ProfileDrawerItem;
+import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
+import com.mikepenz.materialdrawer.model.SectionDrawerItem;
+import com.mikepenz.materialdrawer.model.SwitchDrawerItem;
+import com.mikepenz.materialdrawer.model.ToggleDrawerItem;
+import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
+import com.mikepenz.materialdrawer.model.interfaces.IProfile;
+import com.mikepenz.materialdrawer.model.interfaces.OnCheckedChangeListener;
+
 import br.edu.fatecriopreto.projetoandoid.adapter.AutoCompleteAdapter;
 import br.edu.fatecriopreto.projetoandoid.domain.State;
 import org.w3c.dom.Text;
@@ -63,6 +79,20 @@ public class Main extends ActionBarActivity implements OnItemSelectedListener {
     //INICIA O PAGEVIEW
     ViewPager mViewPager;
     ListView lstUltimos;
+
+    private static String TAG = "LOG";
+    private Toolbar mToolbar;
+    private Toolbar mToolbarBottom;
+    private Drawer.Result navigationDrawerLeft;
+    private AccountHeader.Result headerNavigationLeft;
+    private int mPositionClicked;
+
+    private OnCheckedChangeListener mOnCheckedChangeListener = new OnCheckedChangeListener(){
+        @Override
+        public void onCheckedChanged(IDrawerItem iDrawerItem, CompoundButton compoundButton, boolean b) {
+            Toast.makeText(Main.this, "onCheckedChanged: "+( b ? "true" : "false" ), Toast.LENGTH_SHORT).show();
+        }
+    };
 
     //private Spinner spCountry;
     private AutoCompleteTextView actvState;
@@ -90,42 +120,6 @@ public class Main extends ActionBarActivity implements OnItemSelectedListener {
         Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
 
         lstUltimos = (ListView)findViewById(R.id.lstUltimos);
-        mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer);
-        mDrawerList = (ListView)findViewById(android.R.id.list);
-        mDrawerListItems = getResources().getStringArray(R.array.drawer_list);
-
-        mDrawerList.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, mDrawerListItems));
-
-        mDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                int editedPosition = position+1;
-
-                Toast.makeText(Main.this, "You selected item " + editedPosition, Toast.LENGTH_SHORT).show();
-                mDrawerLayout.closeDrawer(mDrawerList);
-            }
-        });
-        mDrawerToggle = new ActionBarDrawerToggle(this,
-                mDrawerLayout,
-                toolbar,
-                R.string.drawer_open,
-                R.string.drawer_close){
-            public void onDrawerClosed(View v){
-                super.onDrawerClosed(v);
-                invalidateOptionsMenu();
-                syncState();
-            }
-            public void onDrawerOpened(View v){
-                super.onDrawerOpened(v);
-                invalidateOptionsMenu();
-                syncState();
-            }
-        };
-        mDrawerLayout.setDrawerListener(mDrawerToggle);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeButtonEnabled(true);
-        mDrawerToggle.syncState();
 
 
         //Cria um adapter que retorna cada fragmento
@@ -168,7 +162,85 @@ public class Main extends ActionBarActivity implements OnItemSelectedListener {
         actvState.setTextColor(Color.parseColor("#96141414"));
         List<State> aux = position == 0 ? listStatesCanada : listStatesCanada;
         actvState.setAdapter(new AutoCompleteAdapter(Main.this, position, aux));
+
+        // NAVIGATIOn DRAWER
+        // END - RIGHT
+
+        headerNavigationLeft = new AccountHeader()
+                .withActivity(this)
+                .withCompactStyle(false)
+                .withSavedInstance(savedInstanceState)
+                .withThreeSmallProfileImages(true)
+                .withHeaderBackground(R.drawable.ffxv)
+                .addProfiles(
+                        new ProfileDrawerItem().withName("Jéssica").withEmail("jessica.j.costa@gmail.com").withIcon(getResources().getDrawable(R.drawable.jessica))
+                        //new ProfileDrawerItem().withName("Person Two").withEmail("person2@gmail.com").withIcon(getResources().getDrawable(R.drawable.person_2)),
+                        //new ProfileDrawerItem().withName("Person Three").withEmail("person3@gmail.com").withIcon(getResources().getDrawable(R.drawable.person_3)),
+                        //new ProfileDrawerItem().withName("Person Four").withEmail("person4@gmail.com").withIcon(getResources().getDrawable(R.drawable.person_4))
+                )
+                .withOnAccountHeaderListener(new AccountHeader.OnAccountHeaderListener() {
+                    @Override
+                    public boolean onProfileChanged(View view, IProfile iProfile, boolean b) {
+                        Toast.makeText(Main.this, "onProfileChanged: " + iProfile.getName(), Toast.LENGTH_SHORT).show();
+                        headerNavigationLeft.setBackgroundRes(R.drawable.xv2);
+                        return false;
+                    }
+                })
+                .build();
+
+        navigationDrawerLeft = new Drawer()
+                .withActivity(this)
+                .withToolbar(mToolbar)
+                .withDisplayBelowToolbar(false)
+                .withActionBarDrawerToggleAnimated(true)
+                .withDrawerGravity(Gravity.LEFT)
+                .withSavedInstance(savedInstanceState)
+                .withSelectedItem(0)
+                .withActionBarDrawerToggle(true)
+                .withAccountHeader(headerNavigationLeft)
+                    /*.withOnDrawerNavigationListener(new Drawer.OnDrawerNavigationListener() {
+                        @Override
+                        public boolean onNavigationClickListener(View view) {
+                            return false;
+                        }
+                    })*/
+                .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l, IDrawerItem iDrawerItem) {
+                        for (int count = 0, tam = navigationDrawerLeft.getDrawerItems().size(); count < tam; count++) {
+                            if (count == mPositionClicked && mPositionClicked <= 3) {
+                                PrimaryDrawerItem aux = (PrimaryDrawerItem) navigationDrawerLeft.getDrawerItems().get(count);
+                                aux.setIcon(getResources().getDrawable( getCorretcDrawerIcon( count, false ) ));
+                                break;
+                            }
+                        }
+
+                        if(i <= 3){
+                            ((PrimaryDrawerItem) iDrawerItem).setIcon(getResources().getDrawable( getCorretcDrawerIcon( i, true ) ));
+                        }
+
+                        mPositionClicked = i;
+                        navigationDrawerLeft.getAdapter().notifyDataSetChanged();
+                    }
+                })
+                .withOnDrawerItemLongClickListener(new Drawer.OnDrawerItemLongClickListener() {
+                    @Override
+                    public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l, IDrawerItem iDrawerItem) {
+                        Toast.makeText(Main.this, "onItemLongClick: " + i, Toast.LENGTH_SHORT).show();
+                        return false;
+                    }
+                })
+                .build();
+
+        navigationDrawerLeft.addItem(new PrimaryDrawerItem().withName("Inicio").withIcon(getResources().getDrawable(R.drawable.car_selected_1)));
+        navigationDrawerLeft.addItem(new PrimaryDrawerItem().withName("Perfil").withIcon(getResources().getDrawable(R.drawable.car_2)));
+        navigationDrawerLeft.addItem(new PrimaryDrawerItem().withName("Jogos").withIcon(getResources().getDrawable(R.drawable.car_3)));
+        navigationDrawerLeft.addItem(new PrimaryDrawerItem().withName("Amigos").withIcon(getResources().getDrawable(R.drawable.car_4)));
+        navigationDrawerLeft.addItem(new SectionDrawerItem().withName("Configurações"));
+        navigationDrawerLeft.addItem(new SwitchDrawerItem().withName("Notificação").withChecked(true).withOnCheckedChangeListener(mOnCheckedChangeListener));
     }
+
+
 
     // LISTENERS
     @Override
@@ -209,32 +281,7 @@ public class Main extends ActionBarActivity implements OnItemSelectedListener {
        // Toast.makeText(Main.this, "You selected item " + id, Toast.LENGTH_SHORT).show();
     }
 
-    @Override
-    protected void onPostCreate(Bundle savedInstanceState){
-        super.onPostCreate(savedInstanceState);
-        mDrawerToggle.syncState();
-    }
 
-    @Override
-    public void onConfigurationChanged(Configuration newConfig){
-        super.onConfigurationChanged(newConfig);
-        mDrawerToggle.onConfigurationChanged(newConfig);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item){
-        switch (item.getItemId()){
-            case android.R.id.home: {
-                if (mDrawerLayout.isDrawerOpen(mDrawerList)){
-                    mDrawerLayout.closeDrawer(mDrawerList);
-                } else {
-                    mDrawerLayout.openDrawer(mDrawerList);
-                }
-                return true;
-            }
-            default: return super.onOptionsItemSelected(item);
-        }
-    }
 
     //start: slider
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
@@ -315,5 +362,36 @@ public class Main extends ActionBarActivity implements OnItemSelectedListener {
         }
         //end: slider
     }
+
+        private int getCorretcDrawerIcon(int position, boolean isSelecetd){
+            switch(position){
+                case 0:
+                    return( isSelecetd ? R.drawable.car_selected_1 : R.drawable.car_1 );
+                case 1:
+                    return( isSelecetd ? R.drawable.car_selected_2 : R.drawable.car_2 );
+                case 2:
+                    return( isSelecetd ? R.drawable.car_selected_3 : R.drawable.car_3 );
+                case 3:
+                    return( isSelecetd ? R.drawable.car_selected_4 : R.drawable.car_4 );
+            }
+            return(0);
+        }
+
+        @Override
+        protected void onSaveInstanceState(Bundle outState) {
+            outState = navigationDrawerLeft.saveInstanceState(outState);
+            outState = headerNavigationLeft.saveInstanceState(outState);
+            super.onSaveInstanceState(outState);
+        }
+
+        @Override
+        public void onBackPressed() {
+            if(navigationDrawerLeft.isDrawerOpen()){
+                navigationDrawerLeft.closeDrawer();
+            }
+            else{
+                super.onBackPressed();
+            }
+        }
 
 }
