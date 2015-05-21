@@ -190,7 +190,7 @@ public class Main extends ActionBarActivity implements OnItemSelectedListener {
 
         navigationDrawerLeft = new Drawer()
                 .withActivity(this)
-                .withToolbar(mToolbar)
+                .withToolbar(toolbar)
                 .withDisplayBelowToolbar(false)
                 .withActionBarDrawerToggleAnimated(true)
                 .withDrawerGravity(Gravity.LEFT)
