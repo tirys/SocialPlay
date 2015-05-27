@@ -17,7 +17,7 @@ import java.util.List;
 
 public class Ultimos extends Fragment{
 
-    ListView lstUltimos;
+    //ListView lstUltimos;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -26,7 +26,7 @@ public class Ultimos extends Fragment{
         //FRAGMENT_MAIN É UMA ACTIVITY QUE VAI SER USADA, PRECISA CRIAR ELE
         View rootView = inflater.inflate(R.layout.frag_ultimos, container, false);
 
-
+       //ArrayList<Topicos> lista = dao.buscaTodosTopicos();
        final ListView lstUltimos = (ListView) rootView.findViewById(R.id.lstUltimos);
 
         Posts post = new Posts(5,"Tutorial","descricao, descricao, descricao",1);

@@ -1,66 +1,48 @@
 package br.edu.fatecriopreto.projetoandoid;
 
-import android.app.ActivityOptions;
-import android.content.Context;
 import android.content.Intent;
-import android.content.res.ColorStateList;
-import android.content.res.Configuration;
 import android.graphics.Color;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.widget.Toolbar;
-import android.view.Gravity;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.WindowManager;
-import android.webkit.WebViewFragment;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.CompoundButton;
-import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import java.util.Locale;
-import java.util.Arrays;
-import java.util.List;
-import android.app.Activity;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.View;
 import android.view.ViewGroup.LayoutParams;
+import android.view.WindowManager;
+import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.AutoCompleteTextView;
-import android.widget.EditText;
+import android.widget.CompoundButton;
 import android.widget.LinearLayout;
-import android.widget.Spinner;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.accountswitcher.AccountHeader;
-import com.mikepenz.materialdrawer.model.DividerDrawerItem;
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.ProfileDrawerItem;
-import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
 import com.mikepenz.materialdrawer.model.SectionDrawerItem;
 import com.mikepenz.materialdrawer.model.SwitchDrawerItem;
-import com.mikepenz.materialdrawer.model.ToggleDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IProfile;
 import com.mikepenz.materialdrawer.model.interfaces.OnCheckedChangeListener;
 
-import br.edu.fatecriopreto.projetoandoid.adapter.AutoCompleteAdapter;
-import br.edu.fatecriopreto.projetoandoid.domain.State;
-import org.w3c.dom.Text;
-
+import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
+
+import br.edu.fatecriopreto.projetoandoid.adapter.AutoCompleteAdapter;
+import br.edu.fatecriopreto.projetoandoid.domain.State;
 
 
 public class Main extends ActionBarActivity implements OnItemSelectedListener {
@@ -72,6 +54,9 @@ public class Main extends ActionBarActivity implements OnItemSelectedListener {
     ListView mDrawerList;
     ActionBarDrawerToggle mDrawerToggle;
     String[] mDrawerListItems;
+    int idUser;
+    String nomeUser;
+    String emailUser;
 
     //INICIA O ADAPTER
     SectionsPagerAdapter mSectionsPagerAdapter;
@@ -166,6 +151,14 @@ public class Main extends ActionBarActivity implements OnItemSelectedListener {
         // NAVIGATIOn DRAWER
         // END - RIGHT
 
+        //Recebendo informações do Login
+        final Intent intent = getIntent();
+        Bundle param = intent.getExtras();
+
+        idUser = param.getInt("idUsuario");
+        nomeUser = param.getString("nomeUsuario");
+        emailUser = param.getString("emailUsuario");
+
         headerNavigationLeft = new AccountHeader()
                 .withActivity(this)
                 .withCompactStyle(false)
@@ -173,7 +166,7 @@ public class Main extends ActionBarActivity implements OnItemSelectedListener {
                 .withThreeSmallProfileImages(true)
                 .withHeaderBackground(R.drawable.ffxv)
                 .addProfiles(
-                        new ProfileDrawerItem().withName("Jéssica").withEmail("jessica.j.costa@gmail.com").withIcon(getResources().getDrawable(R.drawable.jessica))
+                        new ProfileDrawerItem().withName(nomeUser).withEmail(emailUser).withIcon(getResources().getDrawable(R.drawable.jessica))
                         //new ProfileDrawerItem().withName("Person Two").withEmail("person2@gmail.com").withIcon(getResources().getDrawable(R.drawable.person_2)),
                         //new ProfileDrawerItem().withName("Person Three").withEmail("person3@gmail.com").withIcon(getResources().getDrawable(R.drawable.person_3)),
                         //new ProfileDrawerItem().withName("Person Four").withEmail("person4@gmail.com").withIcon(getResources().getDrawable(R.drawable.person_4))

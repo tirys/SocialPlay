@@ -1,6 +1,7 @@
 package br.edu.fatecriopreto.projetoandoid;
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -14,7 +15,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class Login extends ActionBarActivity {
@@ -24,7 +25,9 @@ public class Login extends ActionBarActivity {
     Button btnCadastrar;
     EditText edtLogin;
     EditText edtSenha;
-    TextView txtError;
+    int id;
+    String nome;
+    String email;
 
     String URL = "http://192.168.20.205:8080/WSSocialPlay/entity.usuarios";
 
@@ -39,6 +42,11 @@ public class Login extends ActionBarActivity {
         //pegando os objetos no layout
         edtLogin = (EditText) findViewById(R.id.edtLogin);
         edtSenha = (EditText) findViewById(R.id.edtSenha);
+
+        final Context context = getApplicationContext();
+        final CharSequence textError = "Usuário ou Senha Incorretos!";
+        final CharSequence textEmpty = "Usuário ou Senha Vazios!";
+        final int duration = Toast.LENGTH_SHORT;
 
         ImgLogo = (ImageView) findViewById(R.id.ImgLogo);
 
@@ -57,29 +65,44 @@ public class Login extends ActionBarActivity {
             @Override
             public void onClick(View v) {
 
-                /*UsuarioDAO userLog = new UsuarioDAO();
+                UsuarioDAO userLog = new UsuarioDAO();
                 String user = edtLogin.getText().toString();
                 String pass = edtSenha.getText().toString();
-                final String[] resposta = {""};
 
-                txtError.setError(null);
+                //txtError.setError(null);
 
                 if (!user.isEmpty() && !pass.isEmpty()) {
 
-                    if(Build.VERSION.SDK_INT > 9) {
+                    if (Build.VERSION.SDK_INT > 9) {
                         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
                         StrictMode.setThreadPolicy(policy);
-                        //chama o webservice
-                        //resposta[0] = String.valueOf(userLog.verificaLogin(user, pass));
 
-                        userLogin = userLog.verificaLogin(user,pass);
+                        //resposta[0] = String.valueOf(userLog.verificaLogin(user, pass));
+                        userLogin = userLog.verificaLogin(user, pass);
+                        id = userLogin.getIdUsuario();
+                        nome = userLogin.getNome();
+                        email = userLogin.getEmail();
+
                     }
-                    if(userLogin != null){*/
+                    if (userLogin != null) {
                         Intent intent = new Intent(Login.this, Main.class);
+                        Bundle param = new Bundle();
+                        param.putInt("idUsuario", id);
+                        param.putString("nomeUsuario", nome);
+                        param.putString("emailUsuario", email);
+                        intent.putExtras(param);
                         startActivity(intent);
+                    }else{
+                        Toast toast = Toast.makeText(context, textError, duration);
+                        toast.show();
+                        edtSenha.setText("");
                     }
-                /*}
-            }*/
+                }else{
+                    Toast toast = Toast.makeText(context, textEmpty, duration);
+                    toast.show();
+                }
+            }
+
         });
 
         btnCadastrar.setOnClickListener(new View.OnClickListener() {

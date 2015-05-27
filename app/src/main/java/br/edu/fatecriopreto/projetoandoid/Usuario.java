@@ -7,19 +7,25 @@ public class Usuario {
     private int idUsuario;
     private String usuario;
     private String senha;
+    private String email;
     private String nome;
     private int idade;
+    private String imagem;
+
 
     public Usuario() {
         // TODO Auto-generated constructor stub
     }
 
-    public Usuario(int idUsuario, String usuario, String senha, String nome, int idade) {
+
+    public Usuario(int idUsuario, String usuario, String senha, String email, String nome, int idade, String imagem) {
         this.idUsuario = idUsuario;
         this.usuario = usuario;
         this.senha = senha;
+        this.email = email;
         this.nome = nome;
         this.idade = idade;
+        this.imagem = imagem;
     }
 
     public int getIdUsuario() {
@@ -46,9 +52,21 @@ public class Usuario {
         return senha;
     }
 
+
     public void setSenha(String senha) {
         this.senha = senha;
     }
+
+
+    public String getEmail() {
+        return email;
+    }
+
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
 
     public String getNome() {
         return nome;
@@ -67,6 +85,16 @@ public class Usuario {
 
     public void setIdade(int idade) {
         this.idade = idade;
+    }
+
+
+    public String getImagem() {
+        return imagem;
+    }
+
+
+    public void setImagem(String imagem) {
+        this.imagem = imagem;
     }
 
 }

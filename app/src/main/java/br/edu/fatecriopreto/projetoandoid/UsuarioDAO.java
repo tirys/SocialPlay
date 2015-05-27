@@ -2,6 +2,7 @@ package br.edu.fatecriopreto.projetoandoid;
 
 import org.ksoap2.SoapEnvelope;
 import org.ksoap2.serialization.SoapObject;
+import org.ksoap2.serialization.SoapPrimitive;
 import org.ksoap2.serialization.SoapSerializationEnvelope;
 import org.ksoap2.transport.HttpTransportSE;
 
@@ -11,7 +12,8 @@ import org.ksoap2.transport.HttpTransportSE;
 public class UsuarioDAO {
 
     //private static final String URL = "http://192.168.20.205:8080/SocialPlay/services/UsuarioDAO?wsdl";
-    private static final String URL = "http://10.0.2.2:8080/SocialPlay/services/UsuarioDAO?wsdl";
+    //private static final String URL = "http://10.0.2.2:8080/SocialPlay/services/UsuarioDAO?wsdl";
+    private static final String URL = "http://192.168.21.246:8080/SocialPlay/services/UsuarioDAO?wsdl";
     private static final String NAMESPACE = "http://ws.socialplay.com.br";
 
     private static final String INSERIR = "inserirUsuario";
@@ -30,17 +32,15 @@ public class UsuarioDAO {
         envelope.setOutputSoapObject(verificaLogin);
         envelope.implicitTypes = true;
         HttpTransportSE http = new HttpTransportSE(URL);
-
-
         try {
             http.call("urn:" + VERIFICALOGIN, envelope);
             SoapObject resposta = (SoapObject) envelope.getResponse();
 
             user = new Usuario();
-            //user.setIdUsuario((Integer) resposta.getProperty("idUsuario"));
+            user.setIdUsuario(Integer.parseInt(resposta.getProperty("idUsuario").toString()));
             user.setNome(resposta.getProperty("nome").toString());
-            //user.setIdade(Integer.parseInt(resposta.getProperty("idade").toString()));
-
+            user.setEmail(resposta.getProperty("email").toString());
+            //user.setImagem(resposta.getProperty("imagem").toString());
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -52,7 +52,31 @@ public class UsuarioDAO {
 
     public boolean inserirUsuario(Usuario usuario){
 
-        return true;
+        SoapObject inserirUsuario = new SoapObject(NAMESPACE, INSERIR);
+        SoapObject usr = new SoapObject(NAMESPACE, "usuario");
+        //usr.addProperty("idUsuario", usuario.getIdUsuario());
+        usr.addProperty("usuario", usuario.getUsuario());
+        usr.addProperty("senha",usuario.getSenha());
+        usr.addProperty("email", usuario.getEmail());
+        usr.addProperty("nome", usuario.getNome());
+        usr.addProperty("idade", usuario.getIdade());
+        //usr.addProperty("imagem", usuario.getImagem());
+        inserirUsuario.addSoapObject(usr);
+
+        SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
+        envelope.setOutputSoapObject(inserirUsuario);
+        envelope.implicitTypes = true;
+
+        HttpTransportSE http = new HttpTransportSE(URL);
+        try {
+            http.call("urn" + INSERIR, envelope);
+            //Pegar Resposta do WebServices, ele retorna true or false
+            SoapPrimitive resposta = (SoapPrimitive) envelope.getResponse();
+            return Boolean.parseBoolean(resposta.toString());
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     public boolean atualizarUsuario(Usuario usuario){
