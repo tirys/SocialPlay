@@ -214,6 +214,14 @@ public class Main extends ActionBarActivity implements OnItemSelectedListener {
 
                         mPositionClicked = i;
                         navigationDrawerLeft.getAdapter().notifyDataSetChanged();
+                        if(i==1){
+                            Intent menIntent3= new Intent(Main.this, Perfil.class);
+                            startActivityForResult(menIntent3, 1);
+                        }
+                        if (i==2){
+                            Intent menIntent3= new Intent(Main.this, Jogos.class);
+                            startActivityForResult(menIntent3, 1);
+                        }
                     }
                 })
                 .withOnDrawerItemLongClickListener(new Drawer.OnDrawerItemLongClickListener() {

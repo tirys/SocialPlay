@@ -30,6 +30,34 @@
             android:name=".Registrar"
             android:label="" >
         </activity>
+        <activity
+            android:name=".Jogos"
+            android:label="" >
+        </activity>
+        <activity
+            android:name=".Perfil"
+            android:label="" >
+        </activity>
+        <activity
+            android:name=".ListaJogos"
+            android:label="" >
+        </activity>
+        <activity
+            android:name=".Catpc"
+            android:label="" >
+        </activity>
+        <activity
+            android:name=".Catcon"
+            android:label="" >
+        </activity>
+        <activity
+            android:name=".Catmob"
+            android:label="" >
+        </activity>
+        <activity
+            android:name=".catport"
+            android:label="" >
+        </activity>
         <uses-permission android:name="android.permission.INTERNET"/>
     </application>
     <uses-permission android:name="android.permission.INTERNET"/>

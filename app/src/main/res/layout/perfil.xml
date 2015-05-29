@@ -4,13 +4,124 @@
     android:id="@+id/relPerfil"
     android:background="#ffffff">
 
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:background="#ff00cccc"
+        android:id="@+id/toolbarDet"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:id="@+id/imageView7"
+        android:layout_marginLeft="10dp"
+        android:layout_alignBottom="@+id/toolbarDet"
+        android:layout_alignParentStart="true"
+        android:src="@drawable/backs" />
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/imgpc"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:layout_below="@+id/toolbarDet"
+        android:layout_alignParentStart="true"
+        android:adjustViewBounds="true"
+        android:layout_marginTop="50dp"
+
+        android:baselineAlignBottom="false"
+        android:clickable="false"
+        android:cropToPadding="false"
+        android:src="@drawable/pessoinha" />
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:id="@+id/imageView10"
+        android:layout_marginTop="31dp"
+        android:layout_marginLeft="20dp"
+        android:src="@drawable/icouser"
+        android:layout_below="@+id/imgpc"
+        android:layout_alignParentStart="true" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"
+        android:id="@+id/imgcon"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="20dp"
+        android:layout_below="@+id/imageView10"
+        android:layout_alignParentStart="true"
+        android:src="@drawable/email" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Medium Text"
-        android:id="@+id/txtProfile"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="63dp" />
+        android:text="Fulaninho"
+        android:id="@+id/textView9"
+        android:layout_above="@+id/imgcon"
+        android:layout_toEndOf="@+id/imageView10" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Fulaninho@hotpocketsadia.com"
+        android:id="@+id/textView10"
+        android:layout_alignBottom="@+id/imgcon"
+        android:layout_alignStart="@+id/textView9" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginRight="10dp"
+        android:id="@+id/imageView11"
+        android:layout_alignBottom="@+id/toolbarDet"
+        android:layout_alignParentEnd="true"
+        android:src="@drawable/edit" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="55dp"
+        android:id="@+id/imageView12"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="35dp"
+        android:src="@drawable/local"
+        android:layout_below="@+id/imgcon"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="São Paulo - SP"
+        android:layout_marginBottom="15dp"
+        android:id="@+id/textView11"
+        android:layout_alignBottom="@+id/imageView12"
+        android:layout_alignStart="@+id/textView10" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="55dp"
+        android:id="@+id/imageView13"
+        android:layout_marginLeft="24dp"
+        android:src="@drawable/gamepad"
+
+        android:layout_below="@+id/imageView12"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="God of app"
+        android:layout_marginBottom="18dp"
+        android:id="@+id/textView12"
+        android:layout_alignBottom="@+id/imageView13"
+        android:layout_alignStart="@+id/textView11" />
+
+
 </RelativeLayout>
