@@ -13,7 +13,7 @@ public class UsuarioDAO {
 
     //private static final String URL = "http://192.168.20.205:8080/SocialPlay/services/UsuarioDAO?wsdl";
     //private static final String URL = "http://10.0.2.2:8080/SocialPlay/services/UsuarioDAO?wsdl";
-    private static final String URL = "http://192.168.21.246:8080/SocialPlay/services/UsuarioDAO?wsdl";
+    private static final String URL = "http://192.168.1.105:8080/SocialPlay/services/UsuarioDAO?wsdl";
     private static final String NAMESPACE = "http://ws.socialplay.com.br";
 
     private static final String INSERIR = "inserirUsuario";

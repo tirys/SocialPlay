@@ -249,12 +249,12 @@ public class Main extends ActionBarActivity implements OnItemSelectedListener {
     @Override
     public void onNothingSelected(AdapterView<?> parent) {}
 
-    public void Troca(Posts post){
+    public void Troca(Topicos post){
        Intent intent = new Intent(Main.this, DetalhesForum.class);
 
         Bundle param = new Bundle();
-        param.putLong("idPost", post.getId());
-        param.putString("titPost", post.getTitulo());
+        param.putLong("idPost", post.getIdTopico());
+        param.putString("titPost", post.getNome());
         param.putString("txtDesc",post.getDescricao());
         intent.putExtras(param);
 

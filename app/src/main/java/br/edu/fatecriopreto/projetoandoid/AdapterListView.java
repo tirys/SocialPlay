@@ -1,7 +1,6 @@
 package br.edu.fatecriopreto.projetoandoid;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,20 +12,21 @@ import java.util.List;
 
 public class AdapterListView extends BaseAdapter{
     private LayoutInflater inflater;
-   private List<Posts> posts;
+   private List<Topicos> posts;
 
-    public AdapterListView(Context context,List<Posts> posts){
+    public AdapterListView(Context context,List<Topicos> posts){
         this.posts=posts;
         inflater = LayoutInflater.from(context);
     }
 
     @Override
     public int getCount(){
-        return posts.size(); //retorna qtd de itens
+    return posts.size(); //retorna qtd de itens
+
     }
 
     @Override
-    public Posts getItem(int position){
+    public Topicos getItem(int position){
         return posts.get(position); //retorna o item na posicao indicada
     }
 
@@ -62,10 +62,10 @@ public class AdapterListView extends BaseAdapter{
             item=(ItemSuporte) convertView.getTag(); //pega o layout
         }
 
-        Posts post = getItem(position); //recupera o objeto veiculo da lista
+        Topicos post = getItem(position); //recupera o objeto veiculo da lista
        // item.txtTituloPost.setText(veiculo.getPlaca()); //adicionando no itemplaca configurado no layout
        // item.txtDescricaoPost.setText(veiculo.getMarca());
-        item.txtTituloPost.setText(post.getTitulo());
+        item.txtTituloPost.setText(post.getNome());
         item.txtDescricaoPost.setText(post.getDescricao());
 
        //item.txtDescricaoPost.setText("conteudo conteudo conteudo");
