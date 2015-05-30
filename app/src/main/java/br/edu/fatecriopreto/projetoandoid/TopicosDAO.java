@@ -13,7 +13,7 @@ import java.util.Vector;
  * Created by Lucas Fernandes on 26/05/2015.
  */
 public class TopicosDAO {
-    private static final String URL = "http://192.168.1.105:8080/SocialPlay/services/TopicosDAO?wsdl";
+    private static final String URL = "http://socialplay.no-ip.biz:8080/SocialPlay/services/TopicosDAO?wsdl";
     private static final String NAMESPACE = "http://ws.socialplay.com.br";
 
     private static final String LISTAR_TODOS_TOPICOS = "buscarTodosTopicos";

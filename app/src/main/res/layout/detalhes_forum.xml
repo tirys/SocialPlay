@@ -153,11 +153,13 @@
         <ListView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/listView2"
+            android:id="@+id/lstComentarios"
             android:layout_marginBottom="5dp"
             android:layout_alignParentTop="true"
             android:layout_alignParentStart="true"
             android:layout_above="@+id/edtComment"
+            android:divider="#e7fefd"
+            android:dividerHeight="15dp"
             android:background="#ffffff"
             />
 

@@ -10,6 +10,7 @@ import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.CompoundButton;
 import android.widget.FrameLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,10 +27,15 @@ import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IProfile;
 import com.mikepenz.materialdrawer.model.interfaces.OnCheckedChangeListener;
 
+import br.edu.fatecriopreto.projetoandoid.Entity.Categorias;
+import br.edu.fatecriopreto.projetoandoid.Entity.Comentarios;
 import br.edu.fatecriopreto.projetoandoid.adapter.AutoCompleteAdapter;
+import br.edu.fatecriopreto.projetoandoid.adapter.GridCatAdaptercons;
+import br.edu.fatecriopreto.projetoandoid.adapter.LstComentariosAdapter;
 import br.edu.fatecriopreto.projetoandoid.domain.State;
 import org.w3c.dom.Text;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -39,6 +45,7 @@ public class DetalhesForum extends ActionBarActivity {
     String descricao;
     TextView txtTitDet;
     TextView txtDesc;
+    ListView lstComentarios;
     private static String TAG = "LOG";
     private Toolbar mToolbar;
     private Toolbar mToolbarBottom;
@@ -62,6 +69,7 @@ public class DetalhesForum extends ActionBarActivity {
 
         txtTitDet = (TextView) findViewById(R.id.txtTitDet);
         txtDesc = (TextView) findViewById(R.id.txtDesc);
+        lstComentarios = (ListView) findViewById(R.id.lstComentarios);
 
         final Intent intent = getIntent();
         Bundle param = intent.getExtras();
@@ -71,6 +79,24 @@ public class DetalhesForum extends ActionBarActivity {
         txtTitDet.setText(titForum);
         txtDesc.setText(descricao);
 
+       //LISTA DE COMENTARIOS
+        Comentarios comentario1 = new Comentarios(1,"Comentario 1 Comentario 1 Comentario 1 Comentario 1 Comentario 1 Comentario 1","29/05/2015");
+        Comentarios comentario2 = new Comentarios(1,"Comentario 1 Comentario 1 Comentario 1 Comentario 1 Comentario 1 Comentario 1","29/05/2015");
+        Comentarios comentario3 = new Comentarios(1,"Comentario 1 Comentario 1 Comentario 1 Comentario 1 Comentario 1 Comentario 1","29/05/2015");
+        Comentarios comentario4 = new Comentarios(1,"Comentario 1 Comentario 1 Comentario 1 Comentario 1 Comentario 1 Comentario 1","29/05/2015");
+        Comentarios comentario5 = new Comentarios(1,"Comentario 1 Comentario 1 Comentario 1 Comentario 1 Comentario 1 Comentario 1","29/05/2015");
+
+
+
+
+        List<Comentarios> lstcomentarios= new ArrayList<>();
+        lstcomentarios.add(comentario1);
+        lstcomentarios.add(comentario2);
+        lstcomentarios.add(comentario3);
+        lstcomentarios.add(comentario4);
+        lstcomentarios.add(comentario5);
+
+        lstComentarios.setAdapter(new LstComentariosAdapter(this, lstcomentarios));
         // NAVIGATIOn DRAWER
         // END - RIGHT
 
