@@ -80,11 +80,11 @@ public class DetalhesForum extends ActionBarActivity {
         txtDesc.setText(descricao);
 
        //LISTA DE COMENTARIOS
-        Comentarios comentario1 = new Comentarios(1,"Comentario 1 Comentario 1 Comentario 1 Comentario 1 Comentario 1 Comentario 1","29/05/2015");
-        Comentarios comentario2 = new Comentarios(1,"Comentario 1 Comentario 1 Comentario 1 Comentario 1 Comentario 1 Comentario 1","29/05/2015");
-        Comentarios comentario3 = new Comentarios(1,"Comentario 1 Comentario 1 Comentario 1 Comentario 1 Comentario 1 Comentario 1","29/05/2015");
-        Comentarios comentario4 = new Comentarios(1,"Comentario 1 Comentario 1 Comentario 1 Comentario 1 Comentario 1 Comentario 1","29/05/2015");
-        Comentarios comentario5 = new Comentarios(1,"Comentario 1 Comentario 1 Comentario 1 Comentario 1 Comentario 1 Comentario 1","29/05/2015");
+        Comentarios comentario1 = new Comentarios(1,1,"Comentario 1 Comentario 1 Comentario 1 Comentario 1 Comentario 1 Comentario 1","29/05/2015");
+        Comentarios comentario2 = new Comentarios(2,1,"Comentario 1 Comentario 1 Comentario 1 Comentario 1 Comentario 1 Comentario 1","29/05/2015");
+        Comentarios comentario3 = new Comentarios(3,1,"Comentario 1 Comentario 1 Comentario 1 Comentario 1 Comentario 1 Comentario 1","29/05/2015");
+        Comentarios comentario4 = new Comentarios(4,1,"Comentario 1 Comentario 1 Comentario 1 Comentario 1 Comentario 1 Comentario 1","29/05/2015");
+        Comentarios comentario5 = new Comentarios(5,1,"Comentario 1 Comentario 1 Comentario 1 Comentario 1 Comentario 1 Comentario 1","29/05/2015");
 
 
 

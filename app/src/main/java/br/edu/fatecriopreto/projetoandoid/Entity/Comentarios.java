@@ -12,10 +12,21 @@ public class Comentarios {
     private String data;
     private Integer idpessoa;
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    private int id;
+
     public Comentarios(){}
 
-    public Comentarios(Integer idpessoa, String conteudo,String data)
+    public Comentarios(int id,Integer idpessoa, String conteudo,String data)
     {
+        this.setId(id);
         this.setIdpessoa(idpessoa);
         this.setConteudo(conteudo);
         this.setData(data);
