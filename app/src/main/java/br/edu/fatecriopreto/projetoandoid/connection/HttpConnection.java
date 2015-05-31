@@ -48,8 +48,8 @@ public class HttpConnection {
 			JSONArray ja = new JSONArray(json);
 			for(int i = 0, tam = ja.length(); i < tam; i++){
 				JSONObject jo = ja.getJSONObject(i);
-				State s = new State(jo.getString("state"), State.imgMap.get(jo.getString("state")));
-				list.add(s);
+				//State s = new State(jo.getString("state"), State.imgMap.get(jo.getString("state")));
+				//list.add(s);
 			}
 		}
 		catch(JSONException e){

@@ -84,18 +84,9 @@ public class Main extends ActionBarActivity implements OnItemSelectedListener {
     public static int id = 0;
 
     // STATES
+    AutocompleteDAO dao = new AutocompleteDAO();
+    private List<Autocomplete> listStatesCanada = dao.buscaTodosJogos();
 
-    private List<State> listStatesCanada = Arrays.asList(new State[]{new State("Ontario (ON)", R.drawable.ontario),
-            new State("Quebec (QC)", R.drawable.quebec),
-            new State("Nova Scotia (NS)", R.drawable.nova_scotia),
-            new State("New Brunswick (NB)", R.drawable.new_brunswick),
-            new State("Manitoba (MB)", R.drawable.manitoba),
-            new State("British Columbia (BC)", R.drawable.british_columbia),
-            new State("Prince Edward Island (PE)", R.drawable.prince_edward_island),
-            new State("Saskatchewan (SK)", R.drawable.saskatchewan),
-            new State("Alberta (AB)", R.drawable.alberta),
-            new State("Newfoundland and Labrador (NL)", R.drawable.newfoundland_and_labrador)
-    });
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -145,7 +136,7 @@ public class Main extends ActionBarActivity implements OnItemSelectedListener {
 
         llAddress.addView(actvState);
         actvState.setTextColor(Color.parseColor("#96141414"));
-        List<State> aux = position == 0 ? listStatesCanada : listStatesCanada;
+        List<Autocomplete> aux = position == 0 ? listStatesCanada : listStatesCanada;
         actvState.setAdapter(new AutoCompleteAdapter(Main.this, position, aux));
 
         // NAVIGATIOn DRAWER
@@ -250,7 +241,7 @@ public class Main extends ActionBarActivity implements OnItemSelectedListener {
 			ArrayAdapter<String> adapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_dropdown_item_1line, aux);
 			actvState.setAdapter(adapter);*/
 
-        List<State> aux = position == 0 ? listStatesCanada : listStatesCanada;
+        List<Autocomplete> aux = position == 0 ? listStatesCanada : listStatesCanada;
         //actvState.setAdapter(new AutoCompleteAdapter2(MainActivity.this, R.layout.auto_complete_item, R.id.tvState, aux));
         actvState.setAdapter(new AutoCompleteAdapter(Main.this, position, aux));
     }

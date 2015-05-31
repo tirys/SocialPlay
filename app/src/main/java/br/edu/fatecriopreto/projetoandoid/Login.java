@@ -29,7 +29,7 @@ public class Login extends ActionBarActivity {
     String nome;
     String email;
 
-    String URL = "http://192.168.20.205:8080/WSSocialPlay/entity.usuarios";
+    //String URL = "http://192.168.20.205:8080/WSSocialPlay/entity.usuarios";
 
     Usuario userLogin = null;
 
