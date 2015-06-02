@@ -10,6 +10,7 @@ import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.CompoundButton;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -46,6 +47,7 @@ public class DetalhesForum extends ActionBarActivity {
     TextView txtTitDet;
     TextView txtDesc;
     ListView lstComentarios;
+    ImageView imgback;
     private static String TAG = "LOG";
     private Toolbar mToolbar;
     private Toolbar mToolbarBottom;
@@ -172,6 +174,21 @@ public class DetalhesForum extends ActionBarActivity {
         navigationDrawerLeft.addItem(new PrimaryDrawerItem().withName("Amigos").withIcon(getResources().getDrawable(R.drawable.car_4)));
         navigationDrawerLeft.addItem(new SectionDrawerItem().withName("Configurações"));
         navigationDrawerLeft.addItem(new SwitchDrawerItem().withName("Notificação").withChecked(true).withOnCheckedChangeListener(mOnCheckedChangeListener));
+
+
+        //voltando para main quando clicar no icone de voltar
+        imgback = (ImageView)findViewById(R.id.imgbackperfil);
+
+        imgback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //  Intent voltar = new Intent(Perfil.this,Main.class);
+                //   startActivityForResult(voltar,1);
+                // overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
+                DetalhesForum.this.finish();
+
+            }
+        });
     }
 
     private int getCorretcDrawerIcon(int position, boolean isSelecetd){
