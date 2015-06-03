@@ -3,6 +3,9 @@ package br.edu.fatecriopreto.projetoandoid;
 import android.app.Activity;
 import android.app.Notification;
 import android.content.Intent;
+import android.media.Image;
+import android.os.Build;
+import android.os.StrictMode;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -17,6 +20,18 @@ import android.widget.TextView;
 public class Perfil extends ActionBarActivity {
 
     ImageView imgback;
+    Integer idUser;
+
+    //informações do usuario
+    TextView txtNomeUser;
+    TextView txtEmailUser;
+    TextView txtLocalUser;
+
+    int id;
+    String nome;
+    String email;
+    Usuario userPerfil = null;
+    String local;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,13 +39,44 @@ public class Perfil extends ActionBarActivity {
         setContentView(R.layout.perfil);
 
         imgback = (ImageView)findViewById(R.id.imgbackperfil);
+        txtNomeUser = (TextView)findViewById(R.id.txtNomeUser);
+        txtEmailUser = (TextView)findViewById(R.id.txtEmailUser);
+        txtLocalUser = (TextView)findViewById(R.id.txtLocalUser);
 
+        //coletando id do usuario para fazer busca de suas informações
+        final Intent intent = getIntent();
+        Bundle param = intent.getExtras();
+
+        idUser = param.getInt("idUsuario");
+
+
+        //pegando as informações do usuario
+
+        UsuarioDAO userLog = new UsuarioDAO();
+
+            if (Build.VERSION.SDK_INT > 9) {
+                StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+                StrictMode.setThreadPolicy(policy);
+
+
+                userPerfil = userLog.buscarUsuarioPorId(idUser);
+                id = userPerfil.getIdUsuario();
+                nome = userPerfil.getNome();
+                email = userPerfil.getEmail();
+                local = userPerfil.getLocal();
+
+
+            }
+
+        txtNomeUser.setText(nome);
+        txtEmailUser.setText(email);
+        txtLocalUser.setText(local);
+
+
+        //finalizando a activity
         imgback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              //  Intent voltar = new Intent(Perfil.this,Main.class);
-             //   startActivityForResult(voltar,1);
-               // overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
                 Perfil.this.finish();
 
             }

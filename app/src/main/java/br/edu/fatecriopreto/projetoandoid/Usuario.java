@@ -11,6 +11,7 @@ public class Usuario {
     private String nome;
     private int idade;
     private String imagem;
+    private String local;
 
 
     public Usuario() {
@@ -18,7 +19,7 @@ public class Usuario {
     }
 
 
-    public Usuario(int idUsuario, String usuario, String senha, String email, String nome, int idade, String imagem) {
+    public Usuario(int idUsuario, String usuario, String senha, String email, String nome, int idade, String imagem, String local) {
         this.idUsuario = idUsuario;
         this.usuario = usuario;
         this.senha = senha;
@@ -26,6 +27,7 @@ public class Usuario {
         this.nome = nome;
         this.idade = idade;
         this.imagem = imagem;
+        this.local = local;
     }
 
     public int getIdUsuario() {
@@ -95,6 +97,14 @@ public class Usuario {
 
     public void setImagem(String imagem) {
         this.imagem = imagem;
+    }
+
+    public String getLocal() {
+        return local;
+    }
+
+    public void setLocal(String local) {
+        this.local = local;
     }
 
 }

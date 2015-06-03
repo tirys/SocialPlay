@@ -207,6 +207,11 @@ public class Main extends ActionBarActivity implements OnItemSelectedListener {
                         navigationDrawerLeft.getAdapter().notifyDataSetChanged();
                         if(i==1){
                             Intent menIntent3= new Intent(Main.this, Perfil.class);
+                            Bundle param = new Bundle();
+
+                            param.putInt("idUsuario", idUser);
+                            menIntent3.putExtras(param);
+
                             startActivityForResult(menIntent3, 1);
                         }
                         if (i==2){

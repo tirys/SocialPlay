@@ -62,7 +62,7 @@ public class Registrar extends ActionBarActivity{
                         StrictMode.setThreadPolicy(policy);
 
                         UsuarioDAO dao = new UsuarioDAO();
-                        boolean resultado = dao.inserirUsuario(new Usuario(0, usuario, senha, email, nome, 0, null));
+                        boolean resultado = dao.inserirUsuario(new Usuario(0, usuario, senha, email, nome, 0, null,""));
                         if(resultado == true){
                             Toast toast = Toast.makeText(context, textSucess, duration);
                             toast.show();

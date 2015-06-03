@@ -20,6 +20,7 @@ public class UsuarioDAO {
     private static final String EDITAR = "atualizarUsuario";
     private static final String DELETAR = "excluirUsuario";
     private static final String VERIFICALOGIN = "verificaLogin";
+    private static final String BUSCARUSUARIOID = "buscarUsuarioPorId";
 
     public Usuario verificaLogin(String usuario, String senha){
         Usuario user = null;
@@ -40,6 +41,36 @@ public class UsuarioDAO {
             user.setIdUsuario(Integer.parseInt(resposta.getProperty("idUsuario").toString()));
             user.setNome(resposta.getProperty("nome").toString());
             user.setEmail(resposta.getProperty("email").toString());
+            //user.setImagem(resposta.getProperty("imagem").toString());
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+
+        return user;
+    }
+
+    public Usuario buscarUsuarioPorId(int idusuario){
+        Usuario user = null;
+
+        SoapObject buscaruser = new SoapObject(NAMESPACE, BUSCARUSUARIOID);
+        buscaruser.addProperty("id", idusuario);
+
+
+        SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
+        envelope.setOutputSoapObject(buscaruser);
+        envelope.implicitTypes = true;
+        HttpTransportSE http = new HttpTransportSE(URL);
+        try {
+            http.call("urn:" + BUSCARUSUARIOID, envelope);
+            SoapObject resposta = (SoapObject) envelope.getResponse();
+
+            user = new Usuario();
+            user.setIdUsuario(Integer.parseInt(resposta.getProperty("idUsuario").toString()));
+            user.setNome(resposta.getProperty("nome").toString());
+            user.setEmail(resposta.getProperty("email").toString());
+            user.setLocal(resposta.getProperty("local").toString());
             //user.setImagem(resposta.getProperty("imagem").toString());
 
         } catch (Exception e) {
