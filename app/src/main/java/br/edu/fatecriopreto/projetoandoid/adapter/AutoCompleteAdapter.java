@@ -16,8 +16,6 @@ import java.util.List;
 import br.edu.fatecriopreto.projetoandoid.Autocomplete;
 import br.edu.fatecriopreto.projetoandoid.Main;
 import br.edu.fatecriopreto.projetoandoid.R;
-import br.edu.fatecriopreto.projetoandoid.connection.HttpConnection;
-import br.edu.fatecriopreto.projetoandoid.domain.State;
 
 //import br.edu.fatecriopreto.projetoandoid.Main;
 
@@ -67,7 +65,7 @@ public class AutoCompleteAdapter extends ArrayAdapter<Autocomplete> implements F
             holder = (ViewHolder) view.getTag();
         }
 
-        holder.ivFlag.setImageResource(listAux.get(position).getIdJogo());
+        holder.ivFlag.setImageBitmap(listAux.get(position).getImagem());
         holder.tvState.setText(listAux.get(position).getJogo());
 
         return(view);

@@ -1,8 +1,11 @@
 package br.edu.fatecriopreto.projetoandoid;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Base64;
+
 import org.ksoap2.SoapEnvelope;
 import org.ksoap2.serialization.SoapObject;
-import org.ksoap2.serialization.SoapPrimitive;
 import org.ksoap2.serialization.SoapSerializationEnvelope;
 import org.ksoap2.transport.HttpTransportSE;
 
@@ -40,7 +43,12 @@ public class AutocompleteDAO {
                 Autocomplete jogos = new Autocomplete();
                 //jogos.setIdJogo(Integer.parseInt(soapObject.getProperty("idJogo").toString()));
                 jogos.setJogo(soapObject.getProperty("jogo").toString());
-                //jogos.setGenero(soapObject.getPropertyAsString("genero".toString()));
+                //jogos.setGenero(soapObject.getPropertyAsString("imagem".toString()));
+
+                String foto = soapObject.getProperty("imagem").toString();
+                byte[] bt = Base64.decode(foto, Base64.DEFAULT);
+                Bitmap bm = BitmapFactory.decodeByteArray(bt, 0, bt.length);
+                jogos.setImagem(bm);
 
                 lista.add(jogos);
             }

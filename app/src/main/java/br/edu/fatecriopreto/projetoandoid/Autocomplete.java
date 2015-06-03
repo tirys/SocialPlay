@@ -1,22 +1,27 @@
 package br.edu.fatecriopreto.projetoandoid;
 
+import android.graphics.Bitmap;
+
 /**
  * Created by Andrey on 30/05/2015.
+ * private static final long serialVersionUID = -2229832341556924673L;
+ *
+ * implements Serializable
  */
 public class Autocomplete {
         private int idJogo;
         private String jogo;
         private String genero;
-        private String imagem;
+        private Bitmap imagem;
 
         public Autocomplete(){
         }
 
-        public Autocomplete(int idJogo, String jogo, String genero, String imagem) {
+        public Autocomplete(int idJogo, String jogo, String genero,  Bitmap imagem) {
             this.idJogo = idJogo;
             this.jogo = jogo;
             this.genero = genero;
-            //this.imagem = imagem;
+            this.imagem = imagem;
         }
 
         public int getIdJogo() {
@@ -43,11 +48,11 @@ public class Autocomplete {
             this.genero = genero;
         }
 
-        public String getImagem() {
+        public  Bitmap getImagem() {
             return imagem;
         }
 
-        public void setImagem(String imagem) {
+        public void setImagem( Bitmap imagem) {
             this.imagem = imagem;
         }
 }
