@@ -41,7 +41,7 @@ public class AutocompleteDAO {
             Vector<SoapObject> resposta = (Vector<SoapObject>) envelope.getResponse();
             for (SoapObject soapObject : resposta){
                 Autocomplete jogos = new Autocomplete();
-                //jogos.setIdJogo(Integer.parseInt(soapObject.getProperty("idJogo").toString()));
+                jogos.setIdJogo(Integer.parseInt(soapObject.getProperty("idJogo").toString()));
                 jogos.setJogo(soapObject.getProperty("jogo").toString());
                 //jogos.setGenero(soapObject.getPropertyAsString("imagem".toString()));
 

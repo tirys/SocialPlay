@@ -50,7 +50,7 @@ public class AutoCompleteAdapter extends ArrayAdapter<Autocomplete> implements F
 
 
     @Override
-    public View getView(int position, View view, ViewGroup root){
+    public View getView(final int position, View view, ViewGroup root){
         ViewHolder holder;
 
         if(view == null){
@@ -67,6 +67,16 @@ public class AutoCompleteAdapter extends ArrayAdapter<Autocomplete> implements F
 
         holder.ivFlag.setImageBitmap(listAux.get(position).getImagem());
         holder.tvState.setText(listAux.get(position).getJogo());
+
+        holder.tvState.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(context instanceof Main){
+                    //((Main)context).actvState.setText(listAux.get(position).getJogo());
+                    ((Main)context).TrocaJogo(listAux.get(position).getJogo());
+                }
+            }
+        });
 
         return(view);
     }

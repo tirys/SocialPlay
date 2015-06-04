@@ -85,7 +85,7 @@ public class Main extends ActionBarActivity implements OnItemSelectedListener {
     };
 
     //private Spinner spCountry;
-    private AutoCompleteTextView actvState;
+    public AutoCompleteTextView actvState;
     public static int id = 0;
 
     // STATES
@@ -295,6 +295,10 @@ public class Main extends ActionBarActivity implements OnItemSelectedListener {
 
     }
 
+    public void TrocaJogo(String id){
+        Intent intent = new Intent(Main.this, Registrar.class);
+        startActivityForResult(intent, 1);
+    }
 
 
     //start: slider
