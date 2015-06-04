@@ -26,12 +26,14 @@ public class Perfil extends ActionBarActivity {
     TextView txtNomeUser;
     TextView txtEmailUser;
     TextView txtLocalUser;
+    TextView txtJogoPrefer;
 
     int id;
     String nome;
     String email;
     Usuario userPerfil = null;
     String local;
+    String jogo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +44,7 @@ public class Perfil extends ActionBarActivity {
         txtNomeUser = (TextView)findViewById(R.id.txtNomeUser);
         txtEmailUser = (TextView)findViewById(R.id.txtEmailUser);
         txtLocalUser = (TextView)findViewById(R.id.txtLocalUser);
+        txtJogoPrefer = (TextView)findViewById(R.id.txtJogoPrefer);
 
         //coletando id do usuario para fazer busca de suas informações
         final Intent intent = getIntent();
@@ -64,13 +67,21 @@ public class Perfil extends ActionBarActivity {
                 nome = userPerfil.getNome();
                 email = userPerfil.getEmail();
                 local = userPerfil.getLocal();
-
+                jogo = userPerfil.getJogo();
 
             }
 
         txtNomeUser.setText(nome);
         txtEmailUser.setText(email);
-        txtLocalUser.setText(local);
+
+        if(local!="") {
+            txtLocalUser.setText(local);
+        }
+        else{
+            txtLocalUser.setText("Não especificado");
+        }
+
+        txtJogoPrefer.setText(jogo);
 
 
         //finalizando a activity

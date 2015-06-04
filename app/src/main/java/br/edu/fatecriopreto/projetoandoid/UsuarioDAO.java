@@ -71,6 +71,7 @@ public class UsuarioDAO {
             user.setNome(resposta.getProperty("nome").toString());
             user.setEmail(resposta.getProperty("email").toString());
             user.setLocal(resposta.getProperty("local").toString());
+            user.setJogo(resposta.getProperty("jogo").toString());
             //user.setImagem(resposta.getProperty("imagem").toString());
 
         } catch (Exception e) {

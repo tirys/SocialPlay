@@ -119,7 +119,7 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="God of app"
         android:layout_marginBottom="18dp"
-        android:id="@+id/textView12"
+        android:id="@+id/txtJogoPrefer"
         android:layout_alignBottom="@+id/imageView13"
         android:layout_alignStart="@+id/txtLocalUser" />
 
