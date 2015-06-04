@@ -21,7 +21,7 @@
     <EditText
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/editText"
+        android:id="@+id/edtTituloPost"
         android:layout_margin="14dp"
         android:layout_below="@+id/textView13"
         android:textColor="#9f9797"
@@ -37,18 +37,18 @@
         android:layout_marginLeft="14dp"
         android:layout_marginRight="14dp"
         android:id="@+id/textView14"
-        android:layout_below="@+id/editText"
+        android:layout_below="@+id/edtTituloPost"
         />
 
     <EditText
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/editText2"
+        android:id="@+id/edtJogoPost"
         android:layout_margin="14dp"
         android:textColor="#9f9797"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/textView14"
-        android:layout_alignLeft="@+id/editText" />
+        android:layout_alignLeft="@+id/edtTituloPost" />
 
     <TextView
         android:layout_width="fill_parent"
@@ -60,17 +60,17 @@
         android:layout_marginLeft="14dp"
         android:layout_marginRight="14dp"
         android:id="@+id/textView15"
-        android:layout_below="@+id/editText2"
+        android:layout_below="@+id/edtJogoPost"
         />
 
     <EditText
         android:layout_width="fill_parent"
         android:layout_height="230dp"
-        android:id="@+id/editText3"
+        android:id="@+id/edtConteudoPost"
         android:textColor="#9f9797"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/textView15"
-        android:layout_alignLeft="@+id/editText2"
+        android:layout_alignLeft="@+id/edtJogoPost"
         android:layout_marginLeft="14dp"
         android:layout_marginRight="14dp"
         android:layout_marginTop="14dp" />
@@ -79,21 +79,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Enviar"
-        android:id="@+id/button2"
+        android:id="@+id/btnCadastrarPost"
         android:background="#ff00cccc"
         android:textColor="#ffffff"
         android:textStyle="bold"
-        android:layout_below="@+id/editText3"
-        android:layout_alignEnd="@+id/editText3" />
+        android:layout_below="@+id/edtConteudoPost"
+        android:layout_alignEnd="@+id/edtConteudoPost" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Cancelar"
-        android:id="@+id/button3"
+        android:id="@+id/btnCancelarPost"
         android:background="#ffffff"
         android:textColor="#ff00cccc"
         android:textStyle="bold"
-        android:layout_below="@+id/editText3"
+        android:layout_below="@+id/edtConteudoPost"
         android:layout_centerHorizontal="true" />
 </RelativeLayout>
