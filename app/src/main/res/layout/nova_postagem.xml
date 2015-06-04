@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="#ffffff">
+
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Título"
+        android:textSize="20sp"
+        android:textColor="#3F3E3E"
+        android:layout_marginLeft="14dp"
+        android:layout_marginRight="14dp"
+        android:id="@+id/textView13"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="32dp" />
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText"
+        android:layout_margin="14dp"
+        android:layout_below="@+id/textView13"
+        android:textColor="#9f9797"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Jogo"
+        android:textSize="20sp"
+        android:textColor="#3F3E3E"
+        android:layout_marginLeft="14dp"
+        android:layout_marginRight="14dp"
+        android:id="@+id/textView14"
+        android:layout_below="@+id/editText"
+        />
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText2"
+        android:layout_margin="14dp"
+        android:textColor="#9f9797"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textView14"
+        android:layout_alignLeft="@+id/editText" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Conteúdo"
+        android:textSize="20sp"
+        android:textColor="#3F3E3E"
+        android:layout_marginLeft="14dp"
+        android:layout_marginRight="14dp"
+        android:id="@+id/textView15"
+        android:layout_below="@+id/editText2"
+        />
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="230dp"
+        android:id="@+id/editText3"
+        android:textColor="#9f9797"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textView15"
+        android:layout_alignLeft="@+id/editText2"
+        android:layout_marginLeft="14dp"
+        android:layout_marginRight="14dp"
+        android:layout_marginTop="14dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enviar"
+        android:id="@+id/button2"
+        android:background="#ff00cccc"
+        android:textColor="#ffffff"
+        android:textStyle="bold"
+        android:layout_below="@+id/editText3"
+        android:layout_alignEnd="@+id/editText3" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cancelar"
+        android:id="@+id/button3"
+        android:background="#ffffff"
+        android:textColor="#ff00cccc"
+        android:textStyle="bold"
+        android:layout_below="@+id/editText3"
+        android:layout_centerHorizontal="true" />
+</RelativeLayout>

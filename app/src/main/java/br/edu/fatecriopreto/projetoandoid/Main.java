@@ -2,6 +2,7 @@ package br.edu.fatecriopreto.projetoandoid;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.media.Image;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -22,6 +23,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.AutoCompleteTextView;
 import android.widget.CompoundButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -51,6 +53,8 @@ public class Main extends ActionBarActivity implements OnItemSelectedListener {
     TextView txtUltimos;
     TextView txtSeguindo;
     TextView txtRelevantes;
+
+    ImageView imgNewPost;
     DrawerLayout mDrawerLayout;
     ListView mDrawerList;
     ActionBarDrawerToggle mDrawerToggle;
@@ -94,9 +98,12 @@ public class Main extends ActionBarActivity implements OnItemSelectedListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
-        Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
 
+        Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
+        imgNewPost = (ImageView)findViewById(R.id.imgNewPost);
         lstUltimos = (ListView)findViewById(R.id.lstUltimos);
+
+
         dbAdapter = new DBadapter(this);
 
         //Cria um adapter que retorna cada fragmento
@@ -107,6 +114,16 @@ public class Main extends ActionBarActivity implements OnItemSelectedListener {
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
         LinearLayout llAddress = (LinearLayout) findViewById(R.id.llAddress);
+
+        //metodo para chamar nova postagem
+        imgNewPost.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentpost = new Intent(Main.this,NovoPost.class);
+                startActivity(intentpost);
+
+            }
+        });
 
         // AUTO COMPLETE TEXT VIEW
         int position = 0;
@@ -160,8 +177,7 @@ public class Main extends ActionBarActivity implements OnItemSelectedListener {
                 .addProfiles(
                         new ProfileDrawerItem().withName(nomeUser).withEmail(emailUser).withIcon(getResources().getDrawable(R.drawable.jessica))
                         //new ProfileDrawerItem().withName("Person Two").withEmail("person2@gmail.com").withIcon(getResources().getDrawable(R.drawable.person_2)),
-                        //new ProfileDrawerItem().withName("Person Three").withEmail("person3@gmail.com").withIcon(getResources().getDrawable(R.drawable.person_3)),
-                        //new ProfileDrawerItem().withName("Person Four").withEmail("person4@gmail.com").withIcon(getResources().getDrawable(R.drawable.person_4))
+
                 )
                 .withOnAccountHeaderListener(new AccountHeader.OnAccountHeaderListener() {
                     @Override

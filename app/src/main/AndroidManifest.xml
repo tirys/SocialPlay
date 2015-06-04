@@ -62,6 +62,10 @@
             android:name=".PerfilEditar"
             android:label="" >
         </activity>
+        <activity
+            android:name=".NovoPost"
+            android:label="" >
+        </activity>
         <uses-permission android:name="android.permission.INTERNET"/>
     </application>
     <uses-permission android:name="android.permission.INTERNET"/>
