@@ -113,7 +113,29 @@ public class UsuarioDAO {
 
     public boolean atualizarUsuario(Usuario usuario){
 
-        return true;
+        SoapObject atualizarUsuario = new SoapObject(NAMESPACE, EDITAR);
+        SoapObject usr = new SoapObject(NAMESPACE, "usuario");
+        usr.addProperty("idUsuario", usuario.getIdUsuario());
+        usr.addProperty("nome", usuario.getNome());
+        usr.addProperty("local", usuario.getLocal());
+        usr.addProperty("jogo", usuario.getJogo());
+
+        atualizarUsuario.addSoapObject(usr);
+
+        SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
+        envelope.setOutputSoapObject(atualizarUsuario);
+        envelope.implicitTypes = true;
+
+        HttpTransportSE http = new HttpTransportSE(URL);
+        try {
+            http.call("urn" + EDITAR, envelope);
+            //Pegar Resposta do WebServices, ele retorna true or false
+            SoapPrimitive resposta = (SoapPrimitive) envelope.getResponse();
+            return Boolean.parseBoolean(resposta.toString());
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     public boolean excluirUsuario(Usuario usuario){

@@ -20,6 +20,7 @@ import android.widget.TextView;
 public class Perfil extends ActionBarActivity {
 
     ImageView imgback;
+    ImageView imgeditar;
     Integer idUser;
 
     //informações do usuario
@@ -40,11 +41,13 @@ public class Perfil extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.perfil);
 
+        imgeditar = (ImageView)findViewById(R.id.imgEditarPerfil);
         imgback = (ImageView)findViewById(R.id.imgbackperfil);
         txtNomeUser = (TextView)findViewById(R.id.txtNomeUser);
         txtEmailUser = (TextView)findViewById(R.id.txtEmailUser);
         txtLocalUser = (TextView)findViewById(R.id.txtLocalUser);
         txtJogoPrefer = (TextView)findViewById(R.id.txtJogoPrefer);
+
 
         //coletando id do usuario para fazer busca de suas informações
         final Intent intent = getIntent();
@@ -83,6 +86,24 @@ public class Perfil extends ActionBarActivity {
 
         txtJogoPrefer.setText(jogo);
 
+        //exibindo activity para edicao
+        imgeditar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent2 = new Intent(Perfil.this,PerfilEditar.class);
+
+                //enviando informações do usuario para a outra activity
+                Bundle param = new Bundle();
+                param.putInt("id", id);
+                param.putString("nome", nome);
+                param.putString("email", email);
+                param.putString("local", local);
+                param.putString("jogo", jogo);
+                intent2.putExtras(param);
+
+                startActivity(intent2);
+            }
+        });
 
         //finalizando a activity
         imgback.setOnClickListener(new View.OnClickListener() {
