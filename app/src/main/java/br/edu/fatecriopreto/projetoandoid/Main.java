@@ -265,17 +265,7 @@ public class Main extends ActionBarActivity implements OnItemSelectedListener {
         startActivityForResult(intent, 1);
         overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
 
-       /* TextView Idpost;
 
-        Perfil fragment2 = new Perfil();
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.drawer, fragment2);
-        fragmentTransaction.commit();*/
-
-
-        //return new Perfil();
-       // Toast.makeText(Main.this, "You selected item " + id, Toast.LENGTH_SHORT).show();
     }
 
 

@@ -42,9 +42,9 @@ public class PerfilEditar extends ActionBarActivity {
 
         //mensagens de erro
         final Context context = getApplicationContext();
-        final CharSequence textEmpty = "Há campos preenchidos incorretamente!";
-        final CharSequence textSucess = "Bem-Vindo ao SocialPlay!";
-        final CharSequence textError = "Erro ao efetuar Cadastro!";
+        final CharSequence textEmpty = "O campo nome não pode ser vazio";
+        final CharSequence textSucess = "Informações salvas com sucesso";
+        final CharSequence textError = "Erro ao efetuar edição!";
         final int duration = Toast.LENGTH_LONG;
 
         back = (ImageView)findViewById(R.id.imgVoltarEditar);
@@ -86,6 +86,20 @@ public class PerfilEditar extends ActionBarActivity {
                    novolocal=txtlocal.getText().toString();
                    novojogo=txtjogo.getText().toString();
 
+                   //se os campos forem vazios
+                   if(novojogo.isEmpty()){
+                       novojogo=" ";
+                   }
+                   if(novolocal.isEmpty()){
+                       novolocal=" ";
+                   }
+                   //se o nome for vazio, mostrar erro
+                    if (novonome.isEmpty()){
+                        Toast toast = Toast.makeText(context, textEmpty, duration);
+                        toast.show();
+                    }
+                   else{
+
                    boolean resultado = dao.atualizarUsuario(new Usuario(id, "", "", email, novonome, 0, null, novolocal, novojogo));
                    if (resultado == true) {
                        Toast toast = Toast.makeText(context, textSucess, duration);
@@ -98,7 +112,11 @@ public class PerfilEditar extends ActionBarActivity {
                        startActivityForResult(intent, 1);
 
                    }
-               }
+                   else if(resultado==false){
+                       Toast toast = Toast.makeText(context, textError, duration);
+                       toast.show();
+                   }
+               }}
            }
        });
 
