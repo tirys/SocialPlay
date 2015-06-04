@@ -42,6 +42,7 @@ import java.util.List;
 import java.util.Locale;
 
 import br.edu.fatecriopreto.projetoandoid.adapter.AutoCompleteAdapter;
+import br.edu.fatecriopreto.projetoandoid.connection.DBadapter;
 import br.edu.fatecriopreto.projetoandoid.domain.State;
 
 
@@ -64,7 +65,7 @@ public class Main extends ActionBarActivity implements OnItemSelectedListener {
     //INICIA O PAGEVIEW
     ViewPager mViewPager;
     ListView lstUltimos;
-
+    DBadapter dbAdapter;
     private static String TAG = "LOG";
     private Toolbar mToolbar;
     private Toolbar mToolbarBottom;
@@ -96,7 +97,7 @@ public class Main extends ActionBarActivity implements OnItemSelectedListener {
         Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
 
         lstUltimos = (ListView)findViewById(R.id.lstUltimos);
-
+        dbAdapter = new DBadapter(this);
 
         //Cria um adapter que retorna cada fragmento
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
@@ -194,19 +195,19 @@ public class Main extends ActionBarActivity implements OnItemSelectedListener {
                         for (int count = 0, tam = navigationDrawerLeft.getDrawerItems().size(); count < tam; count++) {
                             if (count == mPositionClicked && mPositionClicked <= 3) {
                                 PrimaryDrawerItem aux = (PrimaryDrawerItem) navigationDrawerLeft.getDrawerItems().get(count);
-                                aux.setIcon(getResources().getDrawable( getCorretcDrawerIcon( count, false ) ));
+                                aux.setIcon(getResources().getDrawable(getCorretcDrawerIcon(count, false)));
                                 break;
                             }
                         }
 
-                        if(i <= 3){
-                            ((PrimaryDrawerItem) iDrawerItem).setIcon(getResources().getDrawable( getCorretcDrawerIcon( i, true ) ));
+                        if (i <= 3) {
+                            ((PrimaryDrawerItem) iDrawerItem).setIcon(getResources().getDrawable(getCorretcDrawerIcon(i, true)));
                         }
 
                         mPositionClicked = i;
                         navigationDrawerLeft.getAdapter().notifyDataSetChanged();
-                        if(i==1){
-                            Intent menIntent3= new Intent(Main.this, Perfil.class);
+                        if (i == 1) {
+                            Intent menIntent3 = new Intent(Main.this, Perfil.class);
                             Bundle param = new Bundle();
 
                             param.putInt("idUsuario", idUser);
@@ -214,9 +215,18 @@ public class Main extends ActionBarActivity implements OnItemSelectedListener {
 
                             startActivityForResult(menIntent3, 1);
                         }
-                        if (i==2){
-                            Intent menIntent3= new Intent(Main.this, Jogos.class);
+                        if (i == 2) {
+                            Intent menIntent3 = new Intent(Main.this, Jogos.class);
                             startActivityForResult(menIntent3, 1);
+                        }
+                        if (i == 4) {
+                            dbAdapter.open();
+                            dbAdapter.editar(1,"","","","","","","");
+                            dbAdapter.close();
+
+                            Intent menIntent4 = new Intent(Main.this, Login.class);
+                            startActivityForResult(menIntent4, 1);
+
                         }
                     }
                 })
@@ -233,6 +243,7 @@ public class Main extends ActionBarActivity implements OnItemSelectedListener {
         navigationDrawerLeft.addItem(new PrimaryDrawerItem().withName("Perfil").withIcon(getResources().getDrawable(R.drawable.car_2)));
         navigationDrawerLeft.addItem(new PrimaryDrawerItem().withName("Jogos").withIcon(getResources().getDrawable(R.drawable.car_3)));
         navigationDrawerLeft.addItem(new PrimaryDrawerItem().withName("Amigos").withIcon(getResources().getDrawable(R.drawable.car_4)));
+        navigationDrawerLeft.addItem(new PrimaryDrawerItem().withName("Sair").withIcon(getResources().getDrawable(R.drawable.car_4)));
         navigationDrawerLeft.addItem(new SectionDrawerItem().withName("Configurações"));
         navigationDrawerLeft.addItem(new SwitchDrawerItem().withName("Notificação").withChecked(true).withOnCheckedChangeListener(mOnCheckedChangeListener));
     }

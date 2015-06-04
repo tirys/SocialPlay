@@ -17,6 +17,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import br.edu.fatecriopreto.projetoandoid.connection.DBadapter;
+
 
 public class Login extends ActionBarActivity {
 
@@ -28,9 +30,9 @@ public class Login extends ActionBarActivity {
     int id;
     String nome;
     String email;
-
+    DBadapter  dbAdapter;
     //String URL = "http://192.168.20.205:8080/WSSocialPlay/entity.usuarios";
-
+    Usuario userexistente;
     Usuario userLogin = null;
 
     Animation animBounce;
@@ -61,6 +63,39 @@ public class Login extends ActionBarActivity {
 
         ImgLogo.startAnimation(animBounce);
 
+        dbAdapter = new DBadapter(this);
+
+        dbAdapter.open();
+        userexistente = dbAdapter.getUsuario(1);
+        dbAdapter.close();
+        UsuarioDAO userLog = new UsuarioDAO();
+
+
+        if (!userexistente.getSenha().isEmpty() && !userexistente.getUsuario().isEmpty()) {
+            if (Build.VERSION.SDK_INT > 9) {
+                StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+                StrictMode.setThreadPolicy(policy);
+
+                //resposta[0] = String.valueOf(userLog.verificaLogin(user, pass));
+                userLogin = userLog.verificaLogin(userexistente.getUsuario(), userexistente.getSenha());
+                id = userLogin.getIdUsuario();
+                nome = userLogin.getNome();
+                email = userLogin.getEmail();
+
+            }
+            if (userLogin != null) {
+                Intent intent = new Intent(Login.this, Main.class);
+                Bundle param = new Bundle();
+                param.putInt("idUsuario", id);
+                param.putString("nomeUsuario", nome);
+                param.putString("emailUsuario", email);
+                intent.putExtras(param);
+                startActivity(intent);
+            }
+
+        }
+
+
         btnEntrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -85,6 +120,11 @@ public class Login extends ActionBarActivity {
 
                     }
                     if (userLogin != null) {
+
+                        dbAdapter.open();
+                        dbAdapter.editar(1,user,pass,"","","","","");
+                        dbAdapter.close();
+
                         Intent intent = new Intent(Login.this, Main.class);
                         Bundle param = new Bundle();
                         param.putInt("idUsuario", id);
