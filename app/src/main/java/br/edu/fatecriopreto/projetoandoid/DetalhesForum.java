@@ -1,6 +1,8 @@
 package br.edu.fatecriopreto.projetoandoid;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.Image;
 import android.os.Build;
@@ -60,12 +62,17 @@ public class DetalhesForum extends ActionBarActivity {
     int idpost;
     ListView lstComentarios;
     ImageView imgback;
+
+    //alert
+    private AlertDialog alerta;
+
     private static String TAG = "LOG";
     private Toolbar mToolbar;
     private Toolbar mToolbarBottom;
     private Drawer.Result navigationDrawerLeft;
     private AccountHeader.Result headerNavigationLeft;
     private int mPositionClicked;
+
 
     private OnCheckedChangeListener mOnCheckedChangeListener = new OnCheckedChangeListener(){
         @Override
@@ -158,6 +165,37 @@ public class DetalhesForum extends ActionBarActivity {
         lstComentarios.setAdapter(new LstComentariosAdapter(this, lstcomentarios));
         // NAVIGATIOn DRAWER
         // END - RIGHT
+
+        //se o usuario clicar e segurar em seu proprio comentario
+        lstComentarios.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                Comentarios comm = (Comentarios) parent.getItemAtPosition(position); //codigo para cast
+
+                if (iduser==comm.getIdpessoa()){
+                    AlertDialog.Builder builder = new AlertDialog.Builder(DetalhesForum.this);
+
+                    builder.setTitle("");
+                    builder.setMessage("Você realmente deseja excluir esse comentário?");
+
+                    builder.setPositiveButton("SIM", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface arg0, int arg1) {
+                            Toast.makeText(DetalhesForum.this, "positivo=" + arg1, Toast.LENGTH_SHORT).show();
+                        }
+                    });
+
+                    builder.setNegativeButton("NÃO", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface arg0, int arg1) {
+                            Toast.makeText(DetalhesForum.this, "negativo=" + arg1, Toast.LENGTH_SHORT).show();
+                        }
+                      });
+                    alerta = builder.create();
+                    alerta.show();
+                    }
+
+                return false;
+            }
+        });
 
         headerNavigationLeft = new AccountHeader()
                 .withActivity(this)
