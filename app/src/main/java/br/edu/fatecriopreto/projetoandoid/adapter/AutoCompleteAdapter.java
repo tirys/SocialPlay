@@ -15,6 +15,7 @@ import java.util.List;
 
 import br.edu.fatecriopreto.projetoandoid.Autocomplete;
 import br.edu.fatecriopreto.projetoandoid.Main;
+import br.edu.fatecriopreto.projetoandoid.NovoPost;
 import br.edu.fatecriopreto.projetoandoid.R;
 import br.edu.fatecriopreto.projetoandoid.webservice.DescJogo;
 
@@ -72,20 +73,42 @@ public class AutoCompleteAdapter extends ArrayAdapter<Autocomplete> implements F
         holder.tvState.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(context instanceof Main){
-                    //((Main)context).actvState.setText(listAux.get(position).getJogo());
+                String classeAtual = context.getClass().getName().toString();
+                String classeNovaPostagem = "br.edu.fatecriopreto.projetoandoid.NovoPost";
+                if(classeAtual.equals(classeNovaPostagem)) {
+                    if (context instanceof NovoPost) {
+                        //((Main)context).actvState.setText(listAux.get(position).getJogo());
+                        //int jogoid = listAux.get(position).getIdJogo();
+                        String jogonome = listAux.get(position).getJogo();
+                        String jogoid = Integer.toString(listAux.get(position).getIdJogo());
+                        ((NovoPost)context).actvPostagem.setText(jogonome);
+                        ((NovoPost)context).edtIdJogo.setText(jogoid);
+                        //String jogogenero = listAux.get(position).getGenero();
 
-                    int jogoid = listAux.get(position).getIdJogo();
-                    //String jogonome = listAux.get(position).getJogo();
-                    //String jogogenero = listAux.get(position).getGenero();
+                        //String foto = listAux.get(position).getImagem().toString();
+                        //byte[] bt = Base64.decode(foto, Base64.DEFAULT);
+                        //String bt = listAux.get(position).getImgByte();
+                        //Bitmap jogofoto = BitmapFactory.decodeByteArray(bt, 0, bt.length);
+                        //DescJogo dao = new DescJogo();
+                        //List<br.edu.fatecriopreto.projetoandoid.Entity.DescJogo> lista = dao.buscaTodosJogos(jogoid);
+                        //((Main) context).TrocaJogoCompleto(lista);
+                    }
+                }else{
+                    if (context instanceof Main) {
+                        //((Main)context).actvState.setText(listAux.get(position).getJogo());
 
-                    //String foto = listAux.get(position).getImagem().toString();
-                    //byte[] bt = Base64.decode(foto, Base64.DEFAULT);
-                    //String bt = listAux.get(position).getImgByte();
-                            //Bitmap jogofoto = BitmapFactory.decodeByteArray(bt, 0, bt.length);
-                    DescJogo dao = new DescJogo();
-                    List<br.edu.fatecriopreto.projetoandoid.Entity.DescJogo> lista = dao.buscaTodosJogos(jogoid);
-                    ((Main)context).TrocaJogoCompleto(lista);
+                        int jogoid = listAux.get(position).getIdJogo();
+                        //String jogonome = listAux.get(position).getJogo();
+                        //String jogogenero = listAux.get(position).getGenero();
+
+                        //String foto = listAux.get(position).getImagem().toString();
+                        //byte[] bt = Base64.decode(foto, Base64.DEFAULT);
+                        //String bt = listAux.get(position).getImgByte();
+                        //Bitmap jogofoto = BitmapFactory.decodeByteArray(bt, 0, bt.length);
+                        DescJogo dao = new DescJogo();
+                        List<br.edu.fatecriopreto.projetoandoid.Entity.DescJogo> lista = dao.buscaTodosJogos(jogoid);
+                        ((Main) context).TrocaJogoCompleto(lista);
+                    }
                 }
             }
         });
@@ -121,8 +144,14 @@ public class AutoCompleteAdapter extends ArrayAdapter<Autocomplete> implements F
 				}
 				else{
 					int qtdConstraint = constraintString.length();
-					
-					((Main) context).id = 1;
+                    String classeAtual = context.getClass().getName().toString();
+                    String classeNovaPostagem = "br.edu.fatecriopreto.projetoandoid.NovoPost";
+                    if(classeAtual.equals(classeNovaPostagem)){
+                        ((NovoPost) context).id = 1;
+                    }else{
+                        ((Main) context).id = 1;
+                    }
+
 					//ArrayList<State> newValues = (ArrayList<State>) HttpConnection.getStateListWeb("http://www.villopim.com.br/android/state.php", country, constraintString);
 					//ArrayList<State> newValues = (ArrayList<State>) HttpConnection.getStateListWeb("http://10.0.2.2:82/android/state.php", country, constraintString);
 					//ArrayList<State> newValues = (ArrayList<State>) HttpConnection.getStateListWeb("http://socialplay.no-ip.biz:80/state/state.php", country, constraintString);
@@ -158,13 +187,24 @@ public class AutoCompleteAdapter extends ArrayAdapter<Autocomplete> implements F
 
 			@Override
 			protected void publishResults(CharSequence constraint, FilterResults results) {
-				if(results.values != null && ((Main) context).id > 0){
-					listAux = (ArrayList<Autocomplete>) results.values;
-				}
-				else{
-					listAux = new ArrayList<Autocomplete>();
-				}
-				
+                String classeAtual = context.getClass().getName().toString();
+                String classeNovaPostagem = "br.edu.fatecriopreto.projetoandoid.NovoPost";
+                if(classeAtual.equals(classeNovaPostagem)){
+                    if(results.values != null && ((NovoPost) context).id > 0){
+                        listAux = (ArrayList<Autocomplete>) results.values;
+                    }
+                    else{
+                        listAux = new ArrayList<Autocomplete>();
+                    };
+                }else{
+                    if(results.values != null && ((Main) context).id > 0){
+                        listAux = (ArrayList<Autocomplete>) results.values;
+                    }
+                    else{
+                        listAux = new ArrayList<Autocomplete>();
+                    }
+                }
+
 				if(results.count == 0){
 					notifyDataSetInvalidated();
 				}

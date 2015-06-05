@@ -43,7 +43,7 @@ public class AutocompleteDAO {
                 Autocomplete jogos = new Autocomplete();
                 jogos.setIdJogo(Integer.parseInt(soapObject.getProperty("idJogo").toString()));
                 jogos.setJogo(soapObject.getProperty("jogo").toString());
-               // jogos.setGenero(soapObject.getPropertyAsString("genero".toString()));
+                //jogos.setGenero(soapObject.getPropertyAsString("genero".toString()));
 
                 String foto = soapObject.getProperty("imagem").toString();
                 byte[] bt = Base64.decode(foto, Base64.DEFAULT);

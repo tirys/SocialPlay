@@ -2,19 +2,24 @@ package br.edu.fatecriopreto.projetoandoid;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v7.app.ActionBarActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.util.List;
 
 import br.edu.fatecriopreto.projetoandoid.Entity.Comentarios;
+import br.edu.fatecriopreto.projetoandoid.adapter.AutoCompleteAdapter;
 import br.edu.fatecriopreto.projetoandoid.webservice.ComentariosDAO;
 
 /**
@@ -25,6 +30,8 @@ public class NovoPost extends ActionBarActivity {
     EditText edtTitulo;
     EditText edtJogo;
     EditText edtConteudo;
+    public EditText edtIdJogo;
+    public AutoCompleteTextView actvPostagem;
 
     int idUser;
     String nomeUser;
@@ -32,6 +39,13 @@ public class NovoPost extends ActionBarActivity {
 
     Button btnCadastrar;
     Button btnCancelar;
+
+    //public AutoCompleteTextView actvState;
+    public static int id = 0;
+
+    // STATES
+    AutocompleteDAO dao = new AutocompleteDAO();
+    private List<Autocomplete> listJogos = dao.buscaTodosJogos();
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,8 +58,9 @@ public class NovoPost extends ActionBarActivity {
         final int duration = Toast.LENGTH_LONG;
         //atribuindo item do layout
         edtTitulo = (EditText)findViewById(R.id.edtTituloPost);
-        edtJogo = (EditText)findViewById(R.id.edtJogoPost);
+        edtJogo = (EditText)findViewById(R.id.actvJogoPost);
         edtConteudo = (EditText)findViewById(R.id.edtConteudoPost);
+        edtIdJogo = (EditText)findViewById(R.id.edtIdJogo);
 
         btnCadastrar = (Button)findViewById(R.id.btnSalvarPost);
         btnCancelar = (Button)findViewById(R.id.btnCancelarPost);
@@ -62,7 +77,7 @@ public class NovoPost extends ActionBarActivity {
             @Override
             public void onClick(View v) {
             String titulo = edtTitulo.getText().toString();
-            String jogostring= edtJogo.getText().toString();
+            String jogostring= edtIdJogo.getText().toString();
 
 
          //   int jogo = Integer.parseInt(edtJogo.getText().toString());
@@ -125,6 +140,36 @@ public class NovoPost extends ActionBarActivity {
             }
         });
 
+        // AUTO COMPLETE TEXT VIEW
+        int position = 0;
+        //actvState = new AutoCompleteTextView(NovoPost.this);
+        actvPostagem = (AutoCompleteTextView) findViewById(R.id.actvJogoPost);
+        actvPostagem.setThreshold(1);
+        actvPostagem.setBackgroundColor(0);
+        //float scale = getResources().getDisplayMetrics().density;
+        //actvPostagem.setPadding((int)(5 * scale * 0.5f),(int)(4 * scale * 0.5f),(int)(5 * scale * 0.5f),(int)(0 * scale * 0.5f));
+        //actvState.setHint("Estado / Provincia");
+        //actvState = (AutoCompleteTextView) findViewById(R.id.actvState);
+        actvPostagem.addTextChangedListener(new TextWatcher(){
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                Integer cor = actvPostagem.getCurrentTextColor();
+                Log.i("Script", "beforeTextChanged(" + s + ")" + cor + "");
+                NovoPost.id = 0;
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                Log.i("Script", "onTextChanged("+s+")");
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                Log.i("Script", "afterTextChanged("+s+")");
+            }
+        });
 
+        //llAddress.addView(actvState);
+        actvPostagem.setTextColor(Color.parseColor("#96141414"));
+        List<Autocomplete> aux = position == 0 ? listJogos : listJogos;
+        actvPostagem.setAdapter(new AutoCompleteAdapter(NovoPost.this, position, aux));
     }
 }
