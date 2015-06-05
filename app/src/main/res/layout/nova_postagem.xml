@@ -79,7 +79,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Enviar"
-        android:id="@+id/btnCadastrarPost"
+        android:id="@+id/btnSalvarPost"
         android:background="#ff00cccc"
         android:textColor="#ffffff"
         android:textStyle="bold"

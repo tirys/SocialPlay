@@ -114,12 +114,26 @@ public class Main extends ActionBarActivity implements OnItemSelectedListener {
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
         LinearLayout llAddress = (LinearLayout) findViewById(R.id.llAddress);
+        //Recebendo informações do Login
+        final Intent intent = getIntent();
+        Bundle param = intent.getExtras();
+
+        idUser = param.getInt("idUsuario");
+        nomeUser = param.getString("nomeUsuario");
+        emailUser = param.getString("emailUsuario");
 
         //metodo para chamar nova postagem
         imgNewPost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intentpost = new Intent(Main.this,NovoPost.class);
+
+                Bundle param = new Bundle();
+                param.putInt("idUsuario", idUser);
+                param.putString("nomeUsuario", nomeUser);
+                param.putString("emailUsuario", emailUser);
+                intentpost.putExtras(param);
+
                 startActivity(intentpost);
 
             }
@@ -160,13 +174,7 @@ public class Main extends ActionBarActivity implements OnItemSelectedListener {
         // NAVIGATIOn DRAWER
         // END - RIGHT
 
-        //Recebendo informações do Login
-        final Intent intent = getIntent();
-        Bundle param = intent.getExtras();
 
-        idUser = param.getInt("idUsuario");
-        nomeUser = param.getString("nomeUsuario");
-        emailUser = param.getString("emailUsuario");
 
         headerNavigationLeft = new AccountHeader()
                 .withActivity(this)
@@ -284,9 +292,10 @@ public class Main extends ActionBarActivity implements OnItemSelectedListener {
        Intent intent = new Intent(Main.this, DetalhesForum.class);
 
         Bundle param = new Bundle();
-        param.putLong("idPost", post.getIdTopico());
+        param.putInt("idPost", post.getIdTopico());
         param.putString("titPost", post.getNome());
         param.putString("txtDesc",post.getDescricao());
+        param.putInt("iduser",idUser);
         intent.putExtras(param);
 
         startActivityForResult(intent, 1);

@@ -190,6 +190,7 @@
             android:background="#ffffff"
             android:layout_marginRight="60dp"
             android:layout_marginBottom="2dp"
+            android:textColor="#9f9797"
             android:layout_alignParentBottom="true"
             android:layout_alignParentStart="true"
             />
@@ -197,7 +198,7 @@
         <ImageView
             android:layout_width="43dp"
             android:layout_height="43dp"
-            android:id="@+id/imageView6"
+            android:id="@+id/enviarComentario"
             android:layout_marginRight="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginBottom="3dp"

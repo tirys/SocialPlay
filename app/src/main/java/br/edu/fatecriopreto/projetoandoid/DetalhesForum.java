@@ -1,7 +1,11 @@
 package br.edu.fatecriopreto.projetoandoid;
 
+import android.content.Context;
 import android.content.Intent;
+import android.media.Image;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
@@ -9,6 +13,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -34,6 +39,8 @@ import br.edu.fatecriopreto.projetoandoid.adapter.AutoCompleteAdapter;
 import br.edu.fatecriopreto.projetoandoid.adapter.GridCatAdaptercons;
 import br.edu.fatecriopreto.projetoandoid.adapter.LstComentariosAdapter;
 import br.edu.fatecriopreto.projetoandoid.domain.State;
+import br.edu.fatecriopreto.projetoandoid.webservice.ComentariosDAO;
+
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
@@ -46,6 +53,11 @@ public class DetalhesForum extends ActionBarActivity {
     String descricao;
     TextView txtTitDet;
     TextView txtDesc;
+    EditText edtComment;
+    int iduser;
+    ImageView enviarComentario;
+
+    int idpost;
     ListView lstComentarios;
     ImageView imgback;
     private static String TAG = "LOG";
@@ -67,36 +79,81 @@ public class DetalhesForum extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.detalhes_forum);
 
+        final Context context = getApplicationContext();
+        final CharSequence textEmpty = "Há campos preenchidos incorretamente!";
+        final CharSequence textSucess = "Post inserido com sucesso";
+        final CharSequence textError = "Erro ao efetuar Cadastro!";
+
+        final int duration = Toast.LENGTH_LONG;
+
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN); //força hidden no teclado ao startar a activity
 
         txtTitDet = (TextView) findViewById(R.id.txtTitDet);
         txtDesc = (TextView) findViewById(R.id.txtDesc);
         lstComentarios = (ListView) findViewById(R.id.lstComentarios);
+        enviarComentario = (ImageView) findViewById(R.id.enviarComentario);
+        edtComment = (EditText) findViewById(R.id.edtComment);
 
         final Intent intent = getIntent();
         Bundle param = intent.getExtras();
 
+        idpost = param.getInt("idPost");
         titForum = param.getString("titPost");
         descricao = param.getString("txtDesc");
+        iduser = param.getInt("iduser");
+
         txtTitDet.setText(titForum);
         txtDesc.setText(descricao);
 
-       //LISTA DE COMENTARIOS
-        Comentarios comentario1 = new Comentarios(1,1,"Comentario 1 Comentario 1 Comentario 1 Comentario 1 Comentario 1 Comentario 1","29/05/2015");
-        Comentarios comentario2 = new Comentarios(2,1,"Comentario 1 Comentario 1 Comentario 1 Comentario 1 Comentario 1 Comentario 1","29/05/2015");
-        Comentarios comentario3 = new Comentarios(3,1,"Comentario 1 Comentario 1 Comentario 1 Comentario 1 Comentario 1 Comentario 1","29/05/2015");
-        Comentarios comentario4 = new Comentarios(4,1,"Comentario 1 Comentario 1 Comentario 1 Comentario 1 Comentario 1 Comentario 1","29/05/2015");
-        Comentarios comentario5 = new Comentarios(5,1,"Comentario 1 Comentario 1 Comentario 1 Comentario 1 Comentario 1 Comentario 1","29/05/2015");
+
+        ComentariosDAO listacom = new ComentariosDAO();
+
+        final List<Comentarios> lstcomentarios = listacom.listarComentariosporid(idpost);
 
 
 
+     //   List<Comentarios> lstcomentarios=listacom.listarComentariosporid(idpost);
+        enviarComentario.setOnClickListener(new View.OnClickListener() {
 
-        List<Comentarios> lstcomentarios= new ArrayList<>();
-        lstcomentarios.add(comentario1);
-        lstcomentarios.add(comentario2);
-        lstcomentarios.add(comentario3);
-        lstcomentarios.add(comentario4);
-        lstcomentarios.add(comentario5);
+
+
+            public void onClick(View v) {
+
+                String comentario = edtComment.getText().toString();
+
+                if(!comentario.isEmpty()) {
+
+                    if (Build.VERSION.SDK_INT > 9) {
+                        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+                        StrictMode.setThreadPolicy(policy);
+
+                        ComentariosDAO dao = new ComentariosDAO();
+                        boolean resultado = dao.inserirComentario(new Comentarios(1,iduser,comentario,"25/05/2015",idpost));
+
+                        if(resultado == true){
+                            Toast toast = Toast.makeText(context, textSucess, duration);
+                            toast.show();
+
+                           edtComment.setText("");
+                            //atualizando a lista de comentarios
+                            ComentariosDAO listacom = new ComentariosDAO();
+                            lstcomentarios.clear();
+                            lstcomentarios.addAll(listacom.listarComentariosporid(idpost));
+                            lstComentarios.setAdapter(new LstComentariosAdapter(DetalhesForum.this, lstcomentarios));
+
+
+
+                        }else {
+                            Toast toast = Toast.makeText(context, textError, duration);
+                            toast.show();
+                        }
+                    }
+                }else{
+                    Toast toast = Toast.makeText(context, textEmpty, duration);
+                    toast.show();
+                }
+            }
+        });
 
         lstComentarios.setAdapter(new LstComentariosAdapter(this, lstcomentarios));
         // NAVIGATIOn DRAWER

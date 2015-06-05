@@ -29,7 +29,7 @@ public class TopicosDAO {
         //usr.addProperty("idUsuario", usuario.getIdUsuario());
         usr.addProperty("nome", topico.getNome());
         usr.addProperty("descricao",topico.getDescricao());
-        usr.addProperty("codJogo", topico.getCodCategoria());
+        usr.addProperty("codCategoria", topico.getCodCategoria());
         usr.addProperty("codUsuario",topico.getCodUsuario());
 
         //usr.addProperty("imagem", usuario.getImagem());
