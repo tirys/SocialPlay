@@ -103,12 +103,11 @@ public class NovoPost extends ActionBarActivity {
                             //gambiarra pra inserir 2 comentarios
                             TopicosDAO dao2 = new TopicosDAO();
                             List<Topicos> lista = dao2.buscaTodosTopicos();
-                            int tamanho = lista.size();
-                            int idpostagem = lista.get(tamanho-1).getIdTopico();
+                         //   int tamanho = lista.size();
+                          //  int idpostagem = lista.get(tamanho-1).getIdTopico();
 
 
-                            boolean resultado2 = comm.inserirComentario(new Comentarios(1,1,"Fantasma","25/05/2015",idpostagem));
-                            boolean resultado3 = comm.inserirComentario(new Comentarios(1,1,"Fantasma","25/05/2015",idpostagem));
+
 
                             Intent intent = new Intent(NovoPost.this, Main.class);
 
