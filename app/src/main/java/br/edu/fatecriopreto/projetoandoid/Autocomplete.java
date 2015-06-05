@@ -13,15 +13,17 @@ public class Autocomplete {
         private String jogo;
         private String genero;
         private Bitmap imagem;
+        public String imgByte;
 
         public Autocomplete(){
         }
 
-        public Autocomplete(int idJogo, String jogo, String genero,  Bitmap imagem) {
+        public Autocomplete(int idJogo, String jogo, String genero,  Bitmap imagem, String imgByte) {
             this.idJogo = idJogo;
             this.jogo = jogo;
             this.genero = genero;
             this.imagem = imagem;
+            this.imgByte = imgByte;
         }
 
         public int getIdJogo() {
@@ -48,12 +50,20 @@ public class Autocomplete {
             this.genero = genero;
         }
 
-        public  Bitmap getImagem() {
+        public Bitmap getImagem() {
             return imagem;
         }
 
         public void setImagem( Bitmap imagem) {
             this.imagem = imagem;
+        }
+
+        public String getImgByte() {
+            return imgByte;
+        }
+
+        public void setImgByte(String imgByte) {
+            this.imgByte = imgByte;
         }
 }
 

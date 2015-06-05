@@ -16,6 +16,7 @@ import java.util.List;
 import br.edu.fatecriopreto.projetoandoid.Autocomplete;
 import br.edu.fatecriopreto.projetoandoid.Main;
 import br.edu.fatecriopreto.projetoandoid.R;
+import br.edu.fatecriopreto.projetoandoid.webservice.DescJogo;
 
 //import br.edu.fatecriopreto.projetoandoid.Main;
 
@@ -73,7 +74,18 @@ public class AutoCompleteAdapter extends ArrayAdapter<Autocomplete> implements F
             public void onClick(View v) {
                 if(context instanceof Main){
                     //((Main)context).actvState.setText(listAux.get(position).getJogo());
-                    ((Main)context).TrocaJogo(listAux.get(position).getJogo());
+
+                    int jogoid = listAux.get(position).getIdJogo();
+                    //String jogonome = listAux.get(position).getJogo();
+                    //String jogogenero = listAux.get(position).getGenero();
+
+                    //String foto = listAux.get(position).getImagem().toString();
+                    //byte[] bt = Base64.decode(foto, Base64.DEFAULT);
+                    //String bt = listAux.get(position).getImgByte();
+                            //Bitmap jogofoto = BitmapFactory.decodeByteArray(bt, 0, bt.length);
+                    DescJogo dao = new DescJogo();
+                    List<br.edu.fatecriopreto.projetoandoid.Entity.DescJogo> lista = dao.buscaTodosJogos(jogoid);
+                    ((Main)context).TrocaJogoCompleto(lista);
                 }
             }
         });

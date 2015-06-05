@@ -36,7 +36,7 @@
         android:src="@drawable/imgnovo"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_above="@+id/imageView8" />
+        android:layout_above="@+id/imgFotoJogo" />
 
     <ImageView
         android:layout_width="140dp"
@@ -44,9 +44,8 @@
         android:layout_marginTop="20dp"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="10dp"
-        android:id="@+id/imageView8"
-        android:background="#E44748"
-        android:padding="10dp"
+        android:id="@+id/imgFotoJogo"
+        android:background="#FFFFFF"
         android:layout_below="@+id/toolbar"
         android:layout_alignParentStart="true"
         />
@@ -58,20 +57,20 @@
         android:text="The Witcher 3: Wild Hunt"
         android:layout_marginRight="5dp"
         android:textColor="#000000"
-        android:id="@+id/textView8"
-        android:layout_alignTop="@+id/imageView8"
-        android:layout_toEndOf="@+id/imageView8" />
+        android:id="@+id/tvNomeJogo"
+        android:layout_alignTop="@+id/imgFotoJogo"
+        android:layout_toEndOf="@+id/imgFotoJogo" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="PC/PS4/Xbox one"
-        android:id="@+id/textView9"
+        android:id="@+id/tvPlataformaJogo"
         android:textSize="16dp"
         android:textColor="#8C8788"
-        android:layout_below="@+id/textView8"
-        android:layout_alignStart="@+id/textView8" />
+        android:layout_below="@+id/tvNomeJogo"
+        android:layout_alignStart="@+id/tvNomeJogo" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -79,20 +78,20 @@
         android:layout_marginTop="15dp"
         android:text="Lançamento: 2015"
         android:textSize="18sp"
-        android:id="@+id/textView10"
+        android:id="@+id/tvAno"
         android:textColor="#847E7F"
-        android:layout_below="@+id/textView9"
-        android:layout_alignStart="@+id/textView9" />
+        android:layout_below="@+id/tvPlataformaJogo"
+        android:layout_alignStart="@+id/tvPlataformaJogo" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Produtora: CD Project Red"
         android:textSize="18sp"
-        android:id="@+id/textView11"
+        android:id="@+id/tvProdutora"
         android:textColor="#847E7F"
-        android:layout_below="@+id/textView10"
-        android:layout_alignStart="@+id/textView10" />
+        android:layout_below="@+id/tvAno"
+        android:layout_alignStart="@+id/tvAno" />
 
     <TextView
         android:layout_width="fill_parent"
@@ -102,8 +101,8 @@
         android:textColor="#000000"
 
         android:layout_margin="15dp"
-        android:id="@+id/textView12"
-        android:layout_below="@+id/imageView8"
+        android:id="@+id/tvDescJogo"
+        android:layout_below="@+id/imgFotoJogo"
         android:layout_alignParentStart="true" />
 
     <Button
@@ -115,7 +114,7 @@
         android:textColor="#ffffff"
         android:textStyle="bold"
         android:layout_margin="15dp"
-        android:layout_below="@+id/textView12"
+        android:layout_below="@+id/tvDescJogo"
         android:layout_alignParentStart="true"
         android:layout_marginTop="33dp" />
 
@@ -131,4 +130,14 @@
         android:layout_marginRight="15dp"
         android:layout_below="@+id/button"
         android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Genero: RPG"
+        android:textSize="18sp"
+        android:id="@+id/tvGenero"
+        android:textColor="#847E7F"
+        android:layout_below="@+id/tvProdutora"
+        android:layout_toEndOf="@+id/imgFotoJogo" />
 </RelativeLayout>

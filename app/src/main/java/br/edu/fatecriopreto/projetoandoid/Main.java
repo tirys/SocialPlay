@@ -304,11 +304,35 @@ public class Main extends ActionBarActivity implements OnItemSelectedListener {
 
     }
 
-    public void TrocaJogo(String id){
-        Intent intent = new Intent(Main.this, Registrar.class);
-        startActivityForResult(intent, 1);
+
+    public void TrocaJogoCompleto(List<br.edu.fatecriopreto.projetoandoid.Entity.DescJogo> lista){
+        Intent intentdesc = new Intent(Main.this, br.edu.fatecriopreto.projetoandoid.DescJogo.class);
+
+        Bundle param2 = new Bundle();
+
+        param2.putInt("JogoId",lista.get(0).getIdDescJogo());
+        param2.putString("JogoNome", lista.get(0).getDescJogo());
+        param2.putString("JogoGenero",lista.get(0).getDescGenero());
+        param2.putString("JogoFoto",lista.get(0).getDescImgByte());
+        param2.putString("JogoDescricao",lista.get(0).getDescDescricao());
+        param2.putString("JogoPlataforma",lista.get(0).getDescPlataforma());
+        param2.putString("JogoProdutora",lista.get(0).getDescProdutora());
+        param2.putInt("JogoAno",lista.get(0).getDescAno());
+        intentdesc.putExtras(param2);
+
+        startActivity(intentdesc);
     }
 
+    public void TrocaJogo(String jogoid, String jogonome, String jogogenero, String jogofoto){
+        Intent intentjogo = new Intent(Main.this, DescJogo.class);
+        Bundle param = new Bundle();
+        param.putString("JogoId", jogoid);
+        param.putString("JogoNome", jogonome);
+        param.putString("JogoGenero",jogogenero);
+        param.putString("JogoFoto",jogofoto);
+        intentjogo.putExtras(param);
+        startActivity(intentjogo);
+    }
 
     //start: slider
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
