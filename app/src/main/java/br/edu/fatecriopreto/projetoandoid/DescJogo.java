@@ -6,6 +6,8 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Base64;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -14,7 +16,9 @@ import android.widget.TextView;
  */
 public class DescJogo extends ActionBarActivity {
 
+    Button btnLstPostJogo;
     int JogoId;
+    int idUser;
     String JogoNome;
     String JogoGenero;
     String JogoImagem;
@@ -30,11 +34,13 @@ public class DescJogo extends ActionBarActivity {
     TextView txtAno;
     TextView txtGenero;
     ImageView imgFoto;
+    ImageView imgbackDescjogo;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.desc_jogo);
 
+        btnLstPostJogo = (Button) findViewById(R.id.btnLstPostJogo);
         txtNome = (TextView) findViewById(R.id.tvNomeJogo);
         txtDescricao = (TextView) findViewById(R.id.tvDescJogo);
         txtPlataforma = (TextView) findViewById(R.id.tvPlataformaJogo);
@@ -43,6 +49,7 @@ public class DescJogo extends ActionBarActivity {
         txtProdutora = (TextView) findViewById(R.id.tvProdutora);
         //txtGenero = (TextView) findViewById(R.id.);
         imgFoto = (ImageView) findViewById(R.id.imgFotoJogo);
+        imgbackDescjogo = (ImageView) findViewById(R.id.imgbackDescjogo);
 
         final Intent intent = getIntent();
         Bundle param = intent.getExtras();
@@ -56,6 +63,8 @@ public class DescJogo extends ActionBarActivity {
         JogoProdutora = param.getString("JogoProdutora");
         JogoAno = Integer.toString(param.getInt("JogoAno"));
         JogoDescricao = param.getString("JogoDescricao");
+        idUser = param.getInt("idUser");
+
         //ImagemByte = param.getString("JogoFoto");
         byte[] bt = Base64.decode(JogoImagem, Base64.DEFAULT);
         //String bt = listAux.get(position).getImgByte();
@@ -68,6 +77,28 @@ public class DescJogo extends ActionBarActivity {
         txtGenero.setText(JogoGenero);
         txtAno.setText(JogoAno);
         //Bitmap jogofoto = BitmapFactory.decodeByteArray(JogoImagem, 0, JogoImagem.length);
+
+        //Listar posts com o id do jogo
+        btnLstPostJogo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DescJogo.this, ListaPostsJogo.class);
+                Bundle param = new Bundle();
+                param.putInt("idJogo", JogoId);
+                param.putInt("idUser", idUser);
+                intent.putExtras(param);
+                startActivity(intent);
+            }
+        });
+
+        //voltando activity
+        imgbackDescjogo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DescJogo.this.finish();
+            }
+        });
+
     }
 
 }

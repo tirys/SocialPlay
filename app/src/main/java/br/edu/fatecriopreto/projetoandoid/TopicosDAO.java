@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 
+import br.edu.fatecriopreto.projetoandoid.Entity.Comentarios;
+
 /**
  * Created by Lucas Fernandes on 26/05/2015.
  */
@@ -21,6 +23,7 @@ public class TopicosDAO {
     private static final String CADASTRARTOPICO = "cadastrarTopico";
     private static final String EDITARTOPICO = "editarTopico";
     private static final String EXCLUIRTOPICO = "excluirTopico";
+    private static final String LISTARTOPICOSPORID = "listarPostsporId";
 
     public boolean inserirTopicos(Topicos topico){
 
@@ -120,6 +123,41 @@ public class TopicosDAO {
                 topic.setIdTopico(Integer.parseInt(soapObject.getProperty("idTopico").toString()));
                 topic.setNome(soapObject.getProperty("nome").toString());
                 topic.setDescricao(soapObject.getPropertyAsString("descricao".toString()));
+
+                lista.add(topic);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+        return lista;
+    }
+    public List<Topicos> listarPostsporId(int id){
+        List<Topicos> lista = new ArrayList<>();
+        SoapObject listarPost= new SoapObject(NAMESPACE, LISTARTOPICOSPORID);
+        listarPost.addProperty("id", id);
+
+
+        SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
+        envelope.setOutputSoapObject(listarPost);
+        envelope.implicitTypes = true;
+
+        HttpTransportSE http = new HttpTransportSE(URL);
+        try {
+            http.call("urn" + LISTARTOPICOSPORID, envelope);
+
+            Vector<SoapObject> resposta = (Vector<SoapObject>) envelope.getResponse();
+            int tamanho = resposta.size();
+
+            //for (SoapObject soapObject : resposta){
+            for (int i=0;i<tamanho-2; ++i){
+                SoapObject so =  resposta.get(i);
+                Topicos topic = new Topicos();
+                topic.setIdTopico(Integer.parseInt(so.getProperty("idTopico").toString()));
+                topic.setNome(so.getProperty("nome").toString());
+                topic.setDescricao(so.getPropertyAsString("descricao".toString()));
+
+
 
                 lista.add(topic);
             }

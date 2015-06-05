@@ -318,6 +318,7 @@ public class Main extends ActionBarActivity implements OnItemSelectedListener {
         param2.putString("JogoPlataforma",lista.get(0).getDescPlataforma());
         param2.putString("JogoProdutora",lista.get(0).getDescProdutora());
         param2.putInt("JogoAno",lista.get(0).getDescAno());
+        param2.putInt("idUser",idUser);
         intentdesc.putExtras(param2);
 
         startActivity(intentdesc);
