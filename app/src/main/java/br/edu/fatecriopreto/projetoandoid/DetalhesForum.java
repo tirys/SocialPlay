@@ -88,7 +88,7 @@ public class DetalhesForum extends ActionBarActivity {
 
         final Context context = getApplicationContext();
         final CharSequence textEmpty = "Há campos preenchidos incorretamente!";
-        final CharSequence textSucess = "Post inserido com sucesso";
+        final CharSequence textSucess = "Comentário inserido com sucesso";
         final CharSequence textError = "Erro ao efetuar Cadastro!";
 
         final int duration = Toast.LENGTH_LONG;
@@ -170,23 +170,34 @@ public class DetalhesForum extends ActionBarActivity {
         lstComentarios.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                Comentarios comm = (Comentarios) parent.getItemAtPosition(position); //codigo para cast
+               final Comentarios comm = (Comentarios) parent.getItemAtPosition(position); //codigo para cast
 
                 if (iduser==comm.getIdpessoa()){
                     AlertDialog.Builder builder = new AlertDialog.Builder(DetalhesForum.this);
 
                     builder.setTitle("");
-                    builder.setMessage("Você realmente deseja excluir esse comentário?");
+                    builder.setMessage("Tem certeza de que deseja excluir este comentário?");
 
-                    builder.setPositiveButton("SIM", new DialogInterface.OnClickListener() {
+                    builder.setPositiveButton("EXCLUIR", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface arg0, int arg1) {
-                            Toast.makeText(DetalhesForum.this, "positivo=" + arg1, Toast.LENGTH_SHORT).show();
+                            ComentariosDAO commDAO = new ComentariosDAO();
+                           boolean oi = commDAO.excluirComentario(comm.getId());
+                            if(oi==true){
+                            lstcomentarios.clear();
+                            lstcomentarios.addAll(commDAO.listarComentariosporid(idpost));
+                            lstComentarios.setAdapter(new LstComentariosAdapter(DetalhesForum.this, lstcomentarios));
+                            Toast.makeText(DetalhesForum.this, "Comentário excluído com sucesso!", Toast.LENGTH_SHORT).show();
+                            }
+                            else
+                            {
+                                Toast.makeText(DetalhesForum.this, "Erro ao excluir o comentário", Toast.LENGTH_SHORT).show();
+                            }
                         }
                     });
 
-                    builder.setNegativeButton("NÃO", new DialogInterface.OnClickListener() {
+                    builder.setNegativeButton("CANCELAR", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface arg0, int arg1) {
-                            Toast.makeText(DetalhesForum.this, "negativo=" + arg1, Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(DetalhesForum.this, "negativo=" + arg1, Toast.LENGTH_SHORT).show();
                         }
                       });
                     alerta = builder.create();

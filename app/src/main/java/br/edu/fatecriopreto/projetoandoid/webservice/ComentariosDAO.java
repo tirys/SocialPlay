@@ -22,6 +22,7 @@ public class ComentariosDAO {
 
     private static final String LISTARCOMENTARIOS = "listarComentarios";
     private static final String INSERIRCOMENTARIOS = "inserirComentario";
+    private static final String EXCLUIRCOMENTARIO = "excluirComentario";
 
 
     public boolean inserirComentario(Comentarios comentario){
@@ -85,5 +86,30 @@ public class ComentariosDAO {
             return null;
         }
         return lista;
+    }
+
+    public boolean excluirComentario(int id){
+        SoapObject excluirComentario = new SoapObject(NAMESPACE, EXCLUIRCOMENTARIO);
+        SoapObject usr = new SoapObject(NAMESPACE, "comentario");
+        usr.addProperty("id",id);
+
+
+        excluirComentario.addSoapObject(usr);
+
+        SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
+        envelope.setOutputSoapObject(excluirComentario);
+        envelope.implicitTypes = true;
+
+        HttpTransportSE http = new HttpTransportSE(URL);
+        try {
+            http.call("urn" + EXCLUIRCOMENTARIO, envelope);
+            //Pegar Resposta do WebServices, ele retorna true or false
+            SoapPrimitive resposta = (SoapPrimitive) envelope.getResponse();
+            return Boolean.parseBoolean(resposta.toString());
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+
     }
 }
