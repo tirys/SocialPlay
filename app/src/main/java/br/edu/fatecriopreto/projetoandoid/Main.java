@@ -1,8 +1,13 @@
 package br.edu.fatecriopreto.projetoandoid;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.media.Image;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -14,6 +19,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Base64;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -62,6 +68,7 @@ public class Main extends ActionBarActivity implements OnItemSelectedListener {
     int idUser;
     String nomeUser;
     String emailUser;
+    String fotoUser;
 
     //INICIA O ADAPTER
     SectionsPagerAdapter mSectionsPagerAdapter;
@@ -121,6 +128,7 @@ public class Main extends ActionBarActivity implements OnItemSelectedListener {
         idUser = param.getInt("idUsuario");
         nomeUser = param.getString("nomeUsuario");
         emailUser = param.getString("emailUsuario");
+        fotoUser = param.getString("fotoUsuario");
 
         //metodo para chamar nova postagem
         imgNewPost.setOnClickListener(new View.OnClickListener() {
@@ -176,7 +184,11 @@ public class Main extends ActionBarActivity implements OnItemSelectedListener {
         // NAVIGATIOn DRAWER
         // END - RIGHT
 
-
+        //Converte foto usuario
+        byte[] btUser = Base64.decode(fotoUser, Base64.DEFAULT);
+        //String bt = listAux.get(position).getImgByte();
+        Bitmap userFoto = BitmapFactory.decodeByteArray(btUser, 0, btUser.length);
+        Drawable d = new BitmapDrawable(getResources(), userFoto);
 
         headerNavigationLeft = new AccountHeader()
                 .withActivity(this)
@@ -185,7 +197,7 @@ public class Main extends ActionBarActivity implements OnItemSelectedListener {
                 .withThreeSmallProfileImages(true)
                 .withHeaderBackground(R.drawable.ffxv)
                 .addProfiles(
-                        new ProfileDrawerItem().withName(nomeUser).withEmail(emailUser).withIcon(getResources().getDrawable(R.drawable.jessica))
+                        new ProfileDrawerItem().withName(nomeUser).withEmail(emailUser).withIcon(d)
                         //new ProfileDrawerItem().withName("Person Two").withEmail("person2@gmail.com").withIcon(getResources().getDrawable(R.drawable.person_2)),
 
                 )

@@ -41,8 +41,8 @@ public class UsuarioDAO {
             user.setIdUsuario(Integer.parseInt(resposta.getProperty("idUsuario").toString()));
             user.setNome(resposta.getProperty("nome").toString());
             user.setEmail(resposta.getProperty("email").toString());
-            //user.setImagem(resposta.getProperty("imagem").toString());
-
+            String foto = resposta.getProperty("imagem").toString();
+            user.setImagem(foto);
         } catch (Exception e) {
             e.printStackTrace();
             return null;

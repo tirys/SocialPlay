@@ -30,6 +30,7 @@ public class Login extends ActionBarActivity {
     int id;
     String nome;
     String email;
+    String foto;
     DBadapter  dbAdapter;
     //String URL = "http://192.168.20.205:8080/WSSocialPlay/entity.usuarios";
     Usuario userexistente;
@@ -81,6 +82,7 @@ public class Login extends ActionBarActivity {
                 id = userLogin.getIdUsuario();
                 nome = userLogin.getNome();
                 email = userLogin.getEmail();
+                foto = userLogin.getImagem();
 
             }
             if (userLogin != null) {
@@ -89,6 +91,7 @@ public class Login extends ActionBarActivity {
                 param.putInt("idUsuario", id);
                 param.putString("nomeUsuario", nome);
                 param.putString("emailUsuario", email);
+                param.putString("fotoUsuario", foto);
                 intent.putExtras(param);
                 startActivity(intent);
             }
@@ -117,7 +120,7 @@ public class Login extends ActionBarActivity {
                         id = userLogin.getIdUsuario();
                         nome = userLogin.getNome();
                         email = userLogin.getEmail();
-
+                        foto = userLogin.getImagem();
                     }
                     if (userLogin != null) {
 
@@ -130,6 +133,7 @@ public class Login extends ActionBarActivity {
                         param.putInt("idUsuario", id);
                         param.putString("nomeUsuario", nome);
                         param.putString("emailUsuario", email);
+                        param.putString("fotoUsuario", foto);
                         intent.putExtras(param);
                         startActivity(intent);
                     }else{
