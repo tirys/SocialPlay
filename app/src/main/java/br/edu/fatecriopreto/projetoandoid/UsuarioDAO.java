@@ -119,6 +119,9 @@ public class UsuarioDAO {
         usr.addProperty("nome", usuario.getNome());
         usr.addProperty("local", usuario.getLocal());
         usr.addProperty("jogo", usuario.getJogo());
+        if(usuario.getImagem() != null){
+            usr.addProperty("imagem", usuario.getImagem());
+        }
 
         atualizarUsuario.addSoapObject(usr);
 

@@ -57,15 +57,15 @@ public class Login extends ActionBarActivity {
         ConnectivityManager connectivity = (ConnectivityManager)
         context.getSystemService(Context.CONNECTIVITY_SERVICE);
 
-        if (connectivity != null) {
-            NetworkInfo netInfo = connectivity.getActiveNetworkInfo();
+        //if (connectivity != null) {
+            //NetworkInfo netInfo = connectivity.getActiveNetworkInfo();
 
             // Se não existe nenhum tipo de conexão retorna false
-            if (netInfo != null) {
-                Toast toast = Toast.makeText(Login.this,"Post excluído com sucesso!",Toast.LENGTH_LONG);
-                toast.show();
-            }
-        }
+            //if (netInfo != null) {
+                //Toast toast = Toast.makeText(Login.this,"Post excluído com sucesso!",Toast.LENGTH_LONG);
+                //toast.show();
+           // }
+        //}
 
         ImgLogo = (ImageView) findViewById(R.id.ImgLogo);
 
