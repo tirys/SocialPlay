@@ -1,5 +1,6 @@
 package br.edu.fatecriopreto.projetoandoid;
 
+import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -12,6 +13,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.CompoundButton;
@@ -19,6 +21,7 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -58,11 +61,14 @@ public class DetalhesForum extends ActionBarActivity {
     EditText edtComment;
     int iduser;
     ImageView enviarComentario;
-
+    String nomeUser;
+    String emailUser;
+    String fotoUser;
     int idpost;
+    int idautor;
     ListView lstComentarios;
     ImageView imgback;
-
+    ImageView imgNewPostDet;
     //alert
     private AlertDialog alerta;
 
@@ -100,6 +106,7 @@ public class DetalhesForum extends ActionBarActivity {
         lstComentarios = (ListView) findViewById(R.id.lstComentarios);
         enviarComentario = (ImageView) findViewById(R.id.enviarComentario);
         edtComment = (EditText) findViewById(R.id.edtComment);
+        imgNewPostDet = (ImageView) findViewById(R.id.imgNewPostDet);
 
         final Intent intent = getIntent();
         Bundle param = intent.getExtras();
@@ -108,15 +115,52 @@ public class DetalhesForum extends ActionBarActivity {
         titForum = param.getString("titPost");
         descricao = param.getString("txtDesc");
         iduser = param.getInt("iduser");
+        idautor = param.getInt("codUsuario");
+        nomeUser = param.getString("nomeUsuario");
+        emailUser = param.getString("emailUsuario");
+        fotoUser = param.getString("fotoUsuario");
+
 
         txtTitDet.setText(titForum);
         txtDesc.setText(descricao);
 
+        if(iduser==idautor){
+            imgNewPostDet.setImageResource(R.drawable.edit);
+
+            //ajustando as margens
+            ViewGroup.MarginLayoutParams p = (ViewGroup.MarginLayoutParams) imgNewPostDet.getLayoutParams();
+            p.setMargins(0, 0,40, 0);
+            imgNewPostDet.requestLayout();
+        }
 
         ComentariosDAO listacom = new ComentariosDAO();
 
         final List<Comentarios> lstcomentarios = listacom.listarComentariosporid(idpost);
 
+
+        //Se ele for o dono, vai para a pagina de edição/exclusão senão, novo post
+        imgNewPostDet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(iduser==idautor) {
+                    Intent editar = new Intent(DetalhesForum.this,EditarForum.class);
+                    Bundle param = new Bundle();
+                        param.putInt("idPost", idpost);
+                        param.putString("titPost", titForum);
+                        param.putString("descricao", descricao);
+                        param.putInt("iduser", iduser);
+                        param.putInt("idautor", idautor);
+                        param.putString("nomeUsuario",nomeUser);
+                        param.putString("emailUsuario",emailUser);
+                        param.putString("fotoUsuario",fotoUser);
+
+
+                    editar.putExtras(param);
+
+                    startActivity(editar);
+                }
+            }
+        });
 
 
      //   List<Comentarios> lstcomentarios=listacom.listarComentariosporid(idpost);
@@ -288,10 +332,18 @@ public class DetalhesForum extends ActionBarActivity {
         imgback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //  Intent voltar = new Intent(Perfil.this,Main.class);
-                //   startActivityForResult(voltar,1);
+                Intent voltar = new Intent(DetalhesForum.this,Main.class);
+                Bundle param = new Bundle();
+                param.putInt("idUsuario",iduser);
+                param.putString("nomeUsuario",nomeUser);
+                param.putString("emailUsuario",emailUser);
+                param.putString("fotoUsuario",fotoUser);
+                voltar.putExtras(param);
+
+
+                 startActivity(voltar);
                 // overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
-                DetalhesForum.this.finish();
+
 
             }
         });

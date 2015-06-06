@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:id="@+id/relPerfil"
+    android:background="#ffffff">
+
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:background="#ff00cccc"
+        android:id="@+id/toolbarDet"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:id="@+id/imgVoltarEditarForum"
+        android:layout_marginLeft="10dp"
+        android:layout_alignBottom="@+id/toolbarDet"
+        android:layout_alignParentStart="true"
+        android:src="@drawable/backs" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginRight="10dp"
+        android:id="@+id/imgEditarForum2"
+        android:layout_alignBottom="@+id/toolbarDet"
+        android:layout_alignParentEnd="true"
+        android:src="@drawable/yes" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Título"
+        android:textSize="20sp"
+        android:textColor="#3F3E3E"
+        android:layout_marginLeft="14dp"
+        android:layout_marginRight="14dp"
+        android:id="@+id/textView13"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="80dp" />
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/editarTituloPost"
+        android:layout_margin="14dp"
+        android:layout_below="@+id/textView13"
+        android:textColor="#9f9797"
+        android:layout_alignParentStart="true" />
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Conteúdo"
+        android:textSize="20sp"
+        android:textColor="#3F3E3E"
+        android:layout_marginLeft="14dp"
+        android:layout_marginRight="14dp"
+        android:id="@+id/textView15"
+        android:layout_below="@+id/editarTituloPost"
+        />
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="230dp"
+        android:id="@+id/editarConteudoPost"
+        android:textColor="#9f9797"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textView15"
+        android:layout_marginLeft="14dp"
+        android:layout_marginRight="14dp"
+        android:layout_marginTop="14dp" />
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Excluir Post"
+        android:id="@+id/btnExcluirPost"
+        android:textColor="#ffffff"
+        android:textStyle="bold"
+        android:background="#e31616"
+        android:layout_marginLeft="14dp"
+        android:layout_marginRight="14dp"
+        android:layout_below="@+id/editarConteudoPost"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="33dp" />
+
+</RelativeLayout>

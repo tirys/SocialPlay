@@ -3,6 +3,8 @@ package br.edu.fatecriopreto.projetoandoid;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.StrictMode;
@@ -51,6 +53,20 @@ public class Login extends ActionBarActivity {
         final CharSequence textEmpty = "Usuário ou Senha Vazios!";
         final int duration = Toast.LENGTH_SHORT;
 
+
+        ConnectivityManager connectivity = (ConnectivityManager)
+        context.getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        if (connectivity != null) {
+            NetworkInfo netInfo = connectivity.getActiveNetworkInfo();
+
+            // Se não existe nenhum tipo de conexão retorna false
+            if (netInfo != null) {
+                Toast toast = Toast.makeText(Login.this,"Post excluído com sucesso!",Toast.LENGTH_LONG);
+                toast.show();
+            }
+        }
+
         ImgLogo = (ImageView) findViewById(R.id.ImgLogo);
 
         btnEntrar = (Button) findViewById(R.id.btnEntrar);
@@ -70,6 +86,8 @@ public class Login extends ActionBarActivity {
         userexistente = dbAdapter.getUsuario(1);
         dbAdapter.close();
         UsuarioDAO userLog = new UsuarioDAO();
+
+
 
 
         if (!userexistente.getSenha().isEmpty() && !userexistente.getUsuario().isEmpty()) {

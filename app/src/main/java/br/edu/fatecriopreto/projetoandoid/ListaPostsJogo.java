@@ -55,6 +55,7 @@ public class ListaPostsJogo extends ActionBarActivity {
                 param.putInt("idPost", post.getIdTopico());
                 param.putString("titPost", post.getNome());
                 param.putString("txtDesc",post.getDescricao());
+                param.putInt("codUsuario",post.getCodUsuario());
                 param.putInt("iduser",idUser);
                 intent.putExtras(param);
 

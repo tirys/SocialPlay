@@ -59,7 +59,7 @@ public class TopicosDAO {
         SoapObject atualizarUsuario = new SoapObject(NAMESPACE, EDITARTOPICO);
         SoapObject usr = new SoapObject(NAMESPACE, "topico");
         usr.addProperty("idTopico", id);
-        usr.addProperty("titulo",titulo);
+        usr.addProperty("nome",titulo);
         usr.addProperty("descricao", descricao);
 
         atualizarUsuario.addSoapObject(usr);
@@ -81,15 +81,11 @@ public class TopicosDAO {
     }
 
     public boolean excluirTopico(int id){
-        SoapObject excluirtopico = new SoapObject(NAMESPACE, EXCLUIRTOPICO);
-        SoapObject usr = new SoapObject(NAMESPACE, "topico");
-        usr.addProperty("id",id);
-
-
-        excluirtopico.addSoapObject(usr);
+        SoapObject excluirTopico = new SoapObject(NAMESPACE, EXCLUIRTOPICO);
+        excluirTopico.addProperty("id", id);
 
         SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
-        envelope.setOutputSoapObject(excluirtopico);
+        envelope.setOutputSoapObject(excluirTopico);
         envelope.implicitTypes = true;
 
         HttpTransportSE http = new HttpTransportSE(URL);
@@ -123,6 +119,7 @@ public class TopicosDAO {
                 topic.setIdTopico(Integer.parseInt(soapObject.getProperty("idTopico").toString()));
                 topic.setNome(soapObject.getProperty("nome").toString());
                 topic.setDescricao(soapObject.getPropertyAsString("descricao".toString()));
+                topic.setCodUsuario(Integer.parseInt(soapObject.getProperty("codUsuario").toString()));
 
                 lista.add(topic);
             }
@@ -156,6 +153,7 @@ public class TopicosDAO {
                 topic.setIdTopico(Integer.parseInt(so.getProperty("idTopico").toString()));
                 topic.setNome(so.getProperty("nome").toString());
                 topic.setDescricao(so.getPropertyAsString("descricao".toString()));
+                topic.setCodUsuario(Integer.parseInt(so.getProperty("codUsuario").toString()));
 
 
 
