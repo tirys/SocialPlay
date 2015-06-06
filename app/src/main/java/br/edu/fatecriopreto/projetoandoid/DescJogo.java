@@ -17,8 +17,11 @@ import android.widget.TextView;
 public class DescJogo extends ActionBarActivity {
 
     Button btnLstPostJogo;
+    Button btnPostJogoo;
     int JogoId;
     int idUser;
+    String nomeUser;
+    String emailUser;
     String JogoNome;
     String JogoGenero;
     String JogoImagem;
@@ -36,11 +39,13 @@ public class DescJogo extends ActionBarActivity {
     ImageView imgFoto;
     ImageView imgbackDescjogo;
 
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.desc_jogo);
 
         btnLstPostJogo = (Button) findViewById(R.id.btnLstPostJogo);
+        btnPostJogoo = (Button) findViewById(R.id.btnPostJogoo);
         txtNome = (TextView) findViewById(R.id.tvNomeJogo);
         txtDescricao = (TextView) findViewById(R.id.tvDescJogo);
         txtPlataforma = (TextView) findViewById(R.id.tvPlataformaJogo);
@@ -64,6 +69,8 @@ public class DescJogo extends ActionBarActivity {
         JogoAno = Integer.toString(param.getInt("JogoAno"));
         JogoDescricao = param.getString("JogoDescricao");
         idUser = param.getInt("idUser");
+        nomeUser = param.getString("nomeUsuario");
+        emailUser = param.getString("emailUsuario");
 
         //ImagemByte = param.getString("JogoFoto");
         byte[] bt = Base64.decode(JogoImagem, Base64.DEFAULT);
@@ -88,6 +95,21 @@ public class DescJogo extends ActionBarActivity {
                 param.putInt("idUser", idUser);
                 intent.putExtras(param);
                 startActivity(intent);
+            }
+        });
+
+        btnPostJogoo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent2 = new Intent(DescJogo.this, NovoPost.class);
+                Bundle param = new Bundle();
+                param.putInt("idUsuario", idUser);
+                param.putString("nomeUsuario", nomeUser);
+                param.putString("emailUsuario", emailUser);
+                param.putString("nomeJogo",JogoNome);
+                param.putInt("idJogo",JogoId);
+                intent2.putExtras(param);
+                startActivity(intent2);
             }
         });
 

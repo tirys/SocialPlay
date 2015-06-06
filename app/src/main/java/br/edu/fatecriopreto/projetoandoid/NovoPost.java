@@ -34,8 +34,10 @@ public class NovoPost extends ActionBarActivity {
     public AutoCompleteTextView actvPostagem;
 
     int idUser;
+    String jogoid;
     String nomeUser;
     String emailUser;
+    String nomejogo;
 
     Button btnCadastrar;
     Button btnCancelar;
@@ -71,6 +73,21 @@ public class NovoPost extends ActionBarActivity {
         idUser = param.getInt("idUsuario");
         nomeUser = param.getString("nomeUsuario");
         emailUser = param.getString("emailUsuario");
+
+
+        if(!param.getString("nomeJogo").isEmpty() && param.getInt("idJogo")!=0){
+            nomejogo = param.getString("nomeJogo");
+            jogoid = String.valueOf(param.getInt("idJogo"));
+
+            edtJogo.setText(nomejogo);
+            edtIdJogo.setText(jogoid);
+        }
+        else
+        {
+            nomejogo="";
+            jogoid="";
+        }
+
 
         //cadastrar post
         btnCadastrar.setOnClickListener(new View.OnClickListener() {
