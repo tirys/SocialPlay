@@ -1,5 +1,7 @@
 package br.edu.fatecriopreto.projetoandoid;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
@@ -10,10 +12,15 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import br.edu.fatecriopreto.projetoandoid.adapter.LstComentariosAdapter;
+import br.edu.fatecriopreto.projetoandoid.webservice.ComentariosDAO;
+
 /**
  * Created by Jessica on 06/06/2015.
  */
 public class EditarForum extends ActionBarActivity {
+
+    private AlertDialog alerta;
 
     Button btnExcluirPost;
 
@@ -111,32 +118,51 @@ public class EditarForum extends ActionBarActivity {
         btnExcluirPost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                TopicosDAO excluirtop = new TopicosDAO();
-
-                boolean resultado2 = excluirtop.excluirTopico(idpost);
-                if (resultado2)
-                {
-                    Toast toast = Toast.makeText(EditarForum.this,"Post excluído com sucesso!",Toast.LENGTH_LONG);
-                    toast.show();
-
-                    Intent voltar = new Intent(EditarForum.this,Main.class);
-                    Bundle param = new Bundle();
-                    param.putInt("idUsuario",iduser);
-                    param.putString("nomeUsuario",nomeUser);
-                    param.putString("emailUsuario",emailUser);
-                    param.putString("fotoUsuario",fotoUser);
-                    voltar.putExtras(param);
 
 
-                    startActivity(voltar);
-                }
-                else
-                {
-                    Toast toast = Toast.makeText(EditarForum.this,"Erro ao excluir post",Toast.LENGTH_LONG);
-                    toast.show();
-                }
+                AlertDialog.Builder builder = new AlertDialog.Builder(EditarForum.this);
+
+                builder.setTitle("");
+                builder.setMessage("Tem certeza de que deseja excluir este Post?");
+
+                builder.setPositiveButton("EXCLUIR", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface arg0, int arg1) {
+                        TopicosDAO excluirtop = new TopicosDAO();
+                        boolean resultado2 = excluirtop.excluirTopico(idpost);
+                        if (resultado2) {
+                            Toast toast = Toast.makeText(EditarForum.this,"Post excluído com sucesso!",Toast.LENGTH_LONG);
+                            toast.show();
+
+                            Intent voltar = new Intent(EditarForum.this,Main.class);
+                            Bundle param = new Bundle();
+                            param.putInt("idUsuario",iduser);
+                            param.putString("nomeUsuario",nomeUser);
+                            param.putString("emailUsuario",emailUser);
+                            param.putString("fotoUsuario",fotoUser);
+                            voltar.putExtras(param);
+
+
+                            startActivity(voltar);
+                        } else {
+                            Toast toast = Toast.makeText(EditarForum.this,"Erro ao excluir post",Toast.LENGTH_LONG);
+                            toast.show();
+                        }
+                    }
+                });
+
+                builder.setNegativeButton("CANCELAR", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface arg0, int arg1) {
+                        //Toast.makeText(DetalhesForum.this, "negativo=" + arg1, Toast.LENGTH_SHORT).show();
+                    }
+                });
+                alerta = builder.create();
+                alerta.show();
             }
         });
+
+
+
+
 
         //finalizando activity
         imgVoltarEditarForum.setOnClickListener(new View.OnClickListener() {
