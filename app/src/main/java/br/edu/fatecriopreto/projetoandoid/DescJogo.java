@@ -30,6 +30,7 @@ public class DescJogo extends ActionBarActivity {
     String JogoProdutora;
     String JogoAno;
     String JogoDescricao;
+    String fotoUser;
     TextView txtNome;
     TextView txtDescricao;
     TextView txtPlataforma;
@@ -71,6 +72,7 @@ public class DescJogo extends ActionBarActivity {
         idUser = param.getInt("idUser");
         nomeUser = param.getString("nomeUsuario");
         emailUser = param.getString("emailUsuario");
+        fotoUser = param.getString("fotoUsuario");
 
         //ImagemByte = param.getString("JogoFoto");
         byte[] bt = Base64.decode(JogoImagem, Base64.DEFAULT);
@@ -108,6 +110,8 @@ public class DescJogo extends ActionBarActivity {
                 param.putString("emailUsuario", emailUser);
                 param.putString("nomeJogo",JogoNome);
                 param.putInt("idJogo",JogoId);
+                param.putString("fotoUsuario",fotoUser);
+
                 intent2.putExtras(param);
                 startActivity(intent2);
             }

@@ -142,6 +142,8 @@ public class Main extends ActionBarActivity implements OnItemSelectedListener {
                 param.putString("emailUsuario", emailUser);
                 param.putString("nomeJogo", "");
                 param.putInt("idJogo",0);
+                param.putString("fotoUsuario",fotoUser);
+
                 intentpost.putExtras(param);
 
                 startActivity(intentpost);
@@ -248,6 +250,7 @@ public class Main extends ActionBarActivity implements OnItemSelectedListener {
                             Intent menIntent3 = new Intent(Main.this, Perfil.class);
                             Bundle param = new Bundle();
 
+                            param.putString("fotoUsuario",fotoUser);
                             param.putInt("idUsuario", idUser);
                             menIntent3.putExtras(param);
 
@@ -335,6 +338,9 @@ public class Main extends ActionBarActivity implements OnItemSelectedListener {
         param2.putInt("idUser",idUser);
         param2.putString("nomeUsuario",nomeUser);
         param2.putString("emailUsuario",emailUser);
+        param2.putString("fotoUsuario",fotoUser);
+
+
         intentdesc.putExtras(param2);
 
         startActivity(intentdesc);

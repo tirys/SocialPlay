@@ -2,10 +2,13 @@ package br.edu.fatecriopreto.projetoandoid;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Base64;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -18,6 +21,7 @@ public class PerfilEditar extends ActionBarActivity {
 
     ImageView back;
     ImageView salvar;
+    ImageView imgpessoa;
     EditText txtnome;
     EditText txtemail;
     EditText txtlocal;
@@ -31,11 +35,13 @@ public class PerfilEditar extends ActionBarActivity {
     String email;
     String local;
     String jogo;
+    String fotoUser;
 
     //informações novas
     String novonome;
     String novolocal;
     String novojogo;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.perfil_edt);
@@ -48,6 +54,7 @@ public class PerfilEditar extends ActionBarActivity {
         final int duration = Toast.LENGTH_LONG;
 
         back = (ImageView)findViewById(R.id.imgVoltarEditar);
+        imgpessoa = (ImageView)findViewById(R.id.imgpc2);
         txtnome = (EditText)findViewById(R.id.edtNomeEditar);
         txtemail = (EditText)findViewById(R.id.edtEmailEditar);
         txtlocal = (EditText)findViewById(R.id.edtLocalEditar);
@@ -63,6 +70,11 @@ public class PerfilEditar extends ActionBarActivity {
         email = param.getString("email");
         local = param.getString("local");
         jogo = param.getString("jogo");
+        fotoUser = param.getString("fotoUsuario");
+
+        byte[] bt = Base64.decode(fotoUser, Base64.DEFAULT);
+        Bitmap fotousuario = BitmapFactory.decodeByteArray(bt, 0, bt.length);
+        imgpessoa.setImageBitmap(fotousuario);
 
 
         txtnome.setText(nome);
@@ -108,6 +120,8 @@ public class PerfilEditar extends ActionBarActivity {
                        Intent intent = new Intent(PerfilEditar.this, Perfil.class);
                        Bundle param = new Bundle();
                        param.putInt("idUsuario", id);
+                        param.putString("fotoUsuario",fotoUser);
+
                        intent.putExtras(param);
                        startActivityForResult(intent, 1);
 

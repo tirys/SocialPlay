@@ -38,6 +38,7 @@ public class NovoPost extends ActionBarActivity {
     String nomeUser;
     String emailUser;
     String nomejogo;
+    String fotoUser;
 
     Button btnCadastrar;
     Button btnCancelar;
@@ -73,7 +74,7 @@ public class NovoPost extends ActionBarActivity {
         idUser = param.getInt("idUsuario");
         nomeUser = param.getString("nomeUsuario");
         emailUser = param.getString("emailUsuario");
-
+        fotoUser = param.getString("fotoUsuario");
 
         if(!param.getString("nomeJogo").isEmpty() && param.getInt("idJogo")!=0){
             nomejogo = param.getString("nomeJogo");
@@ -132,6 +133,7 @@ public class NovoPost extends ActionBarActivity {
                             param.putInt("idUsuario", idUser);
                             param.putString("nomeUsuario", nomeUser);
                             param.putString("emailUsuario", emailUser);
+                            param.putString("fotoUsuario", fotoUser);
                             intent.putExtras(param);
 
                             startActivityForResult(intent,1);

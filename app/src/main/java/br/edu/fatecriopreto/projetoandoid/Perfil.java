@@ -3,12 +3,15 @@ package br.edu.fatecriopreto.projetoandoid;
 import android.app.Activity;
 import android.app.Notification;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.media.Image;
 import android.os.Build;
 import android.os.StrictMode;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -21,6 +24,7 @@ public class Perfil extends ActionBarActivity {
 
     ImageView imgback;
     ImageView imgeditar;
+    ImageView imgpessoa;
     Integer idUser;
 
     //informações do usuario
@@ -35,6 +39,7 @@ public class Perfil extends ActionBarActivity {
     Usuario userPerfil = null;
     String local;
     String jogo;
+    String fotoUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +52,7 @@ public class Perfil extends ActionBarActivity {
         txtEmailUser = (TextView)findViewById(R.id.txtEmailUser);
         txtLocalUser = (TextView)findViewById(R.id.txtLocalUser);
         txtJogoPrefer = (TextView)findViewById(R.id.txtJogoPrefer);
+        imgpessoa = (ImageView)findViewById(R.id.imgpc);
 
 
         //coletando id do usuario para fazer busca de suas informações
@@ -54,6 +60,11 @@ public class Perfil extends ActionBarActivity {
         Bundle param = intent.getExtras();
 
         idUser = param.getInt("idUsuario");
+        fotoUser = param.getString("fotoUsuario");
+
+        byte[] bt = Base64.decode(fotoUser, Base64.DEFAULT);
+        Bitmap fotousuario = BitmapFactory.decodeByteArray(bt, 0, bt.length);
+        imgpessoa.setImageBitmap(fotousuario);
 
 
         //pegando as informações do usuario
@@ -99,6 +110,7 @@ public class Perfil extends ActionBarActivity {
                 param.putString("email", email);
                 param.putString("local", local);
                 param.putString("jogo", jogo);
+                param.putString("fotoUsuario",fotoUser);
                 intent2.putExtras(param);
 
                 startActivity(intent2);
