@@ -35,7 +35,7 @@
         android:background="@drawable/retangulo_corners"
         android:textColor="#96141414"
         android:id="@+id/edtBuscarDet"
-        android:drawableRight="@drawable/imgbuscarr"
+        android:drawableRight="@drawable/imgbuscar"
         android:drawablePadding="5dp"
         android:singleLine="true"
 
@@ -49,7 +49,7 @@
         android:paddingTop="10dp"
         android:paddingBottom="7dp"
         android:id="@+id/imgNewPostDet"
-        android:src="@drawable/imgnovoo"
+        android:src="@drawable/imgnovo"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
 

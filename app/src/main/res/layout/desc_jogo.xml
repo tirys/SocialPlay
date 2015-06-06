@@ -43,7 +43,7 @@
         android:paddingTop="10dp"
         android:paddingBottom="7dp"
         android:id="@+id/imgNewPost"
-        android:src="@drawable/imgnovoo"
+        android:src="@drawable/imgnovo"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_above="@+id/imgFotoJogo" />
