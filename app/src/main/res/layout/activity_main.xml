@@ -41,7 +41,7 @@
             android:background="@drawable/retangulo_corners"
             android:textColor="#96141414"
             android:id="@+id/edtBuscar2"
-            android:drawableRight="@drawable/imgbuscar"
+            android:drawableRight="@drawable/imgbuscarr"
             android:drawablePadding="5dp"
             android:singleLine="true"
             /-->
@@ -68,7 +68,7 @@
             android:paddingTop="10dp"
             android:paddingBottom="7dp"
             android:id="@+id/imgNewPost"
-            android:src="@drawable/imgnovo"
+            android:src="@drawable/imgnovoo"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_above="@+id/txtUltimos" />
