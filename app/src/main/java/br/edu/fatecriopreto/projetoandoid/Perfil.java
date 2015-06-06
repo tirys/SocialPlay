@@ -115,7 +115,16 @@ public class Perfil extends ActionBarActivity {
         imgback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Perfil.this.finish();
+                Intent voltar = new Intent(Perfil.this,Main.class);
+                Bundle param = new Bundle();
+                param.putInt("idUsuario",id);
+                param.putString("nomeUsuario",nome);
+                param.putString("emailUsuario",email);
+                param.putString("fotoUsuario",fotoUser);
+                voltar.putExtras(param);
+
+
+                startActivity(voltar);
 
             }
         });
