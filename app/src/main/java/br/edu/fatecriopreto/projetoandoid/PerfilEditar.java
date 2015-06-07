@@ -218,8 +218,27 @@ public class PerfilEditar extends ActionBarActivity {
             BitmapFactory.Options options = new BitmapFactory.Options();
             options.inPreferredConfig = Bitmap.Config.ARGB_8888;
             Bitmap bitmap = BitmapFactory.decodeFile(imagePath, options);
-            Bitmap resized = Bitmap.createScaledBitmap(bitmap, 410, 227, true);
-            imgpessoa.setImageBitmap(resized);
+            Bitmap resized;
+
+            if (bitmap.getWidth() >= bitmap.getHeight()){
+                resized = Bitmap.createBitmap(
+                        bitmap,
+                        bitmap.getWidth()/2 - bitmap.getHeight()/2,
+                        0,
+                        bitmap.getHeight(),
+                        bitmap.getHeight()
+                );
+            }else{
+                resized = Bitmap.createBitmap(
+                        bitmap,
+                        0,
+                        bitmap.getHeight()/2 - bitmap.getWidth()/2,
+                        bitmap.getWidth(),
+                        bitmap.getWidth()
+                );
+            }
+            Bitmap resized2 = Bitmap.createScaledBitmap(resized, 227, 227, true);
+            imgpessoa.setImageBitmap(resized2);
 
             controle = 1;
             cursor.close();
