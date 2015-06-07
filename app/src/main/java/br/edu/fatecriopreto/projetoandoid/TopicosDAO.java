@@ -24,6 +24,7 @@ public class TopicosDAO {
     private static final String EDITARTOPICO = "editarTopico";
     private static final String EXCLUIRTOPICO = "excluirTopico";
     private static final String LISTARTOPICOSPORID = "listarPostsporId";
+    private static final String BUSCARRELEVANTES = "buscarTopicosrelevantes";
 
     public boolean inserirTopicos(Topicos topico){
 
@@ -129,6 +130,36 @@ public class TopicosDAO {
         }
         return lista;
     }
+
+    public List<Topicos>  buscarTopicosrelevantes(){
+        List<Topicos> lista = new ArrayList<>();
+        SoapObject buscarTopicos = new SoapObject(NAMESPACE, BUSCARRELEVANTES);
+
+        SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
+        envelope.setOutputSoapObject(buscarTopicos);
+        envelope.implicitTypes = true;
+
+        HttpTransportSE http = new HttpTransportSE(URL);
+        try {
+            http.call("urn" + BUSCARRELEVANTES, envelope);
+
+            Vector<SoapObject> resposta = (Vector<SoapObject>) envelope.getResponse();
+            for (SoapObject soapObject : resposta){
+                Topicos topic = new Topicos();
+                topic.setIdTopico(Integer.parseInt(soapObject.getProperty("idTopico").toString()));
+                topic.setNome(soapObject.getProperty("nome").toString());
+                topic.setDescricao(soapObject.getPropertyAsString("descricao".toString()));
+                topic.setCodUsuario(Integer.parseInt(soapObject.getProperty("codUsuario").toString()));
+
+                lista.add(topic);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+        return lista;
+    }
+
     public List<Topicos> listarPostsporId(int id){
         List<Topicos> lista = new ArrayList<>();
         SoapObject listarPost= new SoapObject(NAMESPACE, LISTARTOPICOSPORID);
