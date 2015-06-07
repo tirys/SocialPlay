@@ -39,6 +39,7 @@ public class DescJogo extends ActionBarActivity {
     TextView txtGenero;
     ImageView imgFoto;
     ImageView imgbackDescjogo;
+    ImageView imgnovopostdescjogo;
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +57,8 @@ public class DescJogo extends ActionBarActivity {
         //txtGenero = (TextView) findViewById(R.id.);
         imgFoto = (ImageView) findViewById(R.id.imgFotoJogo);
         imgbackDescjogo = (ImageView) findViewById(R.id.imgbackDescjogo);
+        imgnovopostdescjogo = (ImageView) findViewById(R.id.imgnovopostdescjogo);
+
 
         final Intent intent = getIntent();
         Bundle param = intent.getExtras();
@@ -114,6 +117,27 @@ public class DescJogo extends ActionBarActivity {
 
                 intent2.putExtras(param);
                 startActivity(intent2);
+            }
+        });
+
+        //novo post
+
+        imgnovopostdescjogo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentpost = new Intent(DescJogo.this,NovoPost.class);
+
+                Bundle param = new Bundle();
+                param.putInt("idUsuario", idUser);
+                param.putString("nomeUsuario", nomeUser);
+                param.putString("emailUsuario", emailUser);
+                param.putString("nomeJogo", "");
+                param.putInt("idJogo",0);
+                param.putString("fotoUsuario",fotoUser);
+
+                intentpost.putExtras(param);
+
+                startActivity(intentpost);
             }
         });
 
