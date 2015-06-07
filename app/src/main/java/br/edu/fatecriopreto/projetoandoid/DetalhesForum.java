@@ -129,8 +129,24 @@ public class DetalhesForum extends ActionBarActivity {
 
             //ajustando as margens
             ViewGroup.MarginLayoutParams p = (ViewGroup.MarginLayoutParams) imgNewPostDet.getLayoutParams();
-            p.setMargins(0, 0,40, 0);
+            p.setMargins(0, 0,-40, 0);
             imgNewPostDet.requestLayout();
+        }
+        else
+        {
+            TopicosDAO pessoasegue = new TopicosDAO();
+           int resultado = pessoasegue.pessoaSegue(iduser,idpost);
+
+            if (resultado==1){
+                imgNewPostDet.setImageResource(R.drawable.imgseguindo);
+
+            }
+            else
+            {
+                imgNewPostDet.setImageResource(R.drawable.imgseguir);
+
+
+            }
         }
 
         ComentariosDAO listacom = new ComentariosDAO();

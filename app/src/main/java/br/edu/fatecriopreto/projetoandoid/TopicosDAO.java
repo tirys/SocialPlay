@@ -25,6 +25,7 @@ public class TopicosDAO {
     private static final String EXCLUIRTOPICO = "excluirTopico";
     private static final String LISTARTOPICOSPORID = "listarPostsporId";
     private static final String BUSCARRELEVANTES = "buscarTopicosrelevantes";
+    private static final String PESSOASEGUE= "pessoaSegue";
 
     public boolean inserirTopicos(Topicos topico){
 
@@ -78,6 +79,29 @@ public class TopicosDAO {
         } catch (Exception e) {
             e.printStackTrace();
             return false;
+        }
+    }
+
+    public int pessoaSegue(int idPessoa,int idTopico){
+
+        SoapObject pessoaSegue = new SoapObject(NAMESPACE, PESSOASEGUE);
+        pessoaSegue.addProperty("idPessoa", idPessoa);
+        pessoaSegue.addProperty("idTopico", idTopico);
+
+        SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
+        envelope.setOutputSoapObject(pessoaSegue);
+        envelope.implicitTypes = true;
+
+        HttpTransportSE http = new HttpTransportSE(URL);
+        try {
+            http.call("urn" + PESSOASEGUE, envelope);
+
+            //Pegar Resposta do WebServices, ele retorna true or false
+            SoapPrimitive resposta = (SoapPrimitive) envelope.getResponse();
+            return Integer.parseInt(resposta.toString());
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
         }
     }
 

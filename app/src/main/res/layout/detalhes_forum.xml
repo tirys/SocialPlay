@@ -43,13 +43,13 @@
         />
 
     <ImageView
-        android:layout_width="wrap_content"
+        android:layout_width="80dp"
         android:layout_height="52dp"
-
-        android:paddingTop="10dp"
+        android:layout_marginRight="5dp"
+        android:paddingTop="3dp"
         android:paddingBottom="7dp"
         android:id="@+id/imgNewPostDet"
-        android:src="@drawable/imgnovo"
+        android:src="@drawable/imgseguindo"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
 
