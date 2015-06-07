@@ -98,6 +98,9 @@ public class DescJogo extends ActionBarActivity {
                 Bundle param = new Bundle();
                 param.putInt("idJogo", JogoId);
                 param.putInt("idUser", idUser);
+                param.putString("nomeUsuario", nomeUser);
+                param.putString("emailUsuario", emailUser);
+                param.putString("fotoUsuario",fotoUser);
                 intent.putExtras(param);
                 startActivity(intent);
             }

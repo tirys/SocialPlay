@@ -24,6 +24,10 @@ public class ListaPostsJogo extends ActionBarActivity {
     int idUser;
     ImageView imgbackListagem;
 
+    String nomeUser;
+    String emailUser;
+    String fotoUser;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.listando_posts_jogo);
@@ -33,6 +37,10 @@ public class ListaPostsJogo extends ActionBarActivity {
 
         JogoId = param.getInt("idJogo");
         idUser = param.getInt("idUser");
+        nomeUser = param.getString("nomeUsuario");
+        emailUser = param.getString("emailUsuario");
+        fotoUser = param.getString("fotoUsuario");
+
 
         listapostagem = (ListView)findViewById(R.id.lstPostJogo);
         imgbackListagem = (ImageView)findViewById(R.id.imgbackListagem);
@@ -57,6 +65,9 @@ public class ListaPostsJogo extends ActionBarActivity {
                 param.putString("txtDesc",post.getDescricao());
                 param.putInt("codUsuario",post.getCodUsuario());
                 param.putInt("iduser",idUser);
+                param.putString("nomeUsuario", nomeUser);
+                param.putString("emailUsuario", emailUser);
+                param.putString("fotoUsuario",fotoUser);
                 intent.putExtras(param);
 
                 startActivityForResult(intent, 1);
