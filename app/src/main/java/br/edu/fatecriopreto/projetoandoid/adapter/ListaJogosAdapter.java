@@ -17,9 +17,9 @@ import br.edu.fatecriopreto.projetoandoid.R;
 
 public class ListaJogosAdapter extends BaseAdapter{
     private LayoutInflater inflater;
-    private List<br.edu.fatecriopreto.projetoandoid.Entity.Jogos> jogos;
+    private List<br.edu.fatecriopreto.projetoandoid.Entity.Games> jogos;
 
-    public ListaJogosAdapter(Context context,List<br.edu.fatecriopreto.projetoandoid.Entity.Jogos> jogos){
+    public ListaJogosAdapter(Context context,List<br.edu.fatecriopreto.projetoandoid.Entity.Games> jogos){
         this.jogos=jogos;
         inflater = LayoutInflater.from(context);
     }
@@ -30,7 +30,7 @@ public class ListaJogosAdapter extends BaseAdapter{
     }
 
     @Override
-    public br.edu.fatecriopreto.projetoandoid.Entity.Jogos getItem(int position){
+    public br.edu.fatecriopreto.projetoandoid.Entity.Games getItem(int position){
         return jogos.get(position); //retorna o item na posicao indicada
     }
 
@@ -64,10 +64,10 @@ public class ListaJogosAdapter extends BaseAdapter{
             item=(ItemSuporte) convertView.getTag(); //pega o layout
         }
 
-        br.edu.fatecriopreto.projetoandoid.Entity.Jogos jogo = getItem(position); //recupera o objeto veiculo da lista
+        br.edu.fatecriopreto.projetoandoid.Entity.Games jogo = getItem(position); //recupera o objeto veiculo da lista
         // item.txtTituloPost.setText(veiculo.getPlaca()); //adicionando no itemplaca configurado no layout
         // item.txtDescricaoPost.setText(veiculo.getMarca());
-        item.txtTitulo.setText(jogo.getNome());
+        item.txtTitulo.setText(jogo.getJogo());
 
 
         //item.txtDescricaoPost.setText("conteudo conteudo conteudo");

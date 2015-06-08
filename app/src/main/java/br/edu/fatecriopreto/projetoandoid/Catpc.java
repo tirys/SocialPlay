@@ -15,11 +15,14 @@ import java.util.List;
 import br.edu.fatecriopreto.projetoandoid.Entity.*;
 import br.edu.fatecriopreto.projetoandoid.adapter.GridCatAdaper;
 import br.edu.fatecriopreto.projetoandoid.adapter.ListaJogosAdapter;
+import br.edu.fatecriopreto.projetoandoid.webservice.GeneroDAO;
 
 public class Catpc extends ActionBarActivity {
 
     GridView grid;
     TextView myImageViewText;
+    int idPlataforma;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,32 +31,27 @@ public class Catpc extends ActionBarActivity {
 
         final GridView grid = (GridView) findViewById(R.id.gvCategoria);
 
-        Categorias categoria1 = new Categorias(1,"Ação");
-        Categorias categoria2 = new Categorias(2,"Arcade");
-        Categorias categoria3 = new Categorias(3,"Aventura");
-        Categorias categoria4 = new Categorias(4,"Cartas");
-        Categorias categoria5 = new Categorias(5,"MMO");
+        GeneroDAO dao = new GeneroDAO();
 
+        //Pega o id da Plataforma
+        final Intent intent = getIntent();
+        Bundle param = intent.getExtras();
+        idPlataforma = param.getInt("idPlataformaPC");
 
-        List<Categorias> categoria= new ArrayList<>();
-        categoria.add(categoria1);
-        categoria.add(categoria2);
-        categoria.add(categoria3);
-        categoria.add(categoria4);
-        categoria.add(categoria5);
-
-
-        grid.setAdapter(new GridCatAdaper(this,categoria));
+        //Cria a Lista de Generos da plataforma selecionada
+        ArrayList<Genero> listaGeneros = (ArrayList<Genero>) dao.buscaGenero(idPlataforma);
+        grid.setAdapter(new GridCatAdaper(this,listaGeneros));
 
         grid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Categorias categoria=  (Categorias) parent.getItemAtPosition(position); //codigo para cast
+                Genero genero =  (Genero) parent.getItemAtPosition(position); //codigo para cast
                 Intent pc= new Intent(Catpc.this, ListaJogos.class);
 
                 Bundle param = new Bundle();
-                param.putLong("idCat", categoria.getId());
-                param.putString("plataforma","pc");
+                param.putInt("idCategoria", genero.getIdGenero());
+                //param.putString("plataforma","pc");
+                param.putInt("idPlataforma",idPlataforma);
                 pc.putExtras(param);
 
                 startActivityForResult(pc, 1);

@@ -12,8 +12,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.edu.fatecriopreto.projetoandoid.Entity.Categorias;
+import br.edu.fatecriopreto.projetoandoid.Entity.Genero;
 import br.edu.fatecriopreto.projetoandoid.adapter.GridCatAdaptercons;
 import br.edu.fatecriopreto.projetoandoid.adapter.GridCatAdaptermob;
+import br.edu.fatecriopreto.projetoandoid.webservice.GeneroDAO;
 
 /**
  * Created by Jessica on 23/05/2015.
@@ -21,6 +23,7 @@ import br.edu.fatecriopreto.projetoandoid.adapter.GridCatAdaptermob;
 public class Catmob extends ActionBarActivity {
     GridView grid;
     TextView myImageViewText;
+    int idPlataforma;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -30,32 +33,29 @@ public class Catmob extends ActionBarActivity {
 
         final GridView grid = (GridView) findViewById(R.id.gvCategoria);
 
-        Categorias categoria1 = new Categorias(1, "Ação");
-        Categorias categoria2 = new Categorias(2, "Arcade");
-        Categorias categoria3 = new Categorias(3, "Aventura");
-        Categorias categoria4 = new Categorias(4, "Cartas");
-        Categorias categoria5 = new Categorias(5, "Casual");
+        GeneroDAO dao = new GeneroDAO();
+        //Pega o id da Plataforma
+        final Intent intent = getIntent();
+        Bundle param = intent.getExtras();
+        idPlataforma = param.getInt("idPlataformaMobile");
+
+        //Cria a Lista de Generos da plataforma selecionada
+        ArrayList<Genero> listaGenero = (ArrayList<Genero>) dao.buscaGenero(idPlataforma);
+        grid.setAdapter(new GridCatAdaptermob(this, listaGenero));
 
 
-        List<Categorias> categoria = new ArrayList<>();
-        categoria.add(categoria1);
-        categoria.add(categoria2);
-        categoria.add(categoria3);
-        categoria.add(categoria4);
-        categoria.add(categoria5);
-
-
-        grid.setAdapter(new GridCatAdaptermob(this, categoria));
+      //  grid.setAdapter(new GridCatAdaptermob(this, categoria));
 
         grid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Categorias categoria = (Categorias) parent.getItemAtPosition(position); //codigo para cast
+                Genero genero =  (Genero) parent.getItemAtPosition(position); //codigo para cast
                 Intent pc= new Intent(Catmob.this, ListaJogos.class);
 
                 Bundle param = new Bundle();
-                param.putLong("idCat", categoria.getId());
-                param.putString("plataforma","mob");
+                param.putInt("idCategoria", genero.getIdGenero());
+                param.putInt("idPlataforma",idPlataforma);
+                //param.putString("plataforma","pc");
                 pc.putExtras(param);
 
                 startActivityForResult(pc, 1);

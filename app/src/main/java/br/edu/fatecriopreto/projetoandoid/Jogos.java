@@ -15,57 +15,73 @@ public class Jogos extends ActionBarActivity {
     ImageView console;
     ImageView mobile;
     ImageView portatil;
+    int idPlataformaPC;
+    int idPlataformaConsole;
+    int idPlataformaMobile;
+    int idPlataformaPortatil;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.jogos);
 
-        pc = (ImageView)findViewById(R.id.imgpc);
-        console = (ImageView)findViewById(R.id.imgcon);
-        mobile = (ImageView)findViewById(R.id.imgmob);
-        portatil = (ImageView)findViewById(R.id.imgport);
+        pc = (ImageView) findViewById(R.id.imgpc);
+        console = (ImageView) findViewById(R.id.imgcon);
+        mobile = (ImageView) findViewById(R.id.imgmob);
+        portatil = (ImageView) findViewById(R.id.imgport);
+        idPlataformaPC = 1;
+        idPlataformaConsole = 2;
+        idPlataformaMobile = 3;
+        idPlataformaPortatil = 4;
 
         pc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent pc= new Intent(Jogos.this, Catpc.class);
+                Intent pc = new Intent(Jogos.this, Catpc.class);
+                Bundle param = new Bundle();
+                param.putInt("idPlataformaPC", idPlataformaPC);
+                pc.putExtras(param);
                 startActivityForResult(pc, 1);
                 overridePendingTransition(R.anim.animacao1, R.anim.animacao2);
-
             }
         });
 
         console.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent con= new Intent(Jogos.this, Catcon.class);
-                startActivityForResult(con, 1);
+                Intent console = new Intent(Jogos.this, Catcon.class);
+                Bundle param = new Bundle();
+                param.putInt("idPlataformaConsole", idPlataformaConsole);
+                console.putExtras(param);
+                startActivityForResult(console, 1);
                 overridePendingTransition(R.anim.animacao1, R.anim.animacao2);
             }
         });
         mobile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent mob = new Intent(Jogos.this, Catmob.class);
-                startActivityForResult(mob, 1);
+                Intent mobile = new Intent(Jogos.this, Catmob.class);
+                Bundle param = new Bundle();
+                param.putInt("idPlataformaMobile", idPlataformaMobile);
+                mobile.putExtras(param);
+                startActivityForResult(mobile, 1);
                 overridePendingTransition(R.anim.animacao1, R.anim.animacao2);
             }
         });
         portatil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent port = new Intent(Jogos.this, catport.class);
-                startActivityForResult(port, 1);
+                Intent portatil = new Intent(Jogos.this, catport.class);
+                Bundle param = new Bundle();
+                param.putInt("idPlataformaPortatil", idPlataformaPortatil);
+                portatil.putExtras(param);
+                startActivityForResult(portatil, 1);
                 overridePendingTransition(R.anim.animacao1, R.anim.animacao2);
             }
         });
 
 
     }
-
-
-
 
 
     public boolean onCreateOptionsMenu(Menu menu) {

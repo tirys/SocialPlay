@@ -10,6 +10,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import br.edu.fatecriopreto.projetoandoid.Entity.Categorias;
+import br.edu.fatecriopreto.projetoandoid.Entity.Genero;
 import br.edu.fatecriopreto.projetoandoid.R;
 
 /**
@@ -18,9 +19,9 @@ import br.edu.fatecriopreto.projetoandoid.R;
 public class GridCatAdaptermob extends BaseAdapter {
 
     private LayoutInflater inflater;
-    private List<Categorias> categorias;
+    private List<Genero> categorias;
 
-    public GridCatAdaptermob(Context context,List<Categorias> categorias){
+    public GridCatAdaptermob(Context context,List<Genero> categorias){
         this.categorias=categorias;
         inflater = LayoutInflater.from(context);
     }
@@ -31,7 +32,7 @@ public class GridCatAdaptermob extends BaseAdapter {
     }
 
     @Override
-    public Categorias getItem(int position){
+    public Genero getItem(int position){
         return categorias.get(position); //retorna o item na posicao indicada
     }
 
@@ -64,10 +65,10 @@ public class GridCatAdaptermob extends BaseAdapter {
             item=(ItemSuporte) convertView.getTag(); //pega o layout
         }
 
-        Categorias categoria = getItem(position); //recupera o objeto veiculo da lista
+        Genero categoria = getItem(position); //recupera o objeto veiculo da lista
         // item.txtTituloPost.setText(veiculo.getPlaca()); //adicionando no itemplaca configurado no layout
         // item.txtDescricaoPost.setText(veiculo.getMarca());
-        item.txtTitulo.setText(categoria.getNome());
+        item.txtTitulo.setText(categoria.getGenero());
 
 
         //item.txtDescricaoPost.setText("conteudo conteudo conteudo");
