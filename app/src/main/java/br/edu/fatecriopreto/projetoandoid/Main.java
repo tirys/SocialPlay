@@ -257,10 +257,23 @@ public class Main extends ActionBarActivity implements OnItemSelectedListener {
                             startActivityForResult(menIntent3, 1);
                         }
                         if (i == 2) {
+                            Intent menIntent3 = new Intent(Main.this, PostsUsuario.class);
+                            Bundle param = new Bundle();
+
+                            param.putString("fotoUsuario",fotoUser);
+                            param.putInt("idUsuario", idUser);
+                            param.putString("nomeUsuario",nomeUser);
+                            param.putString("emailUsuario",emailUser);
+                            param.putInt("tipo",1);
+                            menIntent3.putExtras(param);
+
+                            startActivityForResult(menIntent3, 1);
+                        }
+                        if (i == 3) {
                             Intent menIntent3 = new Intent(Main.this, Jogos.class);
                             startActivityForResult(menIntent3, 1);
                         }
-                        if (i == 4) {
+                        if (i == 5) {
                             dbAdapter.open();
                             dbAdapter.editar(1,"","","","","","","");
                             dbAdapter.close();
@@ -282,6 +295,7 @@ public class Main extends ActionBarActivity implements OnItemSelectedListener {
 
         navigationDrawerLeft.addItem(new PrimaryDrawerItem().withName("Inicio").withIcon(getResources().getDrawable(R.drawable.car_selected_1)));
         navigationDrawerLeft.addItem(new PrimaryDrawerItem().withName("Perfil").withIcon(getResources().getDrawable(R.drawable.car_2)));
+        navigationDrawerLeft.addItem(new PrimaryDrawerItem().withName("Meus Posts").withIcon(getResources().getDrawable(R.drawable.car_3)));
         navigationDrawerLeft.addItem(new PrimaryDrawerItem().withName("Jogos").withIcon(getResources().getDrawable(R.drawable.car_3)));
         navigationDrawerLeft.addItem(new PrimaryDrawerItem().withName("Amigos").withIcon(getResources().getDrawable(R.drawable.car_4)));
         navigationDrawerLeft.addItem(new PrimaryDrawerItem().withName("Sair").withIcon(getResources().getDrawable(R.drawable.car_5)));

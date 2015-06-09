@@ -66,6 +66,7 @@ public class DetalhesForum extends ActionBarActivity {
     String fotoUser;
     int idpost;
     int idautor;
+    int seguindo;
     ListView lstComentarios;
     ImageView imgback;
     ImageView imgNewPostDet;
@@ -131,23 +132,28 @@ public class DetalhesForum extends ActionBarActivity {
             ViewGroup.MarginLayoutParams p = (ViewGroup.MarginLayoutParams) imgNewPostDet.getLayoutParams();
             p.setMargins(0, 0,-40, 0);
             imgNewPostDet.requestLayout();
+
+            seguindo=3;
         }
         else
         {
-            TopicosDAO pessoasegue = new TopicosDAO();
+            final TopicosDAO pessoasegue = new TopicosDAO();
            int resultado = pessoasegue.pessoaSegue(iduser,idpost);
 
             if (resultado==1){
                 imgNewPostDet.setImageResource(R.drawable.imgseguindo);
 
+                seguindo=1;
             }
             else
             {
                 imgNewPostDet.setImageResource(R.drawable.imgseguir);
-
+                seguindo=0;
 
             }
         }
+
+
 
         ComentariosDAO listacom = new ComentariosDAO();
 
@@ -174,6 +180,44 @@ public class DetalhesForum extends ActionBarActivity {
                     editar.putExtras(param);
 
                     startActivity(editar);
+                }
+                else if(seguindo==0){
+                    TopicosDAO pessoasegue1 = new TopicosDAO();
+                    boolean result = pessoasegue1.seguir(iduser,idpost);
+
+                    if(result)
+                    {
+                        Toast toast = Toast.makeText(context, "Seguindo tópico", duration);
+                        toast.show();
+
+                        Intent intent = getIntent();
+                        finish();
+                        startActivity(intent);
+                    }
+                    else
+                    {
+                        Toast toast = Toast.makeText(context, "Erro ao seguir tópico", duration);
+                        toast.show();
+                    }
+                }
+                else if (seguindo==1){
+                    TopicosDAO pessoasegue1 = new TopicosDAO();
+                    boolean result = pessoasegue1.Naoseguir(iduser,idpost);
+
+                    if(result)
+                    {
+                        Toast toast = Toast.makeText(context, "Você não está mais seguindo", duration);
+                        toast.show();
+
+                        Intent intent = getIntent();
+                        finish();
+                        startActivity(intent);
+                    }
+                    else
+                    {
+                        Toast toast = Toast.makeText(context, "Erro", duration);
+                        toast.show();
+                    }
                 }
             }
         });
