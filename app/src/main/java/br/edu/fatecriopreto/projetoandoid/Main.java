@@ -295,7 +295,7 @@ public class Main extends ActionBarActivity implements OnItemSelectedListener {
 
         navigationDrawerLeft.addItem(new PrimaryDrawerItem().withName("Inicio").withIcon(getResources().getDrawable(R.drawable.car_selected_1)));
         navigationDrawerLeft.addItem(new PrimaryDrawerItem().withName("Perfil").withIcon(getResources().getDrawable(R.drawable.car_2)));
-        navigationDrawerLeft.addItem(new PrimaryDrawerItem().withName("Meus Posts").withIcon(getResources().getDrawable(R.drawable.car_3)));
+        navigationDrawerLeft.addItem(new PrimaryDrawerItem().withName("Meus Posts").withIcon(getResources().getDrawable(R.drawable.car_6)));
         navigationDrawerLeft.addItem(new PrimaryDrawerItem().withName("Jogos").withIcon(getResources().getDrawable(R.drawable.car_3)));
         navigationDrawerLeft.addItem(new PrimaryDrawerItem().withName("Amigos").withIcon(getResources().getDrawable(R.drawable.car_4)));
         navigationDrawerLeft.addItem(new PrimaryDrawerItem().withName("Sair").withIcon(getResources().getDrawable(R.drawable.car_5)));
@@ -463,8 +463,10 @@ public class Main extends ActionBarActivity implements OnItemSelectedListener {
                 case 1:
                     return( isSelecetd ? R.drawable.car_selected_2 : R.drawable.car_2 );
                 case 2:
-                    return( isSelecetd ? R.drawable.car_selected_3 : R.drawable.car_3 );
+                    return( isSelecetd ? R.drawable.car_selected_6 : R.drawable.car_6 );
                 case 3:
+                    return( isSelecetd ? R.drawable.car_selected_3 : R.drawable.car_3 );
+                case 4:
                     return( isSelecetd ? R.drawable.car_selected_4 : R.drawable.car_4 );
             }
             return(0);

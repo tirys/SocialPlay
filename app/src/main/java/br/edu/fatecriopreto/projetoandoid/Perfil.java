@@ -108,6 +108,8 @@ public class Perfil extends ActionBarActivity {
                 intent2.putExtras(param);
 
                 startActivity(intent2);
+
+
             }
         });
 
@@ -126,10 +128,14 @@ public class Perfil extends ActionBarActivity {
 
                 startActivity(voltar);
 
+
+
             }
         });
 
+
     }
+
 
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

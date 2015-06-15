@@ -125,6 +125,8 @@ public class DetalhesForum extends ActionBarActivity {
         txtTitDet.setText(titForum);
         txtDesc.setText(descricao);
 
+
+
         if(iduser==idautor){
             imgNewPostDet.setImageResource(R.drawable.edit);
 
@@ -158,6 +160,8 @@ public class DetalhesForum extends ActionBarActivity {
         ComentariosDAO listacom = new ComentariosDAO();
 
         final List<Comentarios> lstcomentarios = listacom.listarComentariosporid(idpost);
+
+
 
 
         //Se ele for o dono, vai para a pagina de edição/exclusão senão, novo post

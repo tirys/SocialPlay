@@ -26,7 +26,8 @@
         </activity>
         <activity
             android:name=".DetalhesForum"
-            android:label="" >
+            android:label=""
+            android:windowSoftInputMode="adjustPan|adjustResize">
         </activity>
         <activity
             android:name=".Registrar"
