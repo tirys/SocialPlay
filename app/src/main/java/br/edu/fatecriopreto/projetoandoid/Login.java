@@ -119,6 +119,7 @@ public class Login extends ActionBarActivity {
                 startActivity(intent);
             }
 
+
         }
 
 
@@ -140,12 +141,13 @@ public class Login extends ActionBarActivity {
 
                         //resposta[0] = String.valueOf(userLog.verificaLogin(user, pass));
                         userLogin = userLog.verificaLogin(user, pass);
+
+                    }
+                    if (userLogin != null) {
                         id = userLogin.getIdUsuario();
                         nome = userLogin.getNome();
                         email = userLogin.getEmail();
                         foto = userLogin.getImagem();
-                    }
-                    if (userLogin != null) {
 
                         dbAdapter.open();
                         dbAdapter.editar(1,user,pass,"","","","","");

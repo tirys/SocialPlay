@@ -27,6 +27,7 @@ public class Ultimos extends Fragment{
        final ListView lstUltimos = (ListView) rootView.findViewById(R.id.lstUltimos);
 
 
+
         //AdapterListView adapter = new AdapterListView(getActivity().getApplicationContext(),posts);
         //AdapterListView adapter = new AdapterListView(getActivity(),posts);
 

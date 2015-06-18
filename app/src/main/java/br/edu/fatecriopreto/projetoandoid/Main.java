@@ -393,15 +393,15 @@ public class Main extends ActionBarActivity implements OnItemSelectedListener {
                 case 0:
                     //txtRelevantes.setTextColor(Color.parseColor("A9A9A9"));
                     //txtSeguindo.setTextColor(Color.parseColor("#A9A9A9"));
-                    txtUltimos.setTextColor(Color.parseColor("#008080"));
+                    //txtUltimos.setTextColor(Color.parseColor("#008080"));
                     return new Ultimos();
                 case 1:
-                    txtUltimos.setTextColor(Color.parseColor("#A9A9A9"));
+                    //txtUltimos.setTextColor(Color.parseColor("#cccccc"));
                     //txtRelevantes.setTextColor(Color.parseColor("#A9A9A9"));
                     //txtSeguindo.setTextColor(Color.parseColor("#008080"));
                     return new Seguindo();
                 case 2:
-                    txtUltimos.setTextColor(Color.parseColor("#A9A9A9"));
+                    //txtUltimos.setTextColor(Color.parseColor("#A9A9A9"));
                     //txtRelevantes.setTextColor(Color.parseColor("#008080"));
                     //txtSeguindo.setTextColor(Color.parseColor("#A9A9A9"));
                     return new Relevantes();
