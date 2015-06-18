@@ -21,6 +21,10 @@ public class Catcon extends ActionBarActivity {
     GridView grid;
     TextView myImageViewText;
     int idPlataforma;
+    int idUsuario;
+    String fotoUsuario;
+    String nomeUser;
+    String emailUser;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -33,6 +37,10 @@ public class Catcon extends ActionBarActivity {
         final Intent intent = getIntent();
         Bundle param = intent.getExtras();
         idPlataforma = param.getInt("idPlataformaConsole");
+        idUsuario = param.getInt("idUsuario");
+        fotoUsuario = param.getString("fotoUsuario");
+        nomeUser = param.getString("nomeUsuario");
+        emailUser = param.getString("emailUsuario");
 
 
         GeneroDAO dao = new GeneroDAO();
@@ -50,6 +58,10 @@ public class Catcon extends ActionBarActivity {
                 Bundle param = new Bundle();
                 param.putInt("idCategoria", genero.getIdGenero());
                 param.putInt("idPlataforma",idPlataforma);
+                param.putString("fotoUsuario",fotoUsuario);
+                param.putInt("idUsuario", idUsuario);
+                param.putString("nomeUsuario",nomeUser);
+                param.putString("emailUsuario",emailUser);
                 //param.putString("plataforma","console");
                 pc.putExtras(param);
 

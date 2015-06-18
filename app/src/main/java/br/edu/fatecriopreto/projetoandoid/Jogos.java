@@ -19,6 +19,10 @@ public class Jogos extends ActionBarActivity {
     int idPlataformaConsole;
     int idPlataformaMobile;
     int idPlataformaPortatil;
+    int idUsuario;
+    String fotoUsuario;
+    String nomeUser;
+    String emailUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,12 +38,25 @@ public class Jogos extends ActionBarActivity {
         idPlataformaMobile = 3;
         idPlataformaPortatil = 4;
 
+
+        final Intent intent = getIntent();
+        Bundle param = intent.getExtras();
+        idUsuario = param.getInt("idUsuario");
+        fotoUsuario = param.getString("fotoUsuario");
+        nomeUser = param.getString("nomeUsuario");
+        emailUser = param.getString("emailUsuario");
+
         pc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent pc = new Intent(Jogos.this, Catpc.class);
                 Bundle param = new Bundle();
                 param.putInt("idPlataformaPC", idPlataformaPC);
+                param.putString("fotoUsuario",fotoUsuario);
+                param.putInt("idUsuario", idUsuario);
+                param.putString("nomeUsuario",nomeUser);
+                param.putString("emailUsuario",emailUser);
+                param.putInt("tipo",1);
                 pc.putExtras(param);
                 startActivityForResult(pc, 1);
                 overridePendingTransition(R.anim.animacao1, R.anim.animacao2);
@@ -52,6 +69,10 @@ public class Jogos extends ActionBarActivity {
                 Intent console = new Intent(Jogos.this, Catcon.class);
                 Bundle param = new Bundle();
                 param.putInt("idPlataformaConsole", idPlataformaConsole);
+                param.putString("fotoUsuario",fotoUsuario);
+                param.putInt("idUsuario", idUsuario);
+                param.putString("nomeUsuario",nomeUser);
+                param.putString("emailUsuario",emailUser);
                 console.putExtras(param);
                 startActivityForResult(console, 1);
                 overridePendingTransition(R.anim.animacao1, R.anim.animacao2);
@@ -63,6 +84,10 @@ public class Jogos extends ActionBarActivity {
                 Intent mobile = new Intent(Jogos.this, Catmob.class);
                 Bundle param = new Bundle();
                 param.putInt("idPlataformaMobile", idPlataformaMobile);
+                param.putString("fotoUsuario",fotoUsuario);
+                param.putInt("idUsuario", idUsuario);
+                param.putString("nomeUsuario",nomeUser);
+                param.putString("emailUsuario",emailUser);
                 mobile.putExtras(param);
                 startActivityForResult(mobile, 1);
                 overridePendingTransition(R.anim.animacao1, R.anim.animacao2);
@@ -74,6 +99,10 @@ public class Jogos extends ActionBarActivity {
                 Intent portatil = new Intent(Jogos.this, catport.class);
                 Bundle param = new Bundle();
                 param.putInt("idPlataformaPortatil", idPlataformaPortatil);
+                param.putString("fotoUsuario",fotoUsuario);
+                param.putInt("idUsuario", idUsuario);
+                param.putString("nomeUsuario",nomeUser);
+                param.putString("emailUsuario",emailUser);
                 portatil.putExtras(param);
                 startActivityForResult(portatil, 1);
                 overridePendingTransition(R.anim.animacao1, R.anim.animacao2);

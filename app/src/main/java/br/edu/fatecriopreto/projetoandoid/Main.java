@@ -1,5 +1,6 @@
 package br.edu.fatecriopreto.projetoandoid;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -271,6 +272,14 @@ public class Main extends ActionBarActivity implements OnItemSelectedListener {
                         }
                         if (i == 3) {
                             Intent menIntent3 = new Intent(Main.this, Jogos.class);
+                            Bundle param = new Bundle();
+
+                            param.putString("fotoUsuario",fotoUser);
+                            param.putInt("idUsuario", idUser);
+                            param.putString("nomeUsuario",nomeUser);
+                            param.putString("emailUsuario",emailUser);
+                            param.putInt("tipo",1);
+                            menIntent3.putExtras(param);
                             startActivityForResult(menIntent3, 1);
                         }
                         if (i == 5) {
@@ -433,6 +442,7 @@ public class Main extends ActionBarActivity implements OnItemSelectedListener {
             return null;
         }
     }
+
 
 
 

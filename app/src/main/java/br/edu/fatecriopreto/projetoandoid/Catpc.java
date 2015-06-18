@@ -22,6 +22,10 @@ public class Catpc extends ActionBarActivity {
     GridView grid;
     TextView myImageViewText;
     int idPlataforma;
+    int idUsuario;
+    String fotoUsuario;
+    String nomeUser;
+    String emailUser;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -52,6 +56,10 @@ public class Catpc extends ActionBarActivity {
                 param.putInt("idCategoria", genero.getIdGenero());
                 //param.putString("plataforma","pc");
                 param.putInt("idPlataforma",idPlataforma);
+                param.putString("fotoUsuario",fotoUsuario);
+                param.putInt("idUsuario", idUsuario);
+                param.putString("nomeUsuario",nomeUser);
+                param.putString("emailUsuario",emailUser);
                 pc.putExtras(param);
 
                 startActivityForResult(pc, 1);
