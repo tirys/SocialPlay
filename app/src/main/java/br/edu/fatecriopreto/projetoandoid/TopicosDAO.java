@@ -149,6 +149,7 @@ public class TopicosDAO {
                 topic.setNome(soapObject.getProperty("nome").toString());
                 topic.setDescricao(soapObject.getPropertyAsString("descricao".toString()));
                 topic.setCodUsuario(Integer.parseInt(soapObject.getProperty("codUsuario").toString()));
+                topic.setImagem(soapObject.getPropertyAsString("imagem".toString()));
 
                 lista.add(topic);
             }
@@ -178,6 +179,7 @@ public class TopicosDAO {
                 topic.setNome(soapObject.getProperty("nome").toString());
                 topic.setDescricao(soapObject.getPropertyAsString("descricao".toString()));
                 topic.setCodUsuario(Integer.parseInt(soapObject.getProperty("codUsuario").toString()));
+                topic.setImagem(soapObject.getPropertyAsString("imagem".toString()));
 
                 lista.add(topic);
             }
@@ -287,8 +289,7 @@ public class TopicosDAO {
                 topic.setNome(so.getProperty("nome").toString());
                 topic.setDescricao(so.getPropertyAsString("descricao".toString()));
                 topic.setCodUsuario(Integer.parseInt(so.getProperty("codUsuario").toString()));
-
-
+                topic.setImagem(so.getPropertyAsString("imagem".toString()));
 
                 lista.add(topic);
             }

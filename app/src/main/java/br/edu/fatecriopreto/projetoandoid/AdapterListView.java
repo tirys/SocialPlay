@@ -1,6 +1,9 @@
 package br.edu.fatecriopreto.projetoandoid;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -65,12 +68,19 @@ public class AdapterListView extends BaseAdapter{
         Topicos post = getItem(position); //recupera o objeto veiculo da lista
        // item.txtTituloPost.setText(veiculo.getPlaca()); //adicionando no itemplaca configurado no layout
        // item.txtDescricaoPost.setText(veiculo.getMarca());
+        String ImgUser = post.getImagem();
+        if(ImgUser != null) {
         item.txtTituloPost.setText(post.getNome());
         item.txtDescricaoPost.setText(post.getDescricao());
 
-       //item.txtDescricaoPost.setText("conteudo conteudo conteudo");
-       item.imgUser.setImageResource(R.drawable.user);
+            byte[] bt = Base64.decode(ImgUser, Base64.DEFAULT);
+            //String bt = listAux.get(position).getImgByte();
+            Bitmap userfoto = BitmapFactory.decodeByteArray(bt, 0, bt.length);
+            //imgFoto.setImageBitmap(userfoto);
 
+            //item.txtDescricaoPost.setText("conteudo conteudo conteudo");
+            item.imgUser.setImageBitmap(userfoto);
+        }
 
         return convertView;
     }
