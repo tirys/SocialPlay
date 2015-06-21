@@ -8,6 +8,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 import java.util.List;
 
 import br.edu.fatecriopreto.projetoandoid.Entity.Comentarios;
@@ -47,6 +49,7 @@ public class LstComentariosAdapter extends BaseAdapter {
     private class ItemSuporte{
 
         TextView txtComentario;
+        TextView txtNomepessoa;
 
     }
     @Override
@@ -58,7 +61,7 @@ public class LstComentariosAdapter extends BaseAdapter {
             item = new ItemSuporte();
 
             item.txtComentario = (TextView) convertView.findViewById(R.id.txtComentario);
-
+            item.txtNomepessoa = (TextView) convertView.findViewById(R.id.txtnomeuser);
 
             convertView.setTag(item);
 
@@ -73,6 +76,7 @@ public class LstComentariosAdapter extends BaseAdapter {
      //   item.txtDescricaoPost.setText(post.getDescricao());
 
         item.txtComentario.setText(post.getConteudo());
+        item.txtNomepessoa.setText(post.getNomePessoa());
        // item.imgUser.setImageResource(R.drawable.user);
 
 

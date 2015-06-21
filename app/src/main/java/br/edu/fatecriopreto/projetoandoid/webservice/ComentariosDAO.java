@@ -77,6 +77,7 @@ public class ComentariosDAO {
                 topic.setId(Integer.parseInt(so.getProperty("id").toString()));
                 topic.setConteudo(so.getProperty("conteudo").toString());
                 topic.setIdpessoa(Integer.parseInt(so.getProperty("idpessoa").toString()));
+                topic.setNomePessoa(so.getProperty("nomePessoa").toString());
 
 
                 lista.add(topic);

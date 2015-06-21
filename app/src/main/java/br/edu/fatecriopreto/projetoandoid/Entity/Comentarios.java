@@ -15,6 +15,16 @@ public class Comentarios {
     private String data;
     private Integer idpessoa;
 
+    public String getNomePessoa() {
+        return nomePessoa;
+    }
+
+    public void setNomePessoa(String nomePessoa) {
+        this.nomePessoa = nomePessoa;
+    }
+
+    private String nomePessoa;
+
     public int getId() {
         return id;
     }
@@ -27,13 +37,14 @@ public class Comentarios {
 
     public Comentarios(){}
 
-    public Comentarios(int id,Integer idpessoa, String conteudo,String data,int idtopico)
+    public Comentarios(int id,Integer idpessoa, String conteudo,String data,int idtopico, String nomePessoa)
     {
         this.setId(id);
         this.setIdpessoa(idpessoa);
         this.setConteudo(conteudo);
         this.setData(data);
         this.setIdtopico(idtopico);
+        this.setNomePessoa(nomePessoa);
     }
 
     public String getConteudo() {

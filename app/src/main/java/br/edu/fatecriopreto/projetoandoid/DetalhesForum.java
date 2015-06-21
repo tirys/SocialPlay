@@ -243,7 +243,7 @@ public class DetalhesForum extends ActionBarActivity {
                         StrictMode.setThreadPolicy(policy);
 
                         ComentariosDAO dao = new ComentariosDAO();
-                        boolean resultado = dao.inserirComentario(new Comentarios(1,iduser,comentario,"25/05/2015",idpost));
+                        boolean resultado = dao.inserirComentario(new Comentarios(1,iduser,comentario,"25/05/2015",idpost,null));
 
                         if(resultado == true){
                             Toast toast = Toast.makeText(context, textSucess, duration);
