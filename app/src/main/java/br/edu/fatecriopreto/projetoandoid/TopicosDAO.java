@@ -252,6 +252,7 @@ public class TopicosDAO {
                 topic.setNome(so.getProperty("nome").toString());
                 topic.setDescricao(so.getPropertyAsString("descricao".toString()));
                 topic.setCodUsuario(Integer.parseInt(so.getProperty("codUsuario").toString()));
+                topic.setImagem(so.getPropertyAsString("imagem".toString()));
 
 
 
