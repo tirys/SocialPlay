@@ -11,11 +11,12 @@ public class Topicos {
         private String descricao;
         private int codCategoria;
         private int codUsuario;
+        private String nomeUser;
 
         public Topicos(){
         }
 
-        public Topicos(int idTopico, String nome, String assunto, String imagem, String descricao, int codCategoria, int codUsuario) {
+        public Topicos(int idTopico, String nome, String assunto, String imagem, String descricao, int codCategoria, int codUsuario, String nomeUser) {
             this.idTopico = idTopico;
             this.nome = nome;
             this.assunto = assunto;
@@ -23,6 +24,7 @@ public class Topicos {
             this.descricao = descricao;
             this.codCategoria = codCategoria;
             this.codUsuario = codUsuario;
+            this.nomeUser = nomeUser;
         }
 
         public int getIdTopico() {
@@ -79,6 +81,14 @@ public class Topicos {
 
         public void setCodUsuario(int codUsuario) {
             this.codUsuario = codUsuario;
+        }
+
+        public String getNomeUser() {
+            return nomeUser;
+        }
+
+        public void setNomeUser(String nomeUser) {
+            this.nomeUser = nomeUser;
         }
 }
 

@@ -112,7 +112,7 @@ public class NovoPost extends ActionBarActivity {
                         StrictMode.setThreadPolicy(policy);
                         ComentariosDAO comm = new ComentariosDAO();
                         TopicosDAO dao = new TopicosDAO();
-                        boolean resultado = dao.inserirTopicos(new Topicos(0,titulo," "," ",conteudo,jogo,idUser));
+                        boolean resultado = dao.inserirTopicos(new Topicos(0,titulo," "," ",conteudo,jogo,idUser, ""));
 
                         if(resultado == true){
                             Toast toast = Toast.makeText(context, textSucess, duration);

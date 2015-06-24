@@ -72,7 +72,7 @@
             android:layout_height="80dp"
             android:layout_marginTop="10dp"
             android:layout_marginLeft="10dp"
-            android:id="@+id/imageView"
+            android:id="@+id/imgDonoPost"
             android:layout_below="@id/toolbarDet"
             android:layout_alignParentStart="true"
             android:src="@drawable/user"
@@ -89,7 +89,7 @@
             android:gravity="center"
             android:id="@+id/txtForumAutor"
             android:textColor="#333333"
-            android:layout_below="@+id/imageView"
+            android:layout_below="@+id/imgDonoPost"
             android:layout_alignParentStart="true" />
 
         <TextView

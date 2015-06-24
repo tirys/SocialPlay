@@ -59,7 +59,7 @@ public class ListaPostsJogo extends ActionBarActivity {
 
                 Intent intent = new Intent(ListaPostsJogo.this, DetalhesForum.class);
 
-                Bundle param = new Bundle();
+                /*Bundle param = new Bundle();
                 param.putInt("idPost", post.getIdTopico());
                 param.putString("titPost", post.getNome());
                 param.putString("txtDesc",post.getDescricao());
@@ -68,6 +68,19 @@ public class ListaPostsJogo extends ActionBarActivity {
                 param.putString("nomeUsuario", nomeUser);
                 param.putString("emailUsuario", emailUser);
                 param.putString("fotoUsuario",fotoUser);
+                intent.putExtras(param);*/
+
+                Bundle param = new Bundle();
+                param.putInt("idPost", post.getIdTopico());
+                param.putString("titPost", post.getNome());
+                param.putString("txtDesc",post.getDescricao());
+                param.putInt("codUsuario",post.getCodUsuario());
+                param.putInt("iduser",idUser);
+                param.putString("nomeUsuario", post.getNomeUser());
+                param.putString("emailUsuario", emailUser);
+                param.putString("nomeMenu", nomeUser);
+                param.putString("fotoMenu",fotoUser);
+                param.putString("fotoUsuario",post.getImagem());
                 intent.putExtras(param);
 
                 startActivityForResult(intent, 1);

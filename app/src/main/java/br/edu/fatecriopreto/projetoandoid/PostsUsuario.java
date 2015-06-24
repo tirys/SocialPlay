@@ -78,9 +78,11 @@ public class PostsUsuario extends Activity {
                 param.putString("titPost", post.getNome());
                 param.putString("txtDesc",post.getDescricao());
                 param.putInt("codUsuario",post.getCodUsuario());
-                param.putString("nomeUsuario",nomeUser);
+                param.putString("nomeUsuario",post.getNomeUser());
                 param.putString("emailUsuario",emailUser);
-                param.putString("fotoUsuario",fotoUsuario);
+                param.putString("fotoUsuario",post.getImagem());
+                param.putString("fotoMenu",fotoUsuario);
+                param.putString("nomeMenu",nomeUser);
 
                 param.putInt("iduser",idUsuario);
                 intent.putExtras(param);

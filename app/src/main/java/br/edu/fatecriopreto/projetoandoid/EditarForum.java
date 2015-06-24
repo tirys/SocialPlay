@@ -95,6 +95,8 @@ public class EditarForum extends ActionBarActivity {
                        param.putString("nomeUsuario", nomeUser);
                        param.putString("emailUsuario", emailUser);
                        param.putString("fotoUsuario",fotoUser);
+                       param.putString("fotoMenu",fotoUser);
+                       param.putString("nomeMenu",nomeUser);
 
                        intent3.putExtras(param);
 
@@ -179,6 +181,8 @@ public class EditarForum extends ActionBarActivity {
                 param.putString("nomeUsuario",nomeUser);
                 param.putString("emailUsuario",emailUser);
                 param.putString("fotoUsuario",fotoUser);
+                param.putString("fotoMenu",fotoUser);
+                param.putString("nomeMenu",nomeUser);
 
                 intent2.putExtras(param);
 
