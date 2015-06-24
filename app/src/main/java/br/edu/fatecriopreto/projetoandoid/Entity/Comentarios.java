@@ -14,6 +14,8 @@ public class Comentarios {
     private String conteudo;
     private String data;
     private Integer idpessoa;
+    private String nomePessoa;
+    private String imgPessoa;
 
     public int getId() {
         return id;
@@ -27,13 +29,16 @@ public class Comentarios {
 
     public Comentarios(){}
 
-    public Comentarios(int id,Integer idpessoa, String conteudo,String data,int idtopico)
+    public Comentarios(int id,Integer idpessoa, String conteudo,String data,int idtopico, String nomePessoa, String imgPessoa)
     {
         this.setId(id);
         this.setIdpessoa(idpessoa);
         this.setConteudo(conteudo);
         this.setData(data);
         this.setIdtopico(idtopico);
+        this.setImgPessoa(imgPessoa);
+        this.setNomePessoa(nomePessoa);
+
     }
 
     public String getConteudo() {
@@ -67,6 +72,24 @@ public class Comentarios {
     public void setIdtopico(int idtopico) {
         this.idtopico = idtopico;
     }
+
+    public String getImgPessoa() {
+        return imgPessoa;
+    }
+
+    public void setImgPessoa(String imgPessoa) {
+        this.imgPessoa = imgPessoa;
+    }
+
+    public String getNomePessoa() {
+        return nomePessoa;
+    }
+
+    public void setNomePessoa(String nomePessoa) {
+        this.nomePessoa = nomePessoa;
+    }
+
+
 
 
 

@@ -5,12 +5,15 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.media.Image;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Base64;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -58,12 +61,16 @@ public class DetalhesForum extends ActionBarActivity {
     String descricao;
     TextView txtTitDet;
     TextView txtDesc;
+    TextView txtNomeUser;
+    ImageView imgDonoPost;
     EditText edtComment;
     int iduser;
     ImageView enviarComentario;
     String nomeUser;
     String emailUser;
-    String fotoUser;
+    String fotoUser2;
+    String fotoMenu;
+    String nomeMenu;
     int idpost;
     int idautor;
     int seguindo;
@@ -104,10 +111,12 @@ public class DetalhesForum extends ActionBarActivity {
 
         txtTitDet = (TextView) findViewById(R.id.txtTitDet);
         txtDesc = (TextView) findViewById(R.id.txtDesc);
+        imgDonoPost = (ImageView) findViewById(R.id.imgDonoPost);
         lstComentarios = (ListView) findViewById(R.id.lstComentarios);
         enviarComentario = (ImageView) findViewById(R.id.enviarComentario);
         edtComment = (EditText) findViewById(R.id.edtComment);
         imgNewPostDet = (ImageView) findViewById(R.id.imgNewPostDet);
+        txtNomeUser = (TextView) findViewById(R.id.txtForumAutor);
 
         final Intent intent = getIntent();
         Bundle param = intent.getExtras();
@@ -119,11 +128,22 @@ public class DetalhesForum extends ActionBarActivity {
         idautor = param.getInt("codUsuario");
         nomeUser = param.getString("nomeUsuario");
         emailUser = param.getString("emailUsuario");
-        fotoUser = param.getString("fotoUsuario");
+        fotoUser2 = param.getString("fotoUsuario");
+        fotoMenu = param.getString("fotoMenu");
+        nomeMenu = param.getString("nomeMenu");
+
+        byte[] bt = Base64.decode(fotoUser2, Base64.DEFAULT);
+        //String bt = listAux.get(position).getImgByte();
+        Bitmap userfoto = BitmapFactory.decodeByteArray(bt, 0, bt.length);
+        //imgFoto.setImageBitmap(userfoto);
+
+        //item.txtDescricaoPost.setText("conteudo conteudo conteudo");
+        imgDonoPost.setImageBitmap(userfoto);
 
 
         txtTitDet.setText(titForum);
         txtDesc.setText(descricao);
+        txtNomeUser.setText(nomeUser);
 
 
 
@@ -178,7 +198,7 @@ public class DetalhesForum extends ActionBarActivity {
                         param.putInt("idautor", idautor);
                         param.putString("nomeUsuario",nomeUser);
                         param.putString("emailUsuario",emailUser);
-                        param.putString("fotoUsuario",fotoUser);
+                        param.putString("fotoUsuario",fotoUser2);
 
 
                     editar.putExtras(param);
@@ -243,7 +263,7 @@ public class DetalhesForum extends ActionBarActivity {
                         StrictMode.setThreadPolicy(policy);
 
                         ComentariosDAO dao = new ComentariosDAO();
-                        boolean resultado = dao.inserirComentario(new Comentarios(1,iduser,comentario,"25/05/2015",idpost));
+                        boolean resultado = dao.inserirComentario(new Comentarios(1,iduser,comentario,"25/05/2015",idpost,"",""));
 
                         if(resultado == true){
                             Toast toast = Toast.makeText(context, textSucess, duration);
@@ -399,9 +419,9 @@ public class DetalhesForum extends ActionBarActivity {
                 Intent voltar = new Intent(DetalhesForum.this,Main.class);
                 Bundle param = new Bundle();
                 param.putInt("idUsuario",iduser);
-                param.putString("nomeUsuario",nomeUser);
+                param.putString("nomeUsuario",nomeMenu);
                 param.putString("emailUsuario",emailUser);
-                param.putString("fotoUsuario",fotoUser);
+                param.putString("fotoUsuario",fotoMenu);
                 voltar.putExtras(param);
 
 

@@ -10,7 +10,7 @@
         android:layout_height="70dp"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="7dp"
-        android:id="@+id/imgUser"
+        android:id="@+id/imgUserTopico"
         android:src="@drawable/user"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
@@ -25,7 +25,7 @@
         android:textColor="#999999"
         android:textSize="15dp"
         android:id="@+id/txtTituloPost"
-        android:layout_alignTop="@+id/imgUser"
+        android:layout_alignTop="@+id/imgUserTopico"
         android:focusable="false"
         />
     <TextView
@@ -38,7 +38,7 @@
         android:textSize="12dp"
         android:textColor="#CFCFCF"
         android:id="@+id/txtDescricaoPost"
-        android:layout_alignTop="@+id/imgUser"
+        android:layout_alignTop="@+id/imgUserTopico"
         android:focusable="false"
         />
 

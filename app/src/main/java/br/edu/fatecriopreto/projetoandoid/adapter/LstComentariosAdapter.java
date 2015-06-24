@@ -1,6 +1,9 @@
 package br.edu.fatecriopreto.projetoandoid.adapter;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +15,6 @@ import java.util.List;
 
 import br.edu.fatecriopreto.projetoandoid.Entity.Comentarios;
 import br.edu.fatecriopreto.projetoandoid.R;
-import br.edu.fatecriopreto.projetoandoid.Topicos;
 
 /**
  * Created by Jessica on 29/05/2015.
@@ -47,6 +49,8 @@ public class LstComentariosAdapter extends BaseAdapter {
     private class ItemSuporte{
 
         TextView txtComentario;
+        ImageView imgUserC;
+        TextView txtNomeCom;
 
     }
     @Override
@@ -58,6 +62,8 @@ public class LstComentariosAdapter extends BaseAdapter {
             item = new ItemSuporte();
 
             item.txtComentario = (TextView) convertView.findViewById(R.id.txtComentario);
+            item.imgUserC = (ImageView) convertView.findViewById(R.id.imgUserCom);
+            item.txtNomeCom = (TextView) convertView.findViewById(R.id.txtnomeuser);
 
 
             convertView.setTag(item);
@@ -73,8 +79,17 @@ public class LstComentariosAdapter extends BaseAdapter {
      //   item.txtDescricaoPost.setText(post.getDescricao());
 
         item.txtComentario.setText(post.getConteudo());
-       // item.imgUser.setImageResource(R.drawable.user);
+        String ImgUser = post.getImgPessoa();
+        if(ImgUser != null) {
+            byte[] bt = Base64.decode(ImgUser, Base64.DEFAULT);
+            //String bt = listAux.get(position).getImgByte();
+            Bitmap userfoto = BitmapFactory.decodeByteArray(bt, 0, bt.length);
+            //imgFoto.setImageBitmap(userfoto);
 
+            //item.txtDescricaoPost.setText("conteudo conteudo conteudo");
+            item.imgUserC.setImageBitmap(userfoto);
+            item.txtNomeCom.setText(post.getNomePessoa());
+        }
 
         return convertView;
     }

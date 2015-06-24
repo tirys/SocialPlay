@@ -44,7 +44,7 @@ public class AdapterListView extends BaseAdapter{
 
         TextView txtTituloPost;
         TextView txtDescricaoPost;
-        ImageView imgUser;
+        ImageView imgUserTopico;
 
     }
     @Override
@@ -53,11 +53,12 @@ public class AdapterListView extends BaseAdapter{
         if(convertView==null){
             convertView = inflater.inflate(R.layout.lista_topicos, null); //coloca o layout na visualização
 
+
             item = new ItemSuporte();
 
             item.txtTituloPost = (TextView) convertView.findViewById(R.id.txtTituloPost);
             item.txtDescricaoPost = (TextView) convertView.findViewById(R.id.txtDescricaoPost);
-            item.imgUser = (ImageView) convertView.findViewById(R.id.imgUser);
+            item.imgUserTopico = (ImageView) convertView.findViewById(R.id.imgUserTopico);
 
             convertView.setTag(item);
 
@@ -79,7 +80,7 @@ public class AdapterListView extends BaseAdapter{
             //imgFoto.setImageBitmap(userfoto);
 
             //item.txtDescricaoPost.setText("conteudo conteudo conteudo");
-            item.imgUser.setImageBitmap(userfoto);
+            item.imgUserTopico.setImageBitmap(userfoto);
         }
 
         return convertView;

@@ -336,9 +336,11 @@ public class Main extends ActionBarActivity implements OnItemSelectedListener {
         param.putString("titPost", post.getNome());
         param.putString("txtDesc",post.getDescricao());
         param.putInt("codUsuario",post.getCodUsuario());
-        param.putString("nomeUsuario",nomeUser);
+        param.putString("nomeUsuario",post.getNomeUser());
         param.putString("emailUsuario",emailUser);
-        param.putString("fotoUsuario",fotoUser);
+        param.putString("fotoUsuario",post.getImagem());
+        param.putString("fotoMenu", fotoUser);
+        param.putString("nomeMenu",nomeUser);
 
         param.putInt("iduser",idUser);
         intent.putExtras(param);
