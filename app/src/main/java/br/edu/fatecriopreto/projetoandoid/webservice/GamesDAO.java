@@ -45,7 +45,9 @@ public class GamesDAO {
                 Games jog = new Games();
                 jog.setIdJogo(Integer.parseInt(so.getProperty("idJogo").toString()));
                 jog.setJogo(so.getProperty("jogo").toString());
+                jog.setImgJogoGene(so.getPropertyAsString("img_jogo").toString());
                 //jog.setCodGenero(Integer.parseInt(soapObject.getProperty("codGenero").toString()));
+
                 listaJogos.add(jog);
             }
         } catch (Exception e) {

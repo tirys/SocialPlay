@@ -2,6 +2,9 @@ package br.edu.fatecriopreto.projetoandoid.adapter;
 
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -68,10 +71,14 @@ public class ListaJogosAdapter extends BaseAdapter{
         // item.txtTituloPost.setText(veiculo.getPlaca()); //adicionando no itemplaca configurado no layout
         // item.txtDescricaoPost.setText(veiculo.getMarca());
         item.txtTitulo.setText(jogo.getJogo());
+        String temp = jogo.getImgJogoGene();
 
+        byte[] bt = Base64.decode(temp, Base64.DEFAULT);
+        //String bt = listAux.get(position).getImgByte();
+        Bitmap userfoto = BitmapFactory.decodeByteArray(bt, 0, bt.length);
+        //imgFoto.setImageBitmap(userfoto);
 
-        //item.txtDescricaoPost.setText("conteudo conteudo conteudo");
-        item.imgUser.setImageResource(R.drawable.user);
+        item.imgUser.setImageBitmap(userfoto);
 
 
         return convertView;

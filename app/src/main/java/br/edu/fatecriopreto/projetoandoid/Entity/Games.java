@@ -7,14 +7,16 @@ public class Games {
     private int idJogo;
     private String Jogo;
     private int codGenero;
+    private String imgJogoGene;
 
     public Games(){
 
     }
-    public Games(int idJogo, String jogo, int codGenero) {
+    public Games(int idJogo, String jogo, int codGenero, String imgJogoGene) {
         this.idJogo = idJogo;
         this.Jogo = jogo;
         this.codGenero = codGenero;
+        this.imgJogoGene = imgJogoGene;
     }
 
     public int getIdJogo() {
@@ -39,5 +41,13 @@ public class Games {
 
     public void setCodGenero(int codGenero) {
         this.codGenero = codGenero;
+    }
+
+    public String getImgJogoGene() {
+        return imgJogoGene;
+    }
+
+    public void setImgJogoGene(String imgJogoGene) {
+        this.imgJogoGene = imgJogoGene;
     }
 }
