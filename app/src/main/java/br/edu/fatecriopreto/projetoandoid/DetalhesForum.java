@@ -19,6 +19,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.FrameLayout;
@@ -59,6 +60,7 @@ import java.util.Locale;
 public class DetalhesForum extends ActionBarActivity {
     String titForum;
     String descricao;
+    Button btncomentario;
     TextView txtTitDet;
     TextView txtDesc;
     TextView txtNomeUser;
@@ -112,9 +114,10 @@ public class DetalhesForum extends ActionBarActivity {
         txtTitDet = (TextView) findViewById(R.id.txtTitDet);
         txtDesc = (TextView) findViewById(R.id.txtDesc);
         imgDonoPost = (ImageView) findViewById(R.id.imgDonoPost);
-        lstComentarios = (ListView) findViewById(R.id.lstComentarios);
-        enviarComentario = (ImageView) findViewById(R.id.enviarComentario);
-        edtComment = (EditText) findViewById(R.id.edtComment);
+        btncomentario = (Button) findViewById(R.id.btncomentariosId);
+      //  lstComentarios = (ListView) findViewById(R.id.lstComentarios);
+     //   enviarComentario = (ImageView) findViewById(R.id.enviarComentario);
+     //   edtComment = (EditText) findViewById(R.id.edtComment);
         imgNewPostDet = (ImageView) findViewById(R.id.imgNewPostDet);
         txtNomeUser = (TextView) findViewById(R.id.txtForumAutor);
 
@@ -175,14 +178,46 @@ public class DetalhesForum extends ActionBarActivity {
             }
         }
 
+        //voltando para main quando clicar no icone de voltar
+        imgback = (ImageView)findViewById(R.id.imgbackdetforum);
+
+        imgback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent voltar = new Intent(DetalhesForum.this,Main.class);
+                Bundle param = new Bundle();
+                param.putInt("idUsuario",iduser);
+                param.putString("nomeUsuario",nomeMenu);
+                param.putString("emailUsuario",emailUser);
+                param.putString("fotoUsuario",fotoMenu);
+                voltar.putExtras(param);
 
 
-        ComentariosDAO listacom = new ComentariosDAO();
-
-        final List<Comentarios> lstcomentarios = listacom.listarComentariosporid(idpost);
-
+                startActivity(voltar);
+                // overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
 
 
+            }
+        });
+
+     //   ComentariosDAO listacom = new ComentariosDAO();
+
+     //   final List<Comentarios> lstcomentarios = listacom.listarComentariosporid(idpost);
+
+
+
+        btncomentario.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent comentarios = new Intent(DetalhesForum.this,ComentariosAct.class);
+                Bundle param = new Bundle();
+                param.putInt("idPost", idpost);
+                param.putInt("idUser", iduser);
+                comentarios.putExtras(param);
+
+                startActivity(comentarios);
+            }
+        });
 
         //Se ele for o dono, vai para a pagina de edição/exclusão senão, novo post
         imgNewPostDet.setOnClickListener(new View.OnClickListener() {
@@ -248,7 +283,7 @@ public class DetalhesForum extends ActionBarActivity {
 
 
      //   List<Comentarios> lstcomentarios=listacom.listarComentariosporid(idpost);
-        enviarComentario.setOnClickListener(new View.OnClickListener() {
+    /*    enviarComentario.setOnClickListener(new View.OnClickListener() {
 
 
 
@@ -335,7 +370,7 @@ public class DetalhesForum extends ActionBarActivity {
                 return false;
             }
         });
-
+*/
         headerNavigationLeft = new AccountHeader()
                 .withActivity(this)
                 .withCompactStyle(false)
@@ -410,27 +445,7 @@ public class DetalhesForum extends ActionBarActivity {
         navigationDrawerLeft.addItem(new SwitchDrawerItem().withName("Notificação").withChecked(true).withOnCheckedChangeListener(mOnCheckedChangeListener));
 
 
-        //voltando para main quando clicar no icone de voltar
-        imgback = (ImageView)findViewById(R.id.imgbackperfil);
 
-        imgback.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent voltar = new Intent(DetalhesForum.this,Main.class);
-                Bundle param = new Bundle();
-                param.putInt("idUsuario",iduser);
-                param.putString("nomeUsuario",nomeMenu);
-                param.putString("emailUsuario",emailUser);
-                param.putString("fotoUsuario",fotoMenu);
-                voltar.putExtras(param);
-
-
-                 startActivity(voltar);
-                // overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
-
-
-            }
-        });
     }
 
     private int getCorretcDrawerIcon(int position, boolean isSelecetd){

@@ -85,6 +85,10 @@
             android:name=".PostsUsuario"
             android:label="" >
         </activity>
+        <activity
+            android:name=".ComentariosAct"
+            android:label="" >
+        </activity>
         <uses-permission android:name="android.permission.INTERNET"/>
     </application>
     <uses-permission android:name="android.permission.INTERNET"/>

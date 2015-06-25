@@ -27,6 +27,8 @@ public class Catpc extends ActionBarActivity {
     String nomeUser;
     String emailUser;
 
+    int iduser;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +43,10 @@ public class Catpc extends ActionBarActivity {
         final Intent intent = getIntent();
         Bundle param = intent.getExtras();
         idPlataforma = param.getInt("idPlataformaPC");
+        iduser = param.getInt("idUsuario");
+        fotoUsuario=param.getString("fotoUsuario");
+        nomeUser=param.getString("nomeUsuario");
+        emailUser=param.getString("emailUsuario");
 
         //Cria a Lista de Generos da plataforma selecionada
         ArrayList<Genero> listaGeneros = (ArrayList<Genero>) dao.buscaGenero(idPlataforma);
@@ -57,7 +63,7 @@ public class Catpc extends ActionBarActivity {
                 //param.putString("plataforma","pc");
                 param.putInt("idPlataforma",idPlataforma);
                 param.putString("fotoUsuario",fotoUsuario);
-                param.putInt("idUsuario", idUsuario);
+                param.putInt("idUsuario", iduser);
                 param.putString("nomeUsuario",nomeUser);
                 param.putString("emailUsuario",emailUser);
                 pc.putExtras(param);

@@ -43,6 +43,7 @@ public class Catcon extends ActionBarActivity {
         emailUser = param.getString("emailUsuario");
 
 
+
         GeneroDAO dao = new GeneroDAO();
         //Cria a Lista de Generos da plataforma selecionada
         ArrayList<Genero> listaGeneros = (ArrayList<Genero>) dao.buscaGenero(idPlataforma);

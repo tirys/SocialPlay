@@ -42,6 +42,10 @@ public class Catmob extends ActionBarActivity {
         final Intent intent = getIntent();
         Bundle param = intent.getExtras();
         idPlataforma = param.getInt("idPlataformaMobile");
+        idUsuario = param.getInt("idUsuario");
+        fotoUsuario=param.getString("fotoUsuario");
+        nomeUser=param.getString("nomeUsuario");
+        emailUser=param.getString("emailUsuario");
 
         //Cria a Lista de Generos da plataforma selecionada
         ArrayList<Genero> listaGenero = (ArrayList<Genero>) dao.buscaGenero(idPlataforma);

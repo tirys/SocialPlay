@@ -157,6 +157,8 @@ public class Main extends ActionBarActivity implements OnItemSelectedListener {
         actvState = new AutoCompleteTextView(Main.this);
         actvState.setThreshold(1);
         actvState.setBackgroundColor(0);
+        actvState.setHint("Busca");
+        actvState.setHintTextColor(Color.parseColor("#cccccc"));
         actvState.setLayoutParams(new LinearLayout.LayoutParams(0, LayoutParams.MATCH_PARENT, 1));
         float scale = getResources().getDisplayMetrics().density;
         actvState.setPadding((int)(5 * scale * 0.5f),(int)(4 * scale * 0.5f),(int)(5 * scale * 0.5f),(int)(0 * scale * 0.5f));
@@ -282,7 +284,7 @@ public class Main extends ActionBarActivity implements OnItemSelectedListener {
                             menIntent3.putExtras(param);
                             startActivityForResult(menIntent3, 1);
                         }
-                        if (i == 5) {
+                        if (i ==4) {
                             dbAdapter.open();
                             dbAdapter.editar(1,"","","","","","","");
                             dbAdapter.close();
@@ -306,7 +308,7 @@ public class Main extends ActionBarActivity implements OnItemSelectedListener {
         navigationDrawerLeft.addItem(new PrimaryDrawerItem().withName("Perfil").withIcon(getResources().getDrawable(R.drawable.car_2)));
         navigationDrawerLeft.addItem(new PrimaryDrawerItem().withName("Meus Posts").withIcon(getResources().getDrawable(R.drawable.car_6)));
         navigationDrawerLeft.addItem(new PrimaryDrawerItem().withName("Jogos").withIcon(getResources().getDrawable(R.drawable.car_3)));
-        navigationDrawerLeft.addItem(new PrimaryDrawerItem().withName("Amigos").withIcon(getResources().getDrawable(R.drawable.car_4)));
+        //navigationDrawerLeft.addItem(new PrimaryDrawerItem().withName("Amigos").withIcon(getResources().getDrawable(R.drawable.car_4)));
         navigationDrawerLeft.addItem(new PrimaryDrawerItem().withName("Sair").withIcon(getResources().getDrawable(R.drawable.car_5)));
      //  navigationDrawerLeft.addItem(new SectionDrawerItem().withName("Configurações"));
       //  navigationDrawerLeft.addItem(new SwitchDrawerItem().withName("Notificação").withChecked(true).withOnCheckedChangeListener(mOnCheckedChangeListener));
@@ -396,9 +398,9 @@ public class Main extends ActionBarActivity implements OnItemSelectedListener {
 
         @Override
         public Fragment getItem(int position) {
-            txtRelevantes = (TextView)findViewById(R.id.txtRelevantes);
-            txtUltimos = (TextView)findViewById(R.id.txtUltimos);
-            txtSeguindo = (TextView)findViewById(R.id.txtSeguindo);
+       //     txtRelevantes = (TextView)findViewById(R.id.txtRelevantes);
+         //   txtUltimos = (TextView)findViewById(R.id.txtUltimos);
+          //  txtSeguindo = (TextView)findViewById(R.id.txtSeguindo);
 
             switch (position) {
                 case 0:

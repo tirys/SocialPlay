@@ -42,6 +42,10 @@ public class catport extends ActionBarActivity {
         final Intent intent = getIntent();
         Bundle param = intent.getExtras();
         idPlataforma = param.getInt("idPlataformaPortatil");
+        idUsuario = param.getInt("idUsuario");
+        fotoUsuario=param.getString("fotoUsuario");
+        nomeUser=param.getString("nomeUsuario");
+        emailUser=param.getString("emailUsuario");
 
         //Cria a Lista de Generos da plataforma selecionada
         ArrayList<Genero> listaGeneros = (ArrayList<Genero>) dao.buscaGenero(idPlataforma);
