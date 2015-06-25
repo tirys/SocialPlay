@@ -12,6 +12,7 @@
         <activity
             android:name=".Login"
             android:configChanges="keyboard|orientation"
+            android:screenOrientation="portrait"
             android:label="@string/app_name"
             android:theme="@style/AppTheme" >
             <intent-filter>
@@ -22,71 +23,88 @@
         </activity>
         <activity
             android:name=".Main"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_main" >
         </activity>
         <activity
             android:name=".DetalhesForum"
+            android:screenOrientation="portrait"
             android:label=""
             android:windowSoftInputMode="adjustPan|adjustResize">
         </activity>
         <activity
             android:name=".Registrar"
+            android:screenOrientation="portrait"
             android:label="" >
         </activity>
         <activity
             android:name=".Jogos"
+            android:screenOrientation="portrait"
             android:label="" >
         </activity>
         <activity
             android:name=".Perfil"
+            android:screenOrientation="portrait"
             android:label="" >
         </activity>
         <activity
             android:name=".ListaJogos"
+            android:screenOrientation="portrait"
             android:label="" >
         </activity>
         <activity
             android:name=".Catpc"
+            android:screenOrientation="portrait"
             android:label="" >
         </activity>
         <activity
             android:name=".Catcon"
+            android:screenOrientation="portrait"
             android:label="" >
         </activity>
         <activity
             android:name=".Catmob"
+            android:screenOrientation="portrait"
             android:label="" >
         </activity>
         <activity
             android:name=".catport"
+            android:screenOrientation="portrait"
             android:label="" >
         </activity>
         <activity
             android:name=".PerfilEditar"
+            android:screenOrientation="portrait"
             android:label="" >
         </activity>
         <activity
             android:name=".NovoPost"
+            android:screenOrientation="portrait"
             android:label="" >
         </activity>
         <activity
             android:name=".DescJogo"
+            android:screenOrientation="portrait"
             android:label="" >
         </activity>
         <activity
             android:name=".ListaPostsJogo"
+            android:screenOrientation="portrait"
             android:label="" >
         </activity>
         <activity
             android:name=".EditarForum"
+            android:screenOrientation="portrait"
             android:label="" >
         </activity>
         <activity
             android:name=".PostsUsuario"
+            android:screenOrientation="portrait"
             android:label="" >
         </activity>
         <activity
             android:name=".ComentariosAct"
+            android:screenOrientation="portrait"
             android:label="" >
         </activity>
         <uses-permission android:name="android.permission.INTERNET"/>
